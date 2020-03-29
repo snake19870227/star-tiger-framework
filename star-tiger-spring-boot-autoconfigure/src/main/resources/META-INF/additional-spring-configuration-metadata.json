@@ -1,0 +1,26 @@
+{
+  "properties": [
+    {
+      "name": "stiger.frame.use-http-status-code",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.snake19870227.stiger.autoconfigure.properties.StarTigerFrameProperties",
+      "description": "决定全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)是否同时设置 Http Status Code.",
+      "defaultValue": true
+    }
+  ],
+  "hints": [
+    {
+      "name": "stiger.frame.use-http-status-code",
+      "values": [
+        {
+          "value": true,
+          "description": "全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)会同时根据异常设置 Http Status Code."
+        },
+        {
+          "value": false,
+          "description": "全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)不会根据异常设置 Http Status Code, 统一返回200."
+        }
+      ]
+    }
+  ]
+}
