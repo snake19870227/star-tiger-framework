@@ -37,6 +37,19 @@
         <url>git@github.com:snake19870227/star-tiger-framework.git</url>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>Project Release</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Project SNAPSHOTS</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <modules>
         <module>star-tiger-framework-core</module>
         <module>star-tiger-framework-web</module>
