@@ -30,7 +30,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>star-tiger-framework-web</artifactId>
-            <version>${framework.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

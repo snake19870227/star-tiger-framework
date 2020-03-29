@@ -40,7 +40,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>star-tiger-framework-core</artifactId>
-            <version>${framework.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

@@ -20,7 +20,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>star-tiger-spring-boot-autoconfigure</artifactId>
-            <version>${framework.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
