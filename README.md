@@ -22,7 +22,7 @@
                   `'"'    `. `.            `--'     `._;
                             `'"'
 ```
-由 https://github.com/snake19870227/StarTiger/tree/master/StarTiger-admin 迁移至此  
+由 https://github.com/snake19870227/StarTiger/tree/master/StarTiger-dependencies 迁移至此  
 
 ## 说明
 SpringBoot 2.x 常用配置抽象
