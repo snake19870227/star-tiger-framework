@@ -7,7 +7,7 @@
 
     <groupId>com.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -40,12 +40,12 @@
 
     <distributionManagement>
         <repository>
-            <id>release</id>
+            <id>local-docker-nexus-release</id>
             <name>Project Release</name>
             <url>http://localhost:18081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
+            <id>local-docker-nexus-snapshots</id>
             <name>Project SNAPSHOTS</name>
             <url>http://localhost:18081/repository/maven-snapshots/</url>
         </snapshotRepository>
@@ -90,6 +90,17 @@
 
     <repositories>
         <repository>
+            <id>local-docker-nexus</id>
+            <name>local docker nexus proxy</name>
+            <url>http://localhost:18081/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>aliyun-nexus</id>
             <name>Aliyun Nexus Proxy</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
@@ -114,6 +125,17 @@
     </repositories>
 
     <pluginRepositories>
+        <pluginRepository>
+            <id>local-docker-nexus</id>
+            <name>local docker nexus proxy</name>
+            <url>http://localhost:18081/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
         <pluginRepository>
             <id>aliyun-nexus</id>
             <name>Aliyun Nexus Proxy</name>
@@ -231,30 +253,6 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <configuration>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -382,7 +380,7 @@
             </dependency>
 
             <dependency>
-                <groupId>${project.groupId}</groupId>
+                <groupId>com.snake19870227</groupId>
                 <artifactId>star-tiger-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>

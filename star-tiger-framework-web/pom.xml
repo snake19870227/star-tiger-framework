@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.snake19870227</groupId>
         <artifactId>star-tiger-framework</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3</version>
     </parent>
 
     <artifactId>star-tiger-framework-web</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>StarTigerFrameworkWeb</name>
     <description>Star Tiger 脚手架项目 web 模块</description>
 
@@ -38,9 +38,9 @@
 
         <!--StarTiger-->
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.snake19870227</groupId>
             <artifactId>star-tiger-framework-core</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 
