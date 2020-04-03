@@ -7,7 +7,7 @@
 
     <groupId>com.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -382,7 +382,7 @@
             <dependency>
                 <groupId>com.snake19870227</groupId>
                 <artifactId>star-tiger-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>0.0.4</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

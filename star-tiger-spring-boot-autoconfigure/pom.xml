@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.snake19870227</groupId>
         <artifactId>star-tiger-framework</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </parent>
 
     <artifactId>star-tiger-spring-boot-autoconfigure</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <name>StarTigerSpringBootAutoconfigure</name>
     <description>Star Tiger 脚手架项目 spring boot 自动配置模块</description>
 
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.snake19870227</groupId>
             <artifactId>star-tiger-framework-web</artifactId>
-            <version>${project.parent.version}</version>
+            <version>0.0.4</version>
         </dependency>
     </dependencies>
 
