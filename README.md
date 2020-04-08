@@ -24,5 +24,7 @@
 ```
 由 https://github.com/snake19870227/StarTiger/tree/master/StarTiger-dependencies 迁移至此  
 
+**已推送到Maven中央仓库** [查看](https://search.maven.org/search?q=com.github.snake19870227)
+
 ## 说明
 SpringBoot 2.x 常用配置抽象
