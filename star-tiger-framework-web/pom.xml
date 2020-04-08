@@ -6,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.snake19870227</groupId>
+        <groupId>com.github.snake19870227</groupId>
         <artifactId>star-tiger-framework</artifactId>
-        <version>0.0.5</version>
+        <version>0.0.6</version>
     </parent>
 
     <artifactId>star-tiger-framework-web</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <name>StarTigerFrameworkWeb</name>
     <description>Star Tiger 脚手架项目 web 模块</description>
 
@@ -38,9 +38,9 @@
 
         <!--StarTiger-->
         <dependency>
-            <groupId>com.snake19870227</groupId>
+            <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-core</artifactId>
-            <version>0.0.5</version>
+            <version>0.0.6</version>
         </dependency>
     </dependencies>
 
