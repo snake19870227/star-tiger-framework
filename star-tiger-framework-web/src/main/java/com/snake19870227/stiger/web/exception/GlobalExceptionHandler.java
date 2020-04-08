@@ -17,7 +17,7 @@ import com.snake19870227.stiger.web.view.ModelAndViewBuilder;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/25
+ * 2020/03/25
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {

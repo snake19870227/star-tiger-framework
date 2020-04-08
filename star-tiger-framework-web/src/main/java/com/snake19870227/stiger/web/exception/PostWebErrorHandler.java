@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/21
+ * 2020/03/21
  */
 public interface PostWebErrorHandler {
 

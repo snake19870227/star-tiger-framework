@@ -2,7 +2,7 @@ package com.snake19870227.stiger.core.exception;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/25
+ * 2020/03/25
  */
 public class BaseBusinessException extends RuntimeException {
 

@@ -11,7 +11,7 @@ import com.snake19870227.stiger.autoconfigure.StarTigerAutoConfiguration;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/29
+ * 2020/03/29
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

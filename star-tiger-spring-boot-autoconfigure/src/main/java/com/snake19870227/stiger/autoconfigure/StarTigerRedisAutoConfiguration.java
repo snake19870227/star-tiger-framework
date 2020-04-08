@@ -17,7 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/29
+ * 2020/03/29
  */
 @Configuration
 @ConditionalOnClass({

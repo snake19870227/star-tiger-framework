@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/26
+ * 2020/03/26
  */
 public class MvcUtil {
 

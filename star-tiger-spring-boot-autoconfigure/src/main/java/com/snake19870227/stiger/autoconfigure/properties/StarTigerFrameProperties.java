@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
- * @date 2020/03/27
+ * 2020/03/27
  */
 @ConfigurationProperties(prefix = "stiger.frame")
 public class StarTigerFrameProperties {
