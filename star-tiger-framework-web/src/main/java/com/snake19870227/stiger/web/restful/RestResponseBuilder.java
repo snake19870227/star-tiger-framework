@@ -64,6 +64,20 @@ public class RestResponseBuilder {
         return new RestResponse.DefaultRestResponse(respCode, respMessage, data);
     }
 
+    public static RestResponse.DefaultRestResponse createDefaultRestResp(boolean isSuccess, String respCode, Object[] messageArgs, Object data) {
+
+        String respMessage = null;
+        try {
+            respMessage = buildMessage(respCode, messageArgs);
+        } catch (Exception e) {
+            logger.warn("未找到国际化文本配置[{}]", respCode, e);
+            respCode = isSuccess ? DEFAULT_SUCCESS_RESP_CODE : DEFAULT_FAILURE_RESP_CODE;
+            respMessage = buildMessage(respCode);
+        }
+
+        return new RestResponse.DefaultRestResponse(respCode, respMessage, data);
+    }
+
     public static <F, M extends RestResponse<F>> M createSuccessRestResp(F data, Class<M> clazz) {
         return createRestResp(DEFAULT_SUCCESS_RESP_CODE, buildMessage(DEFAULT_SUCCESS_RESP_CODE), data, clazz);
     }
@@ -83,6 +97,10 @@ public class RestResponseBuilder {
 
     public static <F, M extends RestResponse<F>> M createRestResp(String respCode, F data, Class<M> clazz) {
         return createRestResp(respCode, buildMessage(respCode), data, clazz);
+    }
+
+    public static <F, M extends RestResponse<F>> M createRestResp(String respCode, Object[] messageArgs, F data, Class<M> clazz) {
+        return createRestResp(respCode, buildMessage(respCode, messageArgs), data, clazz);
     }
 
     public static <F, M extends RestResponse<F>> M createRestResp(String respCode, String respMessage, F data, Class<M> clazz) {

@@ -50,15 +50,27 @@ public class GlobalExceptionHandler {
             mv = new ModelAndView("error/500", model);
         }
 
+        updateHttpStatusCode(response);
+
+        doPostWebErrorHandler(request, response, ex, handlerMethod, mv);
+
+        return mv;
+    }
+
+    protected void updateHttpStatusCode(HttpServletResponse response) {
         if (useHttpStatusCode) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
+    }
 
+    protected void doPostWebErrorHandler(HttpServletRequest request,
+                                         HttpServletResponse response,
+                                         Exception ex,
+                                         HandlerMethod handlerMethod,
+                                         ModelAndView mv) {
         if (postWebErrorHandler != null) {
             postWebErrorHandler.exceptionHandler(request, response, handlerMethod, ex, mv);
         }
-
-        return mv;
     }
 
     public boolean isUseHttpStatusCode() {
