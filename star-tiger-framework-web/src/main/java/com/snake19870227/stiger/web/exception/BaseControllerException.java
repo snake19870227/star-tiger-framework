@@ -45,16 +45,27 @@ public abstract class BaseControllerException extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return "[" + errorCode + "]" + super.getMessage();
+        List<String> causeMessages = new ArrayList<>();
+        loadBusinessCauseMessages(causeMessages, getCause());
+        StringBuilder message = new StringBuilder();
+        message.append(currentMessage());
+        if (!causeMessages.isEmpty()) {
+            causeMessages.forEach(causeMessage -> message.append(";").append(causeMessage));
+        }
+        return message.toString();
     }
 
     public String getErrorCode() {
         return errorCode;
     }
 
+    private String currentMessage() {
+        return "[" + errorCode + "]" + super.getMessage();
+    }
+
     public Map<String, Object> getModel() {
         Map<String, Object> model = new HashMap<>(1);
-        model.put(StarTigerWebConstant.ViewAttrKey.ERROR_MESSAGE, getMessage());
+        model.put(StarTigerWebConstant.ViewAttrKey.ERROR_MESSAGE, currentMessage());
         List<String> causeMessages = new ArrayList<>();
         loadBusinessCauseMessages(causeMessages, getCause());
         model.put(StarTigerWebConstant.ViewAttrKey.ERROR_DETAIL_MESSAGES, causeMessages);
