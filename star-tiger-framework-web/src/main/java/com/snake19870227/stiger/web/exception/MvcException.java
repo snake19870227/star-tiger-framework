@@ -15,8 +15,8 @@ public class MvcException extends BaseControllerException {
         super(errorCode, cause, args);
     }
 
-    public MvcException(String message) {
-        super(message);
+    public MvcException(String errorCode) {
+        super(errorCode);
     }
 
     public MvcException(Throwable cause) {

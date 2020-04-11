@@ -29,11 +29,6 @@ public abstract class BaseControllerException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-    public BaseControllerException(String message) {
-        super(message);
-        this.errorCode = StarTigerConstant.StatusCode.CODE_9998;
-    }
-
     public BaseControllerException(Throwable cause) {
         super(cause);
         if (BaseBusinessException.class.isAssignableFrom(cause.getClass())) {
