@@ -3,8 +3,12 @@ package com.snake19870227.stiger.web.utils;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 import java.nio.charset.StandardCharsets;
+
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * @author Bu HuaYang
@@ -28,5 +32,15 @@ public class WebUtil {
             path.append("?").append(request.getQueryString());
         }
         return path.toString();
+    }
+
+    public static boolean matches(HttpServletRequest request, String pattern, String httpMethod) {
+        AntPathRequestMatcher pathMatcher;
+        if (StrUtil.isNotBlank(httpMethod)) {
+            pathMatcher = new AntPathRequestMatcher(pattern, httpMethod);
+        } else {
+            pathMatcher = new AntPathRequestMatcher(pattern);
+        }
+        return pathMatcher.matches(request);
     }
 }
