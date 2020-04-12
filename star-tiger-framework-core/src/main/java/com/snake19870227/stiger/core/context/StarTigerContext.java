@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.core.env.Environment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.snake19870227.stiger.core.utils.JsonUtil;
@@ -91,5 +92,17 @@ public class StarTigerContext {
         }
 
         return objectMapper;
+    }
+
+    public static void publishEvent(ApplicationEvent event) {
+        if (springContext == null) {
+            return;
+        }
+        springContext.publishEvent(event);
+    }
+
+    public static void clearContext() {
+        logger.debug("清除StarTigerContext中的springContext:{}", springContext);
+        springContext = null;
     }
 }

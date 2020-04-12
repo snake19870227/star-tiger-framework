@@ -3,6 +3,7 @@ package com.snake19870227.stiger.core.context;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -12,7 +13,7 @@ import org.springframework.util.StringUtils;
 /**
  * @author Bu HuaYang
  */
-public class StarTigerContextLoader implements ApplicationContextAware {
+public class StarTigerContextLoader implements ApplicationContextAware, DisposableBean {
 
     private static final Logger logger = LoggerFactory.getLogger(StarTigerContextLoader.class);
 
@@ -31,5 +32,10 @@ public class StarTigerContextLoader implements ApplicationContextAware {
         StarTigerContext.setApplicationVersion(env.getProperty("stiger.admin.web.version"));
         StarTigerContext.setSpringContext(applicationContext);
         logger.info("SpringContext is loaded.");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        StarTigerContext.clearContext();
     }
 }
