@@ -22,6 +22,9 @@ public class PageRestResponse<T> extends RestResponse<T> {
     @ApiModelProperty(value = "彩虹分页数组")
     private int[] rainbow;
 
+    public PageRestResponse() {
+    }
+
     public PageRestResponse(String respCode, String respMessage) {
         super(respCode, respMessage);
     }
