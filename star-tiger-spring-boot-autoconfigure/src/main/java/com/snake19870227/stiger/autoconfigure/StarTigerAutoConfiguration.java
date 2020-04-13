@@ -33,6 +33,7 @@ import com.snake19870227.stiger.web.exception.PostWebErrorHandler;
         StarTigerFrameProperties.class
 })
 @Import({
+        StarTigerLogAutoConfiguration.class,
         StarTigerRedisAutoConfiguration.class
 })
 public class StarTigerAutoConfiguration {
