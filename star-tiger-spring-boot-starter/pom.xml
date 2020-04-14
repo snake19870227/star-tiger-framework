@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.github.snake19870227</groupId>
         <artifactId>star-tiger-framework</artifactId>
-        <version>0.1.1-SNAPSHOT</version>
+        <version>0.1.1</version>
     </parent>
 
     <artifactId>star-tiger-spring-boot-starter</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <name>StarTigerSpringBootStarter</name>
     <description>Star Tiger 脚手架项目 spring boot starter 模块</description>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-spring-boot-autoconfigure</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.1.1</version>
         </dependency>
     </dependencies>
 
