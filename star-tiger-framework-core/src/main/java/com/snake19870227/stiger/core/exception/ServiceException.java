@@ -4,7 +4,7 @@ package com.snake19870227.stiger.core.exception;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/03/17
  */
-public class ServiceException extends BaseBusinessException {
+public class ServiceException extends BusinessException {
 
     private static final long serialVersionUID = -3775309085209030461L;
 

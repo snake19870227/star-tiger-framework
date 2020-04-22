@@ -4,7 +4,7 @@ package com.snake19870227.stiger.core.exception;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/03/17
  */
-public class OptException extends BaseBusinessException {
+public class OptException extends BusinessException {
 
     private static final long serialVersionUID = -4200148175517878694L;
 

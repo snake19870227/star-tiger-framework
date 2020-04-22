@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.context.StarTigerContext;
-import com.snake19870227.stiger.core.exception.BaseBusinessException;
+import com.snake19870227.stiger.core.exception.BusinessException;
 import com.snake19870227.stiger.web.StarTigerWebConstant;
 
 /**
@@ -31,7 +31,7 @@ public abstract class BaseControllerException extends RuntimeException {
 
     public BaseControllerException(Throwable cause) {
         super(cause);
-        if (BaseBusinessException.class.isAssignableFrom(cause.getClass())) {
+        if (BusinessException.class.isAssignableFrom(cause.getClass())) {
             this.errorCode = StarTigerConstant.StatusCode.CODE_9998;
         } else {
             this.errorCode = StarTigerConstant.StatusCode.CODE_9999;
@@ -68,7 +68,7 @@ public abstract class BaseControllerException extends RuntimeException {
     }
 
     private void loadBusinessCauseMessages(List<String> causeMessages, Throwable t) {
-        if (t instanceof BaseBusinessException) {
+        if (t instanceof BusinessException) {
             causeMessages.add(t.getMessage());
             if (t.getCause() != null) {
                 loadBusinessCauseMessages(causeMessages, t.getCause());
