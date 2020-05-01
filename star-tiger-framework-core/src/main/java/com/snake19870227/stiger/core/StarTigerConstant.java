@@ -12,7 +12,7 @@ public class StarTigerConstant {
 
     public static final String SPRING_SECURITY_ROLE_PREFIX = "ROLE_";
 
-    public static class OAuth20Code {
+    public static class Oauth2Code {
         public static final String BEARER_TOKEN_PREFIX = "Bearer ";
     }
 

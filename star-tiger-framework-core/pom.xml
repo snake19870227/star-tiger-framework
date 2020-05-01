@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.github.snake19870227</groupId>
         <artifactId>star-tiger-framework</artifactId>
-        <version>0.2.0</version>
+        <version>0.2.1</version>
     </parent>
 
     <artifactId>star-tiger-framework-core</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <name>StarTigerFrameworkCore</name>
     <description>Star Tiger 脚手架项目 core 模块</description>
 
@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-dependencies</artifactId>
-                <version>0.2.0</version>
+                <version>0.2.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -29,6 +29,19 @@
     </dependencyManagement>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
