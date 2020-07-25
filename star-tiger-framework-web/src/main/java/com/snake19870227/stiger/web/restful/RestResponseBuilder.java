@@ -15,6 +15,7 @@ import com.snake19870227.stiger.web.exception.BaseControllerException;
 /**
  * @author Bu HuaYang
  */
+@Deprecated
 public class RestResponseBuilder {
 
     private static final Logger logger = LoggerFactory.getLogger(RestResponseBuilder.class);

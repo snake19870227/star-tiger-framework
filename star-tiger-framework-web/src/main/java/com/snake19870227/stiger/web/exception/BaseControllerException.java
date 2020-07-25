@@ -17,16 +17,32 @@ public abstract class BaseControllerException extends RuntimeException {
 
     private static final long serialVersionUID = -777186496884353814L;
 
+    protected boolean useHttpStatusCode;
+
     protected String errorCode;
 
     public BaseControllerException(String errorCode, Object... args) {
         super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args));
         this.errorCode = errorCode;
+        this.useHttpStatusCode = true;
     }
 
     public BaseControllerException(String errorCode, Throwable cause, Object... args) {
         super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args), cause);
         this.errorCode = errorCode;
+        this.useHttpStatusCode = true;
+    }
+
+    public BaseControllerException(String errorCode, boolean useHttpStatusCode, Object... args) {
+        super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args));
+        this.errorCode = errorCode;
+        this.useHttpStatusCode = useHttpStatusCode;
+    }
+
+    public BaseControllerException(String errorCode, boolean useHttpStatusCode, Throwable cause, Object... args) {
+        super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args), cause);
+        this.errorCode = errorCode;
+        this.useHttpStatusCode = useHttpStatusCode;
     }
 
     public BaseControllerException(Throwable cause) {
@@ -74,5 +90,13 @@ public abstract class BaseControllerException extends RuntimeException {
                 loadBusinessCauseMessages(causeMessages, t.getCause());
             }
         }
+    }
+
+    public boolean isUseHttpStatusCode() {
+        return useHttpStatusCode;
+    }
+
+    public void setUseHttpStatusCode(boolean useHttpStatusCode) {
+        this.useHttpStatusCode = useHttpStatusCode;
     }
 }

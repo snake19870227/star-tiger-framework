@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * @author Bu HuaYang
  */
+@Deprecated
 public class RestResponse<T> {
 
     @ApiModelProperty(value = "结果状态码")

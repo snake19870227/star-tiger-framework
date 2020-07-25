@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * @author Bu HuaYang
  */
+@Deprecated
 public class PageRestResponse<T> extends RestResponse<T> {
 
     @ApiModelProperty(value = "当前页码", allowableValues = "[1, infinity]")
