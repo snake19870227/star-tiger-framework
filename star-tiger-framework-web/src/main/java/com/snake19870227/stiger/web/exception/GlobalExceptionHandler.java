@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
         if (MvcUtil.isResponseBody(handlerMethod)
                 || MvcUtil.isHttpEntity(handlerMethod)
                 || WebUtil.isAjaxRequest(request)) {
-            mv = ModelAndViewBuilder.buildToJsonResponseBody(ex);
+            mv = ModelAndViewBuilder.buildToJsonBody(ex);
         } else {
             Map<String, Object> model = ex.getModel();
             mv = new ModelAndView("error/500", model);
