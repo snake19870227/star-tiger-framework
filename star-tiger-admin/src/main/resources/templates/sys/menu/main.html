@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="zh-CN">
+<head>
+    <th:block th:replace="global::baseHead('主页')"/>
+    <th:block th:replace="global::style"/>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <table id="data-table" lay-filter="data-table"></table>
+
+        <script type="text/html" id="top-tool-bar">
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn layui-btn-sm" lay-event="add">
+                    <i class="fa fa-plus"></i> 添加一级菜单
+                </button>
+            </div>
+        </script>
+
+        <script type="text/html" id="record-tool-bar">
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit">
+                <i class="layui-icon">&#xe642;</i> 编辑
+            </a>
+            {{#  if(d.enableFlag === 'Y'){ }}
+            <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="disable">
+                <i class="layui-icon">&#xe651;</i> 停用
+            </button>
+            {{#  } }}
+            {{#  if(d.enableFlag === 'N'){ }}
+            <button class="layui-btn layui-btn-xs" lay-event="enable">
+                <i class="layui-icon">&#xe652;</i> 启用
+            </button>
+            {{#  } }}
+            {{#  if(d.menuLevel <= 1){ }}
+            <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="add-children">
+                <i class="layui-icon">&#xe624;</i> 增加子菜单
+            </button>
+            {{#  } }}
+        </script>
+
+        <script type="text/html" id="enable-flag-span">
+            {{#  if(d.enableFlag === 'Y'){ }}
+            <span class="layui-badge layui-bg-green">启用</span>
+            {{#  } }}
+            {{#  if(d.enableFlag === 'N'){ }}
+            <span class="layui-badge layui-bg-gray">停用</span>
+            {{#  } }}
+        </script>
+
+    </div>
+</div>
+
+<div id="info-win" style="padding:10px;display:none;">
+    <form id="info-save-form" class="layui-form" lay-filter="info-save-form">
+        <input type="hidden" name="menuFlow">
+        <input type="hidden" name="parentMenuFlow">
+        <input type="hidden" name="menuLevel">
+        <div class="layui-form-item">
+            <label class="layui-form-label">菜单编码</label>
+            <div class="layui-input-block">
+                <input type="text" name="menuCode" placeholder="请输入菜单编码" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">菜单名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="menuName" placeholder="请输入菜单名称" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">菜单地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="menuPath" placeholder="请输入菜单地址" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">菜单排序</label>
+            <div class="layui-input-block">
+                <input type="text" name="menuOrder" placeholder="请输入菜单排序" class="layui-input" lay-verify="required|number">
+            </div>
+        </div>
+    </form>
+</div>
+
+<th:block th:replace="global::script-frame"/>
+<th:block th:replace="global::script-stiger"/>
+<script th:src="@{/js/rest-api.js}" charset="utf-8"></script>
+<script th:src="@{/js/sys/menu.js}" charset="utf-8"></script>
+</body>
+</html>

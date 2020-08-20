@@ -7,7 +7,7 @@
 
     <groupId>com.github.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
+    <version>0.4.0</version>
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -95,6 +95,7 @@
         <module>star-tiger-framework-web</module>
         <module>star-tiger-spring-boot-autoconfigure</module>
         <module>star-tiger-spring-boot-starter</module>
+        <module>star-tiger-admin</module>
     </modules>
 
     <properties>
