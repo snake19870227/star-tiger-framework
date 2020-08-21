@@ -9,44 +9,35 @@ window.MainRestApi = {
 }
 
 window.ResourceRestApi = {
-    getAllResourceTransferData: function (successCallback, errorCallback, completeCallback) {
+    getAllTransferData: function (successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/resource/transferData",
             "get", {}, "", "json",
             successCallback, errorCallback, completeCallback
         );
     },
-    getRoleResourceTransferData: function (roleFlow, successCallback, errorCallback, completeCallback) {
-        StigerHttp.ajax(
-            "/sys/resource/transferData?roleFlow=" + roleFlow,
-            "get", {}, "", "json",
-            successCallback, errorCallback, completeCallback
-        );
-    },
-    readResourceInfo: function (resFlow, successCallback, errorCallback, completeCallback) {
+    read: function (resFlow, successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/resource/" + resFlow,
             "get", {}, "", "json",
             successCallback, errorCallback, completeCallback
         );
     },
-    addResource: function (resource,
-                           successCallback, errorCallback, completeCallback) {
+    add: function (resource, successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/resource",
             "post", JSON.stringify(resource), "application/json", "json",
             successCallback, errorCallback, completeCallback
         );
     },
-    updateResource: function (resource,
-                              successCallback, errorCallback, completeCallback) {
+    mod: function (resource, successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
-            "/sys/resource/" + resource.resFlow,
+            "/sys/resource",
             "put", JSON.stringify(resource), "application/json", "json",
             successCallback, errorCallback, completeCallback
         );
     },
-    changeResourceEnableStatus: function (resFlow, enableFlag,
+    changeEnableStatus: function (resFlow, enableFlag,
                                           successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/resource/enableStatus/" + resFlow + "/" + enableFlag,
@@ -57,7 +48,7 @@ window.ResourceRestApi = {
 }
 
 window.RoleRestApi = {
-    addRole: function (role, resourceFlows,
+    add: function (role, resourceFlows,
                        successCallback, errorCallback, completeCallback) {
         let saveDto = {
             role: role,
@@ -69,7 +60,7 @@ window.RoleRestApi = {
             successCallback, errorCallback, completeCallback
         );
     },
-    modRole: function (role, resourceFlows,
+    mod: function (role, resourceFlows,
                        successCallback, errorCallback, completeCallback) {
         let saveDto = {
             role: role,
@@ -81,14 +72,14 @@ window.RoleRestApi = {
             successCallback, errorCallback, completeCallback
         );
     },
-    readRole: function (roleFlow, successCallback, errorCallback, completeCallback) {
+    read: function (roleFlow, successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/role/" + roleFlow,
             "get", {}, "", "json",
             successCallback, errorCallback, completeCallback
         );
     },
-    getAllRoleTransferData: function (successCallback, errorCallback, completeCallback) {
+    getAllTransferData: function (successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/role/transferData",
             "get", {}, "", "json",
@@ -105,14 +96,14 @@ window.MenuRestApi = {
             successCallback, errorCallback, completeCallback
         );
     },
-    addMenu: function (menu, successCallback, errorCallback, completeCallback) {
+    add: function (menu, successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/menu",
             "post", JSON.stringify(menu), "application/json", "json",
             successCallback, errorCallback, completeCallback
         );
     },
-    modMenu: function (menu, successCallback, errorCallback, completeCallback) {
+    mod: function (menu, successCallback, errorCallback, completeCallback) {
         StigerHttp.ajax(
             "/sys/menu",
             "put", JSON.stringify(menu), "application/json", "json",

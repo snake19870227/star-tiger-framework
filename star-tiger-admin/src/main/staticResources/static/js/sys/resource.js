@@ -7,9 +7,18 @@ layui.use(["table", "form", "layer", "laypage", "util"], function () {
         util = layui.util
     ;
 
-    let resourceDataTableOptions = {
-        id: "resourceDataTable",
-        elem: "#resource-list-table",
+    let infoWinOptions = {
+        type: 1,
+        id: "infoWin",
+        title: "新增资源",
+        content: $("#info-win"),
+        // btn: ["保存"],
+        offset: "100px"
+    }
+
+    let dataTableOptions = {
+        id: "dataTable",
+        elem: "#data-table",
         toolbar: "#top-tool-bar",
         url: contextPath + "/sys/resource/data",
         loading: true,
@@ -18,27 +27,11 @@ layui.use(["table", "form", "layer", "laypage", "util"], function () {
             layout: ['prev', 'page', 'next', 'limit', 'count', 'refresh']
         },
         cols: [[
-            {
-                field: "resName",
-                title: "资源名"
-            },
-            {
-                field: "resPath",
-                title: "资源地址"
-            },
-            {
-                field: "resMethod",
-                title: "访问方式"
-            },
-            {
-                field: "enableFlag",
-                title: "启用标记",
-                templet: "#enable-flag-switch"
-            },
-            {
-                title: "操作",
-                toolbar: "#record-tool-bar"
-            }
+            {field: "resName", title: "资源名"},
+            {field: "resPath", title: "资源地址"},
+            {field: "resMethod", title: "访问方式"},
+            {field: "enableFlag", title: "启用标记", templet: "#enable-flag-switch"},
+            {title: "操作", toolbar: "#record-tool-bar"}
         ]],
         parseData: function (res) {
             let parseData = {};
@@ -52,61 +45,50 @@ layui.use(["table", "form", "layer", "laypage", "util"], function () {
         }
     }
 
-    let resourceDataTable = undefined;
-
     $(function () {
-        loadResourceDataTable();
+        loadDataTable();
         util.event("lay-event", {
             search: function(){
-                loadResourceDataTable();
+                loadDataTable();
             }
         });
     });
 
-    let loadResourceDataTable = function () {
+    let infoWinIndex = undefined;
+
+    let dataTable = undefined;
+
+    let loadDataTable = function () {
         let mainInnerHeight = $(".layuimini-main").innerHeight();
         let searchOuterHeight = $(".table-search-fieldset").outerHeight();
         let options = {};
-        $.extend(options, resourceDataTableOptions);
+        $.extend(options, dataTableOptions);
         options.height = "full-" + (searchOuterHeight + 60);
-        options.where = form.val("resource-search-form");
-        if (resourceDataTable) {
-            resourceDataTable.reload(options);
+        options.where = form.val("search-form");
+        if (dataTable) {
+            dataTable.reload(options);
         } else {
-            resourceDataTable = table.render(options);
+            dataTable = table.render(options);
         }
     };
 
-    table.on("toolbar(resource-list-table)", function (obj) {
+    table.on("toolbar(data-table)", function (obj) {
         let layEvent = obj.event;
         let $body = $("body");
         let width = $body.innerWidth();
         width = (width / 5) * 3;
         if (layEvent === "add") {
-            let resAddWin = layer.open({
-                type: 1,
-                id: "resAddWin",
-                title: "新增资源",
-                content: $("#add-win"),
-                btn: ["保存"],
-                area: width + "px",
-                offset: "100px",
-                yes: function (index, layero) {
-                    let resource = form.val("resource-add-form");
-                    ResourceRestApi.addResource(resource,
-                        function (data, textStatus, xhr) {
-                            let code = data.code;
-                            let msg = data.msg;
-                            if (code !== "10000") {
-                                layer.msg(msg);
-                                return;
-                            }
-                            loadResourceDataTable();
-                            layer.close(index);
-                        }
-                    );
-                }
+            form.val("info-save-form", {
+                resFlow: "",
+                resName: "",
+                resPath: "",
+                resMethod: ""
             });
+            let winOptions = {};
+            $.extend(winOptions, infoWinOptions);
+            winOptions.title = "新增";
+            winOptions.area = width + "px";
+            infoWinIndex = layer.open(winOptions);
         }
     });
 
@@ -120,7 +102,7 @@ layui.use(["table", "form", "layer", "laypage", "util"], function () {
         };
         layer.confirm("是否确认修改？", {},
             function (index) {
-                ResourceRestApi.changeResourceEnableStatus(value, newFlag,
+                ResourceRestApi.changeEnableStatus(value, newFlag,
                     function (data, textStatus, xhr) {
                         let code = data.code;
                         let msg = data.msg;
@@ -145,7 +127,7 @@ layui.use(["table", "form", "layer", "laypage", "util"], function () {
         );
     });
 
-    table.on("tool(resource-list-table)", function (obj) {
+    table.on("tool(data-table)", function (obj) {
         let data = obj.data;
         let layEvent = obj.event;
         let tr = obj.tr;
@@ -155,45 +137,39 @@ layui.use(["table", "form", "layer", "laypage", "util"], function () {
         // let height = $body.innerHeight();
         // height = (height / 3);
         if (layEvent === "edit") {
-            let resInfoWin = layer.open({
-                type: 1,
-                id: data.resFlow,
-                title: "编译资源",
-                content: $("#edit-win"),
-                // area: [width + "px", height + "px"]
-                btn: ["保存"],
-                area: width + "px",
-                offset: "100px",
-                success: function (layero, index) {
-                    ResourceRestApi.readResourceInfo(data.resFlow,
-                        function (data, textStatus, xhr) {
-                            let code = data.code;
-                            let msg = data.msg;
-                            let resInfo = data.data;
-                            if (code !== "10000") {
-                                layer.msg(msg);
-                            } else {
-                                form.val("resource-edit-form", resInfo);
-                            }
-                        }
-                    );
-                },
-                yes: function (index, layero) {
-                    let resource = form.val("resource-edit-form");
-                    ResourceRestApi.updateResource(resource,
-                        function (data, textStatus, xhr) {
-                            let code = data.code;
-                            let msg = data.msg;
-                            if (code !== "10000") {
-                                layer.msg(msg);
-                                return;
-                            }
-                            loadResourceDataTable();
-                            layer.close(index);
-                        }
-                    );
+            ResourceRestApi.read(data.resFlow,
+                function (data, textStatus, xhr) {
+                    let code = data.code;
+                    let msg = data.msg;
+                    let resInfo = data.data;
+                    if (code !== "10000") {
+                        layer.msg(msg);
+                    } else {
+                        form.val("info-save-form", resInfo);
+                        let winOptions = {};
+                        $.extend(winOptions, infoWinOptions);
+                        winOptions.title = "编辑";
+                        winOptions.area = width + "px";
+                        infoWinIndex = layer.open(winOptions);
+                    }
                 }
+            );
+        }
+    });
+
+    form.on('submit(info-save-form-submit-btn)', function(data) {
+        let resource = data.field;
+        if (resource.resFlow && resource.resFlow !== "") {
+            ResourceRestApi.mod(resource, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        } else {
+            ResourceRestApi.add(resource, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
             });
         }
+        return false;
     });
 });

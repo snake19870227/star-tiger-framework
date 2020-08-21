@@ -89,7 +89,7 @@ public class SysDictController {
 
         QueryWrapper<SysDictItem> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dict_flow", dictFlow);
-        queryWrapper.orderByAsc("dict_item_name");
+        queryWrapper.orderByAsc("dict_item_order", "dict_item_name");
 
         List<SysDictItem> dictItems = sysDictItemService.list(queryWrapper);
 

@@ -9,15 +9,15 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
 
     let infoWinOptions = {
         type: 1,
-        id: "roleInfoWin",
+        id: "infoWin",
         content: $("#info-win"),
-        btn: ["保存"],
+        // btn: ["保存"],
         offset: "100px"
     }
 
-    let roleDataTableOptions = {
-        id: "roleDataTable",
-        elem: "#role-data-table",
+    let dataTableOptions = {
+        id: "dataTable",
+        elem: "#data-table",
         toolbar: "#top-tool-bar",
         url: contextPath + "/sys/role/data",
         loading: true,
@@ -26,18 +26,9 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
             layout: ['prev', 'page', 'next', 'limit', 'count', 'refresh']
         },
         cols: [[
-            {
-                field: "roleCode",
-                title: "角色代码"
-            },
-            {
-                field: "roleName",
-                title: "角色名"
-            },
-            {
-                title: "操作",
-                toolbar: "#record-tool-bar"
-            }
+            {field: "roleCode", title: "角色代码"},
+            {field: "roleName", title: "角色名"},
+            {title: "操作", toolbar: "#record-tool-bar"}
         ]],
         parseData: function (res) {
             let parseData = {};
@@ -58,41 +49,43 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
         showSearch: true
     }
 
-    let roleDataTable = undefined;
-
-    let resourceTransfer = undefined;
-
     $(function () {
-        loadRoleDataTable();
+        loadDataTable();
         util.event("lay-event", {
             search: function () {
-                loadRoleDataTable();
+                loadDataTable();
             }
         });
     });
 
-    let loadRoleDataTable = function () {
+    let infoWinIndex = undefined;
+
+    let dataTable = undefined;
+
+    let resourceTransfer = undefined;
+
+    let loadDataTable = function () {
         let mainInnerHeight = $(".layuimini-main").innerHeight();
         let searchOuterHeight = $(".table-search-fieldset").outerHeight();
         let options = {};
-        $.extend(options, roleDataTableOptions);
+        $.extend(options, dataTableOptions);
         options.height = "full-" + (searchOuterHeight + 60);
-        options.where = form.val("role-data-table");
-        if (roleDataTable) {
-            roleDataTable.reload(options);
+        options.where = form.val("search-form");
+        if (dataTable) {
+            dataTable.reload(options);
         } else {
-            roleDataTable = table.render(options);
+            dataTable = table.render(options);
         }
     };
 
-    table.on("toolbar(role-data-table)", function (obj) {
+    table.on("toolbar(data-table)", function (obj) {
         let layEvent = obj.event;
         let $body = $("body");
         let width = $body.innerWidth();
         width = (width / 10) * 7;
 
         if (layEvent === "add") {
-            form.val("role-save-form", {
+            form.val("info-save-form", {
                 roleCode: "",
                 roleName: ""
             });
@@ -101,7 +94,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
             winOptions.title = "新增角色";
             winOptions.area = width + "px";
             winOptions.success = function (layero, index) {
-                ResourceRestApi.getAllResourceTransferData(
+                ResourceRestApi.getAllTransferData(
                     function (data, textStatus, xhr) {
                         let code = data.code;
                         let msg = data.msg;
@@ -121,25 +114,11 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                     }
                 );
             };
-            winOptions.yes = function (index, layero) {
-                let role = form.val("role-save-form");
-                let selectResourceData = transfer.getData(resourceTransferOptions.id);
-                let resourceFlows = [];
-                $.each(selectResourceData, function (i, n) {
-                    resourceFlows.push(n.value);
-                });
-                console.log(role);
-                console.log(resourceFlows);
-                RoleRestApi.addRole(role, resourceFlows, function (data, textStatus, xhr) {
-                    loadRoleDataTable();
-                    layer.close(index);
-                });
-            };
-            layer.open(winOptions);
+            infoWinIndex = layer.open(winOptions);
         }
     });
 
-    table.on("tool(role-data-table)", function (obj) {
+    table.on("tool(data-table)", function (obj) {
         let data = obj.data;
         let layEvent = obj.event;
         let tr = obj.tr;
@@ -150,9 +129,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
         let roleFlow = data.roleFlow;
 
         if (layEvent === "edit") {
-            RoleRestApi.readRole(
-                roleFlow,
-                function (data, textStatus, xhr) {
+            RoleRestApi.read(roleFlow, function (data, textStatus, xhr) {
                     let code = data.code;
                     let msg = data.msg;
                     let role = data.data.role;
@@ -160,13 +137,13 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                     if (code !== "10000") {
                         layer.msg(msg);
                     } else {
-                        form.val("role-save-form", role);
+                        form.val("info-save-form", role);
                         let winOptions = {};
                         $.extend(winOptions, infoWinOptions);
                         winOptions.title = "编辑角色";
                         winOptions.area = width + "px";
                         winOptions.success = function (layero, index) {
-                            ResourceRestApi.getAllResourceTransferData(
+                            ResourceRestApi.getAllTransferData(
                                 function (data, textStatus, xhr) {
                                     let code = data.code;
                                     let msg = data.msg;
@@ -186,25 +163,32 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                                 }
                             );
                         };
-                        winOptions.yes = function (index, layero) {
-                            let role = form.val("role-save-form");
-                            let selectResourceData = transfer.getData(resourceTransferOptions.id);
-                            let resourceFlows = [];
-                            $.each(selectResourceData, function (i, n) {
-                                resourceFlows.push(n.value);
-                            });
-                            console.log(role);
-                            console.log(resourceFlows);
-                            RoleRestApi.modRole(role, resourceFlows, function (data, textStatus, xhr) {
-                                loadRoleDataTable();
-                                layer.close(index);
-                            });
-                        };
-                        layer.open(winOptions);
+                        infoWinIndex = layer.open(winOptions);
                     }
                 }
             );
         }
+    });
+
+    form.on('submit(info-save-form-submit-btn)', function(data) {
+        let role = data.field;
+        let selectResourceData = transfer.getData(resourceTransferOptions.id);
+        let resourceFlows = [];
+        $.each(selectResourceData, function (i, n) {
+            resourceFlows.push(n.value);
+        });
+        if (role.roleFlow && role.roleFlow !== "") {
+            RoleRestApi.mod(role, resourceFlows, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        } else {
+            RoleRestApi.add(role, resourceFlows, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        }
+        return false;
     });
 
 });

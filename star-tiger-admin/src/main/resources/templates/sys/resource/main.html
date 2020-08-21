@@ -11,7 +11,7 @@
     <div class="layuimini-main">
         <fieldset class="table-search-fieldset">
             <legend>搜索信息</legend>
-            <form id="resource-search-form" class="layui-form" lay-filter="resource-search-form">
+            <form id="search-form" class="layui-form" lay-filter="search-form">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">资源名</label>
@@ -56,7 +56,7 @@
             </form>
         </fieldset>
 
-        <table id="resource-list-table" lay-filter="resource-list-table"></table>
+        <table id="data-table" lay-filter="data-table"></table>
 
         <script type="text/html" id="top-tool-bar">
             <div class="layui-btn-container">
@@ -77,8 +77,8 @@
     </div>
 </div>
 
-<div id="add-win" style="padding:10px;display:none;">
-    <form id="resource-add-form" class="layui-form" lay-filter="resource-add-form">
+<div id="info-win" style="padding:10px;display:none;">
+    <form id="info-save-form" class="layui-form" lay-filter="info-save-form">
         <input type="hidden" name="resFlow">
         <div class="layui-form-item">
             <label class="layui-form-label">资源名</label>
@@ -101,31 +101,9 @@
                 <input type="radio" name="resMethod" lay-verify="required" value="DELETE" title="DELETE">
             </div>
         </div>
-    </form>
-</div>
-
-<div id="edit-win" style="padding:10px;display:none;">
-    <form id="resource-edit-form" class="layui-form" lay-filter="resource-edit-form">
-        <input type="hidden" name="resFlow">
         <div class="layui-form-item">
-            <label class="layui-form-label">资源名</label>
             <div class="layui-input-block">
-                <input type="text" name="resName" placeholder="请输入资源名" class="layui-input" lay-verify="required">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">资源地址</label>
-            <div class="layui-input-block">
-                <input type="text" name="resPath" placeholder="请输入资源地址" class="layui-input" lay-verify="required">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">访问方式</label>
-            <div class="layui-input-block">
-                <input type="radio" name="resMethod" lay-verify="required" value="GET" title="GET">
-                <input type="radio" name="resMethod" lay-verify="required" value="POST" title="POST">
-                <input type="radio" name="resMethod" lay-verify="required" value="PUT" title="PUT">
-                <input type="radio" name="resMethod" lay-verify="required" value="DELETE" title="DELETE">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="info-save-form-submit-btn">保存</button>
             </div>
         </div>
     </form>

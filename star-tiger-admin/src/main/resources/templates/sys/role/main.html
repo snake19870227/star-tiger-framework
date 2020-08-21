@@ -12,7 +12,7 @@
 
         <fieldset class="table-search-fieldset">
             <legend>搜索信息</legend>
-            <form id="role-search-form" class="layui-form" lay-filter="role-search-form">
+            <form id="search-form" class="layui-form" lay-filter="search-form">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">角色代码</label>
@@ -35,7 +35,7 @@
             </form>
         </fieldset>
 
-        <table id="role-data-table" lay-filter="role-data-table"></table>
+        <table id="data-table" lay-filter="data-table"></table>
 
         <script type="text/html" id="top-tool-bar">
             <div class="layui-btn-container">
@@ -53,7 +53,7 @@
 </div>
 
 <div id="info-win" style="padding:10px;display:none;">
-    <form id="role-save-form" class="layui-form" lay-filter="role-save-form">
+    <form id="info-save-form" class="layui-form" lay-filter="info-save-form">
         <input type="hidden" name="roleFlow">
         <div class="layui-form-item">
             <label class="layui-form-label">角色编码</label>
@@ -71,6 +71,11 @@
             <label class="layui-form-label">资源权限</label>
             <div class="layui-input-block">
                 <div id="resource-transfer"></div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="info-save-form-submit-btn">保存</button>
             </div>
         </div>
     </form>

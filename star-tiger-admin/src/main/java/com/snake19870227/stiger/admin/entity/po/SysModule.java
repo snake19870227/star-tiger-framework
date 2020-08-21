@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author buhuayang
- * @since 2020-08-20
+ * @since 2020-08-21
  */
 @ApiModel(value="SysModule对象", description="")
 public class SysModule implements Serializable {

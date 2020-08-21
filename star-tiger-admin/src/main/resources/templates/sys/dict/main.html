@@ -68,6 +68,11 @@
                 <input type="text" name="dictName" placeholder="请输入字典项目名称" class="layui-input" lay-verify="required">
             </div>
         </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="info-save-form-submit-btn">保存</button>
+            </div>
+        </div>
     </form>
 </div>
 
@@ -97,13 +102,24 @@
         <div class="layui-form-item">
             <label class="layui-form-label">选项编码</label>
             <div class="layui-input-block">
-                <input type="text" name="dictItemCode" placeholder="请输入字典项目编码" class="layui-input" lay-verify="required">
+                <input type="text" name="dictItemCode" placeholder="请输入字典选项编码" class="layui-input" lay-verify="required">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">选项名称</label>
             <div class="layui-input-block">
-                <input type="text" name="dictItemName" placeholder="请输入字典项目名称" class="layui-input" lay-verify="required">
+                <input type="text" name="dictItemName" placeholder="请输入字典选项名称" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选项排序码</label>
+            <div class="layui-input-block">
+                <input type="text" name="dictItemOrder" placeholder="请输入字典选项排序码" class="layui-input" lay-verify="number">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="item-info-save-form-submit-btn">保存</button>
             </div>
         </div>
     </form>

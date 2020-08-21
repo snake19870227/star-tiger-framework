@@ -2,7 +2,6 @@ layui.use(["form", "layer", "util", "treeTable"], function () {
     let form = layui.form,
         layer = layui.layer,
         util = layui.util,
-        transfer = layui.transfer,
         treeTable = layui.treeTable
     ;
 
@@ -10,7 +9,7 @@ layui.use(["form", "layer", "util", "treeTable"], function () {
         type: 1,
         id: "infoWin",
         content: $("#info-win"),
-        btn: ["保存"],
+        // btn: ["保存"],
         offset: "100px"
     }
 
@@ -52,6 +51,8 @@ layui.use(["form", "layer", "util", "treeTable"], function () {
         loadDataTable();
     });
 
+    let infoWinIndex = undefined;
+
     let dataTable = undefined;
 
     let loadDataTable = function () {
@@ -89,17 +90,7 @@ layui.use(["form", "layer", "util", "treeTable"], function () {
             $.extend(winOptions, infoWinOptions);
             winOptions.title = "新增一级菜单";
             winOptions.area = width + "px";
-            winOptions.yes = function (index, layero) {
-                let info = form.val("info-save-form");
-                MenuRestApi.addMenu(
-                    info,
-                    function (data, textStatus, xhr) {
-                        loadDataTable();
-                        layer.close(index);
-                    }
-                );
-            };
-            layer.open(winOptions);
+            infoWinIndex = layer.open(winOptions);
         }
     });
 
@@ -126,14 +117,7 @@ layui.use(["form", "layer", "util", "treeTable"], function () {
                     $.extend(winOptions, infoWinOptions);
                     winOptions.title = "编辑菜单";
                     winOptions.area = width + "px";
-                    winOptions.yes = function (index, layero) {
-                        let info = form.val("info-save-form");
-                        MenuRestApi.modMenu(info, function (data, textStatus, xhr) {
-                            loadDataTable();
-                            layer.close(index);
-                        })
-                    };
-                    layer.open(winOptions);
+                    infoWinIndex = layer.open(winOptions);
                 }
             });
         }
@@ -200,17 +184,23 @@ layui.use(["form", "layer", "util", "treeTable"], function () {
             $.extend(winOptions, infoWinOptions);
             winOptions.title = "新增二级菜单";
             winOptions.area = width + "px";
-            winOptions.yes = function (index, layero) {
-                let info = form.val("info-save-form");
-                MenuRestApi.addMenu(
-                    info,
-                    function (data, textStatus, xhr) {
-                        loadDataTable();
-                        layer.close(index);
-                    }
-                );
-            };
-            layer.open(winOptions);
+            infoWinIndex = layer.open(winOptions);
         }
+    });
+
+    form.on('submit(info-save-form-submit-btn)', function(data) {
+        let menu = data.field;
+        if (menu.menuFlow && menu.menuFlow !== "") {
+            MenuRestApi.mod(menu, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        } else {
+            MenuRestApi.add(menu, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        }
+        return false;
     });
 });

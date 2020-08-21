@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author buhuayang
- * @since 2020-08-20
+ * @since 2020-08-21
  */
 @ApiModel(value="SysDictItem对象", description="")
 public class SysDictItem implements Serializable {
@@ -32,6 +32,9 @@ public class SysDictItem implements Serializable {
 
     @ApiModelProperty(value = "字典值名称")
     private String dictItemName;
+
+    @ApiModelProperty(value = "字典选项排序码")
+    private Integer dictItemOrder;
 
     @ApiModelProperty(value = "记录状态")
     @TableLogic
@@ -74,6 +77,15 @@ public class SysDictItem implements Serializable {
         return this;
     }
 
+    public Integer getDictItemOrder() {
+        return dictItemOrder;
+    }
+
+    public SysDictItem setDictItemOrder(Integer dictItemOrder) {
+        this.dictItemOrder = dictItemOrder;
+        return this;
+    }
+
     public String getRecordStatus() {
         return recordStatus;
     }
@@ -90,6 +102,7 @@ public class SysDictItem implements Serializable {
         ", dictFlow=" + dictFlow +
         ", dictItemCode=" + dictItemCode +
         ", dictItemName=" + dictItemName +
+        ", dictItemOrder=" + dictItemOrder +
         ", recordStatus=" + recordStatus +
         "}";
     }

@@ -12,7 +12,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
         type: 1,
         id: "infoWin",
         content: $("#info-win"),
-        btn: ["保存"],
+        // btn: ["保存"],
         offset: "100px"
     }
 
@@ -63,6 +63,8 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
         });
     });
 
+    let infoWinIndex = undefined;
+
     let dataTable = undefined;
 
     let roleTransfer = undefined;
@@ -99,7 +101,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
             winOptions.title = "新增";
             winOptions.area = width + "px";
             winOptions.success = function (layero, index) {
-                RoleRestApi.getAllRoleTransferData(function (data, textStatus, xhr) {
+                RoleRestApi.getAllTransferData(function (data, textStatus, xhr) {
                     let code = data.code;
                     let msg = data.msg;
                     if (code !== "10000") {
@@ -117,21 +119,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                     }
                 });
             }
-            winOptions.yes = function (index, layero) {
-                let user = form.val("info-save-form");
-                let selectRoleData = transfer.getData(roleTransferOptions.id);
-                let roleFlows = [];
-                $.each(selectRoleData, function (i, n) {
-                    roleFlows.push(n.value);
-                });
-                console.log(user);
-                console.log(roleFlows);
-                UserRestApi.add(user, roleFlows, function (data, textStatus, xhr) {
-                    loadDataTable();
-                    layer.close(index);
-                });
-            };
-            layer.open(winOptions);
+            infoWinIndex = layer.open(winOptions);
         }
     });
 
@@ -160,7 +148,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                     winOptions.title = "编辑";
                     winOptions.area = width + "px";
                     winOptions.success = function (layero, index) {
-                        RoleRestApi.getAllRoleTransferData(function (data, textStatus, xhr) {
+                        RoleRestApi.getAllTransferData(function (data, textStatus, xhr) {
                             let code = data.code;
                             let msg = data.msg;
                             if (code !== "10000") {
@@ -178,21 +166,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                             }
                         });
                     }
-                    winOptions.yes = function (index, layero) {
-                        let user = form.val("info-save-form");
-                        let selectRoleData = transfer.getData(roleTransferOptions.id);
-                        let roleFlows = [];
-                        $.each(selectRoleData, function (i, n) {
-                            roleFlows.push(n.value);
-                        });
-                        console.log(user);
-                        console.log(roleFlows);
-                        UserRestApi.mod(user, roleFlows, function (data, textStatus, xhr) {
-                            loadDataTable();
-                            layer.close(index);
-                        });
-                    };
-                    layer.open(winOptions);
+                    infoWinIndex = layer.open(winOptions);
                 }
             });
         }
@@ -255,6 +229,27 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
                 stopChange();
             }
         );
+    });
+
+    form.on('submit(info-save-form-submit-btn)', function(data) {
+        let user = data.field;
+        let selectRoleData = transfer.getData(roleTransferOptions.id);
+        let roleFlows = [];
+        $.each(selectRoleData, function (i, n) {
+            roleFlows.push(n.value);
+        });
+        if (user.userFlow && user.userFlow !== "") {
+            UserRestApi.mod(user, roleFlows, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        } else {
+            UserRestApi.add(user, roleFlows, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        }
+        return false;
     });
 
 });

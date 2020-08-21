@@ -10,7 +10,7 @@ layui.use(["table", "form", "layer", "util"], function () {
         type: 1,
         id: "infoWin",
         content: $("#info-win"),
-        btn: ["保存"],
+        // btn: ["保存"],
         offset: "100px"
     }
 
@@ -25,7 +25,7 @@ layui.use(["table", "form", "layer", "util"], function () {
         type: 1,
         id: "itemInfoWin",
         content: $("#item-info-win"),
-        btn: ["保存"],
+        // btn: ["保存"],
         offset: "100px"
     }
 
@@ -69,6 +69,7 @@ layui.use(["table", "form", "layer", "util"], function () {
         cols: [[
             {field: "dictItemCode", title: "字典选项编码"},
             {field: "dictItemName", title: "字典选项名称"},
+            {field: "dictItemOrder", title: "字典选项排序码"},
             {title: "操作", toolbar: "#item-record-tool-bar"}
         ]],
         parseData: function (res) {
@@ -90,6 +91,10 @@ layui.use(["table", "form", "layer", "util"], function () {
             }
         });
     });
+
+    let infoWinIndex = undefined;
+
+    let itemInfoWinIndex = undefined;
 
     let dataTable = undefined;
 
@@ -138,14 +143,7 @@ layui.use(["table", "form", "layer", "util"], function () {
             $.extend(winOptions, infoWinOptions);
             winOptions.title = "新增";
             winOptions.area = width + "px";
-            winOptions.yes = function (index, layero) {
-                let dict = form.val("info-save-form");
-                DictRestApi.add(dict, function (data, textStatus, xhr) {
-                    loadDataTable();
-                    layer.close(index);
-                });
-            };
-            layer.open(winOptions);
+            infoWinIndex = layer.open(winOptions);
         }
     });
 
@@ -173,14 +171,7 @@ layui.use(["table", "form", "layer", "util"], function () {
                     $.extend(winOptions, infoWinOptions);
                     winOptions.title = "编辑";
                     winOptions.area = width + "px";
-                    winOptions.yes = function (index, layero) {
-                        let dict = form.val("info-save-form");
-                        DictRestApi.mod(dict, function (data, textStatus, xhr) {
-                            loadDataTable();
-                            layer.close(index);
-                        });
-                    };
-                    layer.open(winOptions);
+                    infoWinIndex = layer.open(winOptions);
                 }
             });
         }
@@ -217,14 +208,7 @@ layui.use(["table", "form", "layer", "util"], function () {
             $.extend(winOptions, itemInfoWinOptions);
             winOptions.title = "新增";
             winOptions.area = width + "px";
-            winOptions.yes = function (index, layero) {
-                let dictItem = form.val("item-info-save-form");
-                DictRestApi.addItem(dictItem, function (data, textStatus, xhr) {
-                    loadItemTable(dictFlow);
-                    layer.close(index);
-                });
-            };
-            layer.open(winOptions);
+            itemInfoWinIndex = layer.open(winOptions);
         }
     });
 
@@ -253,17 +237,42 @@ layui.use(["table", "form", "layer", "util"], function () {
                     $.extend(winOptions, itemInfoWinOptions);
                     winOptions.title = "编辑";
                     winOptions.area = width + "px";
-                    winOptions.yes = function (index, layero) {
-                        let dictItem = form.val("item-info-save-form");
-                        DictRestApi.modItem(dictItem, function (data, textStatus, xhr) {
-                            loadItemTable(dictFlow);
-                            layer.close(index);
-                        });
-                    };
-                    layer.open(winOptions);
+                    itemInfoWinIndex = layer.open(winOptions);
                 }
             });
         }
+    });
+
+    form.on('submit(info-save-form-submit-btn)', function(data) {
+        let dict = data.field;
+        if (dict.dictFlow && dict.dictFlow !== "") {
+            DictRestApi.mod(dict, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        } else {
+            DictRestApi.add(dict, function (data, textStatus, xhr) {
+                loadDataTable();
+                layer.close(infoWinIndex);
+            });
+        }
+        return false;
+    });
+
+    form.on('submit(item-info-save-form-submit-btn)', function(data) {
+        let dictItem = data.field;
+        if (dictItem.dictItemFlow && dictItem.dictItemFlow !== "") {
+            DictRestApi.modItem(dictItem, function (data, textStatus, xhr) {
+                loadItemTable(dictItem.dictFlow);
+                layer.close(itemInfoWinIndex);
+            });
+        } else {
+            DictRestApi.addItem(dictItem, function (data, textStatus, xhr) {
+                loadItemTable(dictItem.dictFlow);
+                layer.close(itemInfoWinIndex);
+            });
+        }
+        return false;
     });
 
 });
