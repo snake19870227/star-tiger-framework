@@ -176,3 +176,48 @@ window.UserRestApi = {
         );
     }
 }
+
+window.DictRestApi = {
+    read: function (dictFlow, successCallback, errorCallback, completeCallback) {
+        StigerHttp.ajax(
+            "/sys/dict/" + dictFlow,
+            "get", {}, "", "json",
+            successCallback, errorCallback, completeCallback
+        );
+    },
+    readItem: function (dictItemFlow, successCallback, errorCallback, completeCallback) {
+        StigerHttp.ajax(
+            "/sys/dict/item/" + dictItemFlow,
+            "get", {}, "", "json",
+            successCallback, errorCallback, completeCallback
+        );
+    },
+    add: function (dict, successCallback, errorCallback, completeCallback) {
+        StigerHttp.ajax(
+            "/sys/dict",
+            "post", JSON.stringify(dict), "application/json", "json",
+            successCallback, errorCallback, completeCallback
+        );
+    },
+    mod: function (dict, successCallback, errorCallback, completeCallback) {
+        StigerHttp.ajax(
+            "/sys/dict",
+            "put", JSON.stringify(dict), "application/json", "json",
+            successCallback, errorCallback, completeCallback
+        );
+    },
+    addItem: function (dictItem, successCallback, errorCallback, completeCallback) {
+        StigerHttp.ajax(
+            "/sys/dict/item",
+            "post", JSON.stringify(dictItem), "application/json", "json",
+            successCallback, errorCallback, completeCallback
+        );
+    },
+    modItem: function (dictItem, successCallback, errorCallback, completeCallback) {
+        StigerHttp.ajax(
+            "/sys/dict/item",
+            "put", JSON.stringify(dictItem), "application/json", "json",
+            successCallback, errorCallback, completeCallback
+        );
+    }
+}

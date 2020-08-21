@@ -1,6 +1,6 @@
 package com.snake19870227.stiger.admin.dao.base;
 
-import com.snake19870227.stiger.admin.entity.po.SysRoleResource;
+import com.snake19870227.stiger.admin.entity.po.SysDictItem;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author buhuayang
  * @since 2020-08-20
  */
-public interface SysRoleResourceMapper extends BaseMapper<SysRoleResource> {
+public interface SysDictItemMapper extends BaseMapper<SysDictItem> {
 
 }

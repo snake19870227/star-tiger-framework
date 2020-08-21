@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author buhuayang
- * @since 2020-08-17
+ * @since 2020-08-20
  */
 @ApiModel(value="SysRoleResource对象", description="")
 public class SysRoleResource implements Serializable {

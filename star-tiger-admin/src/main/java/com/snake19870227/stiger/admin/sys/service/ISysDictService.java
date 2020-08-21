@@ -1,6 +1,6 @@
 package com.snake19870227.stiger.admin.sys.service;
 
-import com.snake19870227.stiger.admin.entity.po.SysResource;
+import com.snake19870227.stiger.admin.entity.po.SysDict;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author buhuayang
  * @since 2020-08-20
  */
-public interface ISysResourceService extends IService<SysResource> {
+public interface ISysDictService extends IService<SysDict> {
 
 }
