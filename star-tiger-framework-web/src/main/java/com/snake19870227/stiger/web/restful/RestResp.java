@@ -10,7 +10,6 @@ import com.snake19870227.stiger.core.context.StarTigerContext;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/24
  */
-@ApiModel("公共Rest接口返回对象")
 public class RestResp<T> {
 
     @ApiModelProperty(value = "结果状态码")
