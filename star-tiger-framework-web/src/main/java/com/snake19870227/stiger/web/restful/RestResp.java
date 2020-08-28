@@ -1,5 +1,8 @@
 package com.snake19870227.stiger.web.restful;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.context.StarTigerContext;
 
@@ -7,12 +10,16 @@ import com.snake19870227.stiger.core.context.StarTigerContext;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/24
  */
+@ApiModel("公共Rest接口返回对象")
 public class RestResp<T> {
 
+    @ApiModelProperty(value = "结果状态码")
     private String code;
 
+    @ApiModelProperty(value = "结果状态说明")
     private String msg;
 
+    @ApiModelProperty(value = "结果业务对象")
     private T data;
 
     public static <T> RestResp<T> buildResp(String code, T data) {
