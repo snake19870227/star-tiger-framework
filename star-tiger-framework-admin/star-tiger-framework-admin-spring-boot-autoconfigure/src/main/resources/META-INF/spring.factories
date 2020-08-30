@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.snake19870227.stiger.admin.autoconfigure.StarTigerAdminAutoConfiguration,\
+  com.snake19870227.stiger.admin.autoconfigure.StarTigerAdminLayuiManangerAutoConfiguration

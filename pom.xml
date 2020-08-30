@@ -95,7 +95,9 @@
         <module>star-tiger-framework-web</module>
         <module>star-tiger-spring-boot-autoconfigure</module>
         <module>star-tiger-spring-boot-starter</module>
+        <module>star-tiger-framework-admin</module>
         <module>star-tiger-admin</module>
+        <module>star-tiger-admin-demo</module>
     </modules>
 
     <properties>

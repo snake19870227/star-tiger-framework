@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="zh-CN">
+<head>
+    <th:block th:replace="global::baseHead('主页')"/>
+    <th:block th:replace="global::style"/>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <form id="search-form" class="layui-form" lay-filter="search-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">字典项编码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="dictCode" placeholder="请输入字典项目编码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">字典项名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="dictName" placeholder="请输入字典项目名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button type="button" class="layui-btn layui-btn-normal" lay-event="search">
+                            <i class="fa fa-search"></i> 查 询
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+
+        <table id="data-table" lay-filter="data-table"></table>
+
+        <script type="text/html" id="top-tool-bar">
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn layui-btn-sm" lay-event="add">
+                    <i class="fa fa-plus"></i> 添 加
+                </button>
+            </div>
+        </script>
+
+        <script type="text/html" id="record-tool-bar">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs" lay-event="editItem">字典选项值</a>
+        </script>
+
+    </div>
+</div>
+
+<div id="info-win" style="padding:10px;display:none;">
+    <form id="info-save-form" class="layui-form" lay-filter="info-save-form">
+        <input type="hidden" name="dictFlow">
+        <div class="layui-form-item">
+            <label class="layui-form-label">字典项编码</label>
+            <div class="layui-input-block">
+                <input type="text" name="dictCode" placeholder="请输入字典项目编码" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">字典项名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="dictName" placeholder="请输入字典项目名称" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="info-save-form-submit-btn">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="item-win" style="padding:10px;display:none;">
+
+    <input type="hidden" id="item-win-dict-flow">
+
+    <table id="item-table" lay-filter="item-table"></table>
+
+    <script type="text/html" id="item-top-tool-bar">
+        <div class="layui-btn-container">
+            <button type="button" class="layui-btn layui-btn-sm" lay-event="add">
+                <i class="fa fa-plus"></i> 添 加
+            </button>
+        </div>
+    </script>
+
+    <script type="text/html" id="item-record-tool-bar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    </script>
+</div>
+
+<div id="item-info-win" style="padding:10px;display:none;">
+    <form id="item-info-save-form" class="layui-form" lay-filter="item-info-save-form">
+        <input type="hidden" name="dictItemFlow">
+        <input type="hidden" name="dictFlow">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选项编码</label>
+            <div class="layui-input-block">
+                <input type="text" name="dictItemCode" placeholder="请输入字典选项编码" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选项名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="dictItemName" placeholder="请输入字典选项名称" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选项排序码</label>
+            <div class="layui-input-block">
+                <input type="text" name="dictItemOrder" placeholder="请输入字典选项排序码" class="layui-input" lay-verify="number">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="item-info-save-form-submit-btn">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<th:block th:replace="global::script-frame"/>
+<th:block th:replace="global::script-stiger"/>
+<script th:src="@{/js/rest-api.js}" charset="utf-8"></script>
+<script th:src="@{/js/sys/dict.js}" charset="utf-8"></script>
+</body>
+</html>

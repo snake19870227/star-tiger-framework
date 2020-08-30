@@ -238,6 +238,16 @@
                 <artifactId>star-tiger-spring-boot-starter</artifactId>
                 <version>0.4.3</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-admin-spring-boot-autoconfigure</artifactId>
+                <version>0.4.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-admin-spring-boot-starter</artifactId>
+                <version>0.4.3</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

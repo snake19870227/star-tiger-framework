@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="zh-CN">
+<head>
+    <th:block th:replace="global::baseHead('主页')"/>
+    <th:block th:replace="global::style"/>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <form id="search-form" class="layui-form" lay-filter="search-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">昵称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="shortName" placeholder="请输入昵称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">锁定状态</label>
+                        <div class="layui-input-block">
+                            <select name="locked">
+                                <option value="">全部</option>
+                                <option value="Y">锁定</option>
+                                <option value="N">未锁定</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">过期状态</label>
+                        <div class="layui-input-block">
+                            <select name="expired">
+                                <option value="">全部</option>
+                                <option value="Y">过期</option>
+                                <option value="N">未过期</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button type="button" class="layui-btn layui-btn-normal" lay-event="search">
+                            <i class="fa fa-search"></i> 查 询
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+
+        <table id="data-table" lay-filter="data-table"></table>
+
+        <script type="text/html" id="top-tool-bar">
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn layui-btn-sm" lay-event="add">
+                    <i class="fa fa-plus"></i> 添加
+                </button>
+            </div>
+        </script>
+
+        <script type="text/html" id="record-tool-bar">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
+        </script>
+
+        <script type="text/html" id="locked-switch">
+            <input type="checkbox" name="locked" value="{{d.userFlow}}"
+                   lay-skin="switch" lay-text="未锁定|已锁定" lay-filter="locked-switch" {{ d.locked== 'N' ? 'checked' : '' }}>
+        </script>
+
+        <script type="text/html" id="expired-span">
+            {{#  if(d.expired === 'N'){ }}
+            <span class="layui-badge layui-bg-green">未过期</span>
+            {{#  } }}
+            {{#  if(d.expired === 'Y'){ }}
+            <span class="layui-badge layui-bg-gray">已过期</span>
+            {{#  } }}
+        </script>
+
+    </div>
+</div>
+
+<div id="info-win" style="padding:10px;display:none;">
+    <form id="info-save-form" class="layui-form" lay-filter="info-save-form">
+        <input type="hidden" name="userFlow">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" placeholder="请输入用户名" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户昵称</label>
+            <div class="layui-input-block">
+                <input type="text" name="shortName" placeholder="请输入用户昵称" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色</label>
+            <div class="layui-input-block">
+                <div id="role-transfer"></div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="info-save-form-submit-btn">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<th:block th:replace="global::script-frame"/>
+<th:block th:replace="global::script-stiger"/>
+<script th:src="@{/js/rest-api.js}" charset="utf-8"></script>
+<script th:src="@{/js/sys/user.js}" charset="utf-8"></script>
+</body>
+</html>

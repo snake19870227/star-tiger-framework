@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>star-tiger-framework-admin</artifactId>
+        <groupId>com.github.snake19870227</groupId>
+        <version>0.4.3</version>
+    </parent>
+
+    <artifactId>star-tiger-framework-admin-spring-boot-starter</artifactId>
+    <version>0.4.3</version>
+    <name>StarTigerFrameworkAdminSpringBootStarter</name>
+    <description>Star Tiger 脚手架项目 后台管理 spring boot starter 模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-admin-spring-boot-autoconfigure</artifactId>
+            <version>0.4.3</version>
+        </dependency>
+    </dependencies>
+
+</project>
