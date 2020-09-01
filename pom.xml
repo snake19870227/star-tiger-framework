@@ -7,7 +7,7 @@
 
     <groupId>com.github.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.4.3</version><!-- -SNAPSHOT -->
+    <version>0.5.0</version><!-- -SNAPSHOT -->
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -118,17 +118,6 @@
 
     <repositories>
         <repository>
-            <id>local-docker-nexus</id>
-            <name>local docker nexus proxy</name>
-            <url>http://localhost:18081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
             <id>aliyun-nexus</id>
             <name>Aliyun Nexus Proxy</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
@@ -153,17 +142,6 @@
     </repositories>
 
     <pluginRepositories>
-        <pluginRepository>
-            <id>local-docker-nexus</id>
-            <name>local docker nexus proxy</name>
-            <url>http://localhost:18081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
         <pluginRepository>
             <id>aliyun-nexus</id>
             <name>Aliyun Nexus Proxy</name>
