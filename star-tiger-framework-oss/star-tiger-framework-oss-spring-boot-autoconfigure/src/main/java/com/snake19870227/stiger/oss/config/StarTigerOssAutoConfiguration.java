@@ -8,7 +8,7 @@ import com.snake19870227.stiger.oss.minio.config.MinioOssConfiguration;
 
 /**
  * @author BuHuaYang
- * @date 2020/9/2
+ * 2020/9/2
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(StarTigerOssProperties.class)

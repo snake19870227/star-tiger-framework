@@ -9,7 +9,7 @@ import com.snake19870227.stiger.oss.StarTigerOssStorage;
 
 /**
  * @author BuHuaYang
- * @date 2020/9/2
+ * 2020/9/2
  */
 public class MinioStarTigerOssStorage implements StarTigerOssStorage {
 

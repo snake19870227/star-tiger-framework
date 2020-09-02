@@ -4,44 +4,47 @@ import java.io.InputStream;
 
 /**
  * @author BuHuaYang
- * @date 2020/9/2
+ * 2020/07/17
  */
 public interface StarTigerOssStorage {
 
     /**
-     * Put object.
+     * 上传对象
      *
-     * @param bucketName  the bucket name
-     * @param objectName  the object name
-     * @param inputStream the input stream
-     * @param contentType the content type
-     * @throws Exception the exception
+     * @param bucketName 存储桶名称
+     * @param objectName 对象名称
+     * @param inputStream 对象输入流
+     * @param contentType 对象媒体类型
+     * @throws Exception 报错异常
      */
     void putObject(String bucketName, String objectName, InputStream inputStream, String contentType) throws Exception;
 
     /**
-     * Gets object.
+     * 获取对象
      *
-     * @param bucketName the bucket name
-     * @param objectName the object name
-     * @return the object
+     * @param bucketName 存储桶名称
+     * @param objectName 对象名称
+     * @return 对象输入流
+     * @throws Exception 报错异常
      */
     InputStream getObject(String bucketName, String objectName) throws Exception;
 
     /**
-     * Gets object url.
+     * 获取对象url
      *
-     * @param bucketName the bucket name
-     * @param objectName the object name
-     * @return the object url
+     * @param bucketName 存储桶名称
+     * @param objectName 对象名称
+     * @return 对象url
+     * @throws Exception 报错异常
      */
     String getObjectUrl(String bucketName, String objectName) throws Exception;
 
     /**
-     * Remove object.
+     * 删除对象
      *
-     * @param bucketName the bucket name
-     * @param objectName the object name
+     * @param bucketName 存储桶名称
+     * @param objectName 对象名称
+     * @throws Exception 报错异常
      */
     void removeObject(String bucketName, String objectName) throws Exception;
 }

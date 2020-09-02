@@ -8,7 +8,14 @@ spring:
     url: jdbc:mysql://localhost:3306/stigeradmin?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8
     username: root
     password: 123456
-stiger.admin:
-  debug-mode: true
-  init:
-    password: 123
+stiger:
+  admin:
+    debug-mode: true
+    init:
+      password: 123
+  oss:
+    minio:
+      active: true
+      access-key: test
+      secret-key: test123456
+      endpoint: http://127.0.0.1:9000/

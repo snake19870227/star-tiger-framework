@@ -15,7 +15,7 @@ import com.snake19870227.stiger.oss.minio.MinioStarTigerOssStorage;
 
 /**
  * @author BuHuaYang
- * @date 2020/9/2
+ * 2020/9/2
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(prefix = "stiger.oss.minio", name = "active", havingValue = "true")

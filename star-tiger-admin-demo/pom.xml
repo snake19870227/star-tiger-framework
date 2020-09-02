@@ -139,8 +139,24 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-admin-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-oss-minio</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-oss-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

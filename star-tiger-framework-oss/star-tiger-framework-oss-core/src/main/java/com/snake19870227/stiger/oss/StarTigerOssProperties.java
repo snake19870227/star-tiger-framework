@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author BuHuaYang
- * @date 2020/9/2
+ * 2020/9/2
  */
 @ConfigurationProperties(prefix = "stiger.oss")
 public class StarTigerOssProperties {
