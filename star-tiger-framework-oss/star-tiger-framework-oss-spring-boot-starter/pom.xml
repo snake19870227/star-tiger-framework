@@ -6,20 +6,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>star-tiger-framework-admin</artifactId>
+        <artifactId>star-tiger-framework-oss</artifactId>
         <groupId>com.github.snake19870227</groupId>
         <version>0.5.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-admin-spring-boot-starter</artifactId>
+    <artifactId>star-tiger-framework-oss-spring-boot-starter</artifactId>
     <version>0.5.1-SNAPSHOT</version>
-    <name>StarTigerFrameworkAdminSpringBootStarter</name>
-    <description>Star Tiger 脚手架项目 后台管理 spring boot starter 模块</description>
+    <name>StarTigerFrameworkOssSpringBootStarter</name>
+    <description>Star Tiger 脚手架项目 OSS服务 spring boot starter 模块</description>
 
     <dependencies>
+        <!-- spring boot starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Star Tiger OSS -->
         <dependency>
             <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-admin-spring-boot-autoconfigure</artifactId>
+            <artifactId>star-tiger-framework-oss-spring-boot-autoconfigure</artifactId>
             <version>0.5.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

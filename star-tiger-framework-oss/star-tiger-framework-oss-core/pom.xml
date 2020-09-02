@@ -6,15 +6,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>star-tiger-framework-admin</artifactId>
+        <artifactId>star-tiger-framework-oss</artifactId>
         <groupId>com.github.snake19870227</groupId>
         <version>0.5.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-admin-layui-manager</artifactId>
+    <artifactId>star-tiger-framework-oss-core</artifactId>
     <version>0.5.1-SNAPSHOT</version>
-    <name>StarTigerFrameworkAdminLayuiManager</name>
-    <description>Star Tiger 脚手架项目 后台管理Layui实现的manager模块</description>
+    <name>StarTigerFrameworkOssCore</name>
+    <description>Star Tiger 脚手架项目 OSS服务 core 模块</description>
 
     <build>
         <resources>
@@ -28,10 +28,6 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/staticResources</directory>
-                <filtering>false</filtering>
             </resource>
         </resources>
     </build>
@@ -48,26 +44,7 @@
         <!-- spring boot starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <!-- thymeleaf -->
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-        </dependency>
-
-        <!-- StarTiger -->
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-spring-boot-starter</artifactId>
-        </dependency>
-
-        <!-- StarTigerAdmin -->
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-admin-core</artifactId>
-            <version>0.5.1-SNAPSHOT</version>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

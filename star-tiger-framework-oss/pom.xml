@@ -6,15 +6,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.snake19870227</groupId>
         <artifactId>star-tiger-framework</artifactId>
+        <groupId>com.github.snake19870227</groupId>
         <version>0.5.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-web</artifactId>
+    <artifactId>star-tiger-framework-oss</artifactId>
     <version>0.5.1-SNAPSHOT</version>
-    <name>StarTigerFrameworkWeb</name>
-    <description>Star Tiger 脚手架项目 web 模块</description>
+    <packaging>pom</packaging>
+    <name>StarTigerFrameworkOss</name>
+    <description>Star Tiger 脚手架项目 OSS服务 模块</description>
+
+    <modules>
+        <module>star-tiger-framework-oss-core</module>
+        <module>star-tiger-framework-oss-minio</module>
+        <module>star-tiger-framework-oss-spring-boot-autoconfigure</module>
+        <module>star-tiger-framework-oss-spring-boot-starter</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -106,39 +114,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <!--javaEE-->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!--spring boot-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!--spring-->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-        </dependency>
-
-        <!--Tools-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-
-        <!--StarTiger-->
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-core</artifactId>
-            <version>0.5.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>

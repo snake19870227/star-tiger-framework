@@ -7,7 +7,7 @@
 
     <groupId>com.github.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.5.0</version><!-- -SNAPSHOT -->
+    <version>0.5.1-SNAPSHOT</version><!-- -SNAPSHOT -->
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -102,6 +102,7 @@
         <module>star-tiger-spring-boot-autoconfigure</module>
         <module>star-tiger-spring-boot-starter</module>
         <module>star-tiger-framework-admin</module>
+        <module>star-tiger-framework-oss</module>
         <module>star-tiger-admin</module>
         <module>star-tiger-admin-demo</module>
     </modules>
@@ -138,6 +139,7 @@
         <zxing.version>3.4.0</zxing.version>
         <sharding-jdbc.version>4.0.1</sharding-jdbc.version>
         <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
+        <minio.version>3.0.10</minio.version>
     </properties>
 
     <repositories>

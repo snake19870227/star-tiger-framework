@@ -1,0 +1,44 @@
+{
+  "properties": [
+    {
+      "name": "stiger.oss.minio.active",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "是否启用minio服务.",
+      "defaultValue": false
+    },
+    {
+      "name": "stiger.oss.minio.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "minio服务地址."
+    },
+    {
+      "name": "stiger.oss.minio.access-key",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "minio服务access-key."
+    },
+    {
+      "name": "stiger.oss.minio.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "minio服务secret-key."
+    }
+  ],
+  "hints": [
+    {
+      "name": "stiger.oss.minio.active",
+      "values": [
+        {
+          "value": true,
+          "description": "启用minio服务."
+        },
+        {
+          "value": false,
+          "description": "停用minio服务."
+        }
+      ]
+    }
+  ]
+}

@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-admin</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.5.0</version>
+        <version>0.5.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>star-tiger-framework-admin-core</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1-SNAPSHOT</version>
     <name>StarTigerFrameworkAdminCore</name>
     <description>Star Tiger 脚手架项目 后台管理 core 模块</description>
 
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-web</artifactId>
-            <version>0.5.0</version>
+            <version>0.5.1-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
