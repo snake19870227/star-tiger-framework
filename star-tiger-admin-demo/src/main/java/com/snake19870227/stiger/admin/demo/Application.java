@@ -10,7 +10,7 @@ import com.snake19870227.stiger.admin.autoconfigure.annotation.EnableStarTigerAd
  */
 @SpringBootApplication(
         scanBasePackages = {
-                "com.snake19870227.stiger"
+                "com.snake19870227.stiger.admin"
         }
 )
 public class Application {

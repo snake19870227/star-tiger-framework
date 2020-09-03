@@ -28,6 +28,7 @@ import com.snake19870227.stiger.admin.common.CaptchaCacheStorage;
 import com.snake19870227.stiger.admin.common.StarTigerAdminConstant;
 import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties;
 import com.snake19870227.stiger.admin.security.UserSecurityDetail;
+import com.snake19870227.stiger.admin.web.StarTigerAdminController;
 import com.snake19870227.stiger.core.context.StarTigerContext;
 
 import static com.snake19870227.stiger.admin.common.StarTigerAdminConstant.UrlParamNames;
@@ -38,7 +39,7 @@ import static com.snake19870227.stiger.admin.common.StarTigerAdminConstant.WebAt
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/17
  */
-@Controller
+@StarTigerAdminController
 public class IndexController {
 
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);

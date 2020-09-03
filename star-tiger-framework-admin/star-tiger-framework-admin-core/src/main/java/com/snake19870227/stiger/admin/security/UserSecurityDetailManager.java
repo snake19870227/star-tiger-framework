@@ -20,7 +20,6 @@ import com.snake19870227.stiger.admin.util.RabcUtil;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/21
  */
-@Component
 public class UserSecurityDetailManager implements UserDetailsManager {
 
     private static final Logger logger = LoggerFactory.getLogger(UserSecurityDetailManager.class);

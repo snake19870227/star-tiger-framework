@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/08/30
  */
-@Component
 public class PasswordEncoderFactoryBean implements FactoryBean<PasswordEncoder> {
 
     @Override

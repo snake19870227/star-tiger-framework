@@ -21,13 +21,14 @@ import com.snake19870227.stiger.admin.entity.po.SysDict;
 import com.snake19870227.stiger.admin.entity.po.SysDictItem;
 import com.snake19870227.stiger.admin.service.ISysDictItemService;
 import com.snake19870227.stiger.admin.service.ISysDictService;
+import com.snake19870227.stiger.admin.web.StarTigerAdminController;
 import com.snake19870227.stiger.web.restful.RestResp;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/08/21
  */
-@Controller
+@StarTigerAdminController
 @RequestMapping(path = "/sys/dict")
 public class SysDictController {
 

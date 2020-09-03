@@ -13,7 +13,6 @@ import com.snake19870227.stiger.web.utils.WebUtil;
 /**
  * @author Bu HuaYang
  */
-@Component
 public class AuthAssert {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthAssert.class);

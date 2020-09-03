@@ -24,6 +24,7 @@ import com.snake19870227.stiger.admin.manager.common.layui.TransferData;
 import com.snake19870227.stiger.admin.entity.po.SysResource;
 import com.snake19870227.stiger.admin.service.ISysExtService;
 import com.snake19870227.stiger.admin.service.ISysResourceService;
+import com.snake19870227.stiger.admin.web.StarTigerAdminController;
 import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.context.StarTigerContext;
 import com.snake19870227.stiger.core.exception.BusinessException;
@@ -35,7 +36,7 @@ import com.snake19870227.stiger.web.restful.RestResp;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/24
  */
-@Controller
+@StarTigerAdminController
 @RequestMapping(path = "/sys/resource")
 public class SysResourceController {
 

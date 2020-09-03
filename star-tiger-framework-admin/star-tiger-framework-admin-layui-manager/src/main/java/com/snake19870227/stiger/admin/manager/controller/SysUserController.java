@@ -25,6 +25,7 @@ import com.snake19870227.stiger.admin.manager.entity.dto.UserRoleDto;
 import com.snake19870227.stiger.admin.service.ISysExtService;
 import com.snake19870227.stiger.admin.service.ISysUserRoleService;
 import com.snake19870227.stiger.admin.service.ISysUserService;
+import com.snake19870227.stiger.admin.web.StarTigerAdminController;
 import com.snake19870227.stiger.web.exception.BaseControllerException;
 import com.snake19870227.stiger.web.exception.MvcException;
 import com.snake19870227.stiger.web.restful.RestResp;
@@ -33,7 +34,7 @@ import com.snake19870227.stiger.web.restful.RestResp;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/08/17
  */
-@Controller
+@StarTigerAdminController
 @RequestMapping(path = "/sys/user")
 public class SysUserController {
 

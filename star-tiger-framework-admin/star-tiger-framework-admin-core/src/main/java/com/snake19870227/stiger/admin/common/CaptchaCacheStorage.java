@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/23
  */
-@Component
 public class CaptchaCacheStorage {
 
     public static final String CAPTCHA_CACHE = "captcha_cache";

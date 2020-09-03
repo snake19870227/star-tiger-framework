@@ -28,13 +28,14 @@ import com.snake19870227.stiger.admin.manager.entity.dto.RoleResourceDto;
 import com.snake19870227.stiger.admin.service.ISysExtService;
 import com.snake19870227.stiger.admin.service.ISysRoleResourceService;
 import com.snake19870227.stiger.admin.service.ISysRoleService;
+import com.snake19870227.stiger.admin.web.StarTigerAdminController;
 import com.snake19870227.stiger.web.restful.RestResp;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/30
  */
-@Controller
+@StarTigerAdminController
 @RequestMapping(path = "/sys/role")
 public class SysRoleController {
 

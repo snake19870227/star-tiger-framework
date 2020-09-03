@@ -26,6 +26,7 @@ import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminPropertie
 import com.snake19870227.stiger.admin.security.UserSecurityDetail;
 import com.snake19870227.stiger.admin.service.ISysExtService;
 import com.snake19870227.stiger.admin.service.ISysUserService;
+import com.snake19870227.stiger.admin.web.StarTigerAdminController;
 import com.snake19870227.stiger.core.exception.OptException;
 import com.snake19870227.stiger.core.exception.ServiceException;
 import com.snake19870227.stiger.web.exception.MvcException;
@@ -37,7 +38,7 @@ import static com.snake19870227.stiger.admin.common.StarTigerAdminConstant.UrlPa
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/23
  */
-@Controller
+@StarTigerAdminController
 public class MainController {
 
     @Value("${server.servlet.context-path}")
