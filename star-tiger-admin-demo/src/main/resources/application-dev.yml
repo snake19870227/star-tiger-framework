@@ -19,3 +19,7 @@ stiger:
       access-key: test
       secret-key: test123456
       endpoint: http://127.0.0.1:9000/
+  sms:
+    aliyun:
+      access-key-id: 1111111111111
+      access-secret: 1111111111111

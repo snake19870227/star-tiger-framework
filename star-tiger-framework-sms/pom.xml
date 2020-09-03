@@ -11,7 +11,17 @@
         <version>0.5.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-admin-demo</artifactId>
+    <artifactId>star-tiger-framework-sms</artifactId>
+    <version>0.5.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>StarTigerFrameworkSms</name>
+    <description>Star Tiger 脚手架项目 短信服务 模块</description>
+
+    <modules>
+        <module>star-tiger-framework-sms-aliyun</module>
+        <module>star-tiger-framework-sms-spring-boot-autoconfigure</module>
+        <module>star-tiger-framework-sms-spring-boot-starter</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -26,28 +36,11 @@
     </dependencyManagement>
 
     <build>
-        <finalName>${project.name}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/staticResources</directory>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -57,6 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <includeEmptyDirs>true</includeEmptyDirs>
@@ -65,6 +59,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
@@ -77,9 +72,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
@@ -89,12 +85,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
                 <configuration>
                     <attach>true</attach>
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
@@ -104,6 +101,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -113,59 +111,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>repackage</id>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <mainClass>com.snake19870227.stiger.admin.demo.Application</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <goals>
-                            <goal>build-info</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-admin-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-oss-minio</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-oss-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-sms-aliyun</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-sms-spring-boot-starter</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>

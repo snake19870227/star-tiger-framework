@@ -154,6 +154,11 @@
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
@@ -213,6 +218,21 @@
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-oss-spring-boot-starter</artifactId>
+                <version>0.5.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-sms-aliyun</artifactId>
+                <version>0.5.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-sms-spring-boot-autoconfigure</artifactId>
+                <version>0.5.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-sms-spring-boot-starter</artifactId>
                 <version>0.5.1-SNAPSHOT</version>
             </dependency>
         </dependencies>

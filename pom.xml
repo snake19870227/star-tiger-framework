@@ -103,6 +103,7 @@
         <module>star-tiger-spring-boot-starter</module>
         <module>star-tiger-framework-admin</module>
         <module>star-tiger-framework-oss</module>
+        <module>star-tiger-framework-sms</module>
         <module>star-tiger-admin</module>
         <module>star-tiger-admin-demo</module>
     </modules>
@@ -140,6 +141,7 @@
         <sharding-jdbc.version>4.0.1</sharding-jdbc.version>
         <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
         <minio.version>3.0.10</minio.version>
+        <aliyun-java-sdk-core.version>4.5.3</aliyun-java-sdk-core.version>
     </properties>
 
     <repositories>
