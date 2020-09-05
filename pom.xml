@@ -104,6 +104,7 @@
         <module>star-tiger-framework-admin</module>
         <module>star-tiger-framework-oss</module>
         <module>star-tiger-framework-sms</module>
+        <module>star-tiger-framework-amap</module>
         <module>star-tiger-admin</module>
         <module>star-tiger-admin-demo</module>
     </modules>
