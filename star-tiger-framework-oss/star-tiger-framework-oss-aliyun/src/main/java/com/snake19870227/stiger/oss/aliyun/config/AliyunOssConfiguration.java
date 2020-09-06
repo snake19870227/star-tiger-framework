@@ -4,7 +4,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSClientBuilder;
 import com.snake19870227.stiger.oss.StarTigerOssProperties;
 import com.snake19870227.stiger.oss.StarTigerOssStorage;
 import com.snake19870227.stiger.oss.aliyun.AliyunStarTigerOssStorage;
@@ -19,9 +21,9 @@ import com.snake19870227.stiger.oss.aliyun.AliyunStarTigerOssStorage;
 public class AliyunOssConfiguration {
 
     @Bean
-    StarTigerOssStorage aliyunStorage(StarTigerOssProperties ossProperties) {
+    public StarTigerOssStorage aliyunStorage(StarTigerOssProperties ossProperties) {
         StarTigerOssProperties.Aliyun aliyun = ossProperties.getAliyun();
-        OSSClient ossClient = new OSSClient(aliyun.getEndpoint(), aliyun.getAccessKeyId(), aliyun.getAccessSecret());
-        return new AliyunStarTigerOssStorage(ossClient);
+        OSS ossClient = new OSSClientBuilder().build(aliyun.getEndpoint(), aliyun.getAccessKeyId(), aliyun.getAccessSecret());
+        return new AliyunStarTigerOssStorage(ossProperties, ossClient);
     }
 }

@@ -16,15 +16,15 @@ import com.snake19870227.stiger.admin.demo.Application;
 
 /**
  * @author BuHuaYang
- * 2020/9/2
+ * 2020/9/6
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
-public class MinioOSSTest {
+public class AliyunOSSTest {
 
     @Autowired
-    @Qualifier("minioStorage")
+    @Qualifier("aliyunStorage")
     private StarTigerOssStorage ossStorage;
 
     @Test
@@ -33,6 +33,6 @@ public class MinioOSSTest {
 
         InputStream inputStream = new FileInputStream(file);
 
-        ossStorage.putObject("test1", "IMG_1845.JPG", inputStream, MimeTypeUtils.IMAGE_JPEG_VALUE);
+        ossStorage.putObject("720yc", "IMG_1845.JPG", inputStream, MimeTypeUtils.IMAGE_JPEG_VALUE);
     }
 }

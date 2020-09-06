@@ -2,8 +2,9 @@ package com.snake19870227.stiger.oss.aliyun;
 
 import java.io.InputStream;
 
-import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.ObjectMetadata;
+import com.snake19870227.stiger.oss.StarTigerOssProperties;
 import com.snake19870227.stiger.oss.StarTigerOssStorage;
 
 /**
@@ -12,9 +13,12 @@ import com.snake19870227.stiger.oss.StarTigerOssStorage;
  */
 public class AliyunStarTigerOssStorage implements StarTigerOssStorage {
 
-    private final OSSClient ossClient;
+    private final StarTigerOssProperties ossProperties;
 
-    public AliyunStarTigerOssStorage(OSSClient ossClient) {
+    private final OSS ossClient;
+
+    public AliyunStarTigerOssStorage(StarTigerOssProperties ossProperties, OSS ossClient) {
+        this.ossProperties = ossProperties;
         this.ossClient = ossClient;
     }
 
@@ -32,7 +36,7 @@ public class AliyunStarTigerOssStorage implements StarTigerOssStorage {
 
     @Override
     public String getObjectUrl(String bucketName, String objectName) throws Exception {
-        return "https://" + bucketName + "." + this.ossClient.getEndpoint() + "/" + objectName;
+        return "https://" + bucketName + "." + ossProperties.getAliyun().getEndpoint() + "/" + objectName;
     }
 
     @Override

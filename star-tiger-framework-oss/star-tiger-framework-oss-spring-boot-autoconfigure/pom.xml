@@ -25,6 +25,12 @@
             <version>0.5.1-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-oss-aliyun</artifactId>
+            <version>0.5.1-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

@@ -10,10 +10,4 @@ import com.snake19870227.stiger.oss.StarTigerOssStorage;
  */
 @RestController
 public class DemoController {
-
-    private final StarTigerOssStorage ossStorage;
-
-    public DemoController(StarTigerOssStorage ossStorage) {
-        this.ossStorage = ossStorage;
-    }
 }
