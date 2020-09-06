@@ -22,6 +22,7 @@
         <module>star-tiger-framework-oss-minio</module>
         <module>star-tiger-framework-oss-spring-boot-autoconfigure</module>
         <module>star-tiger-framework-oss-spring-boot-starter</module>
+        <module>star-tiger-framework-oss-aliyun</module>
     </modules>
 
     <dependencyManagement>

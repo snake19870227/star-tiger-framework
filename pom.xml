@@ -143,6 +143,7 @@
         <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
         <minio.version>3.0.10</minio.version>
         <aliyun-java-sdk-core.version>4.5.3</aliyun-java-sdk-core.version>
+        <aliyun-sdk-oss.version>3.11.0</aliyun-sdk-oss.version>
     </properties>
 
     <repositories>

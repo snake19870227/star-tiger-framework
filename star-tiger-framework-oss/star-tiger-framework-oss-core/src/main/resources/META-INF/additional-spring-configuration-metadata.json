@@ -24,6 +24,31 @@
       "type": "java.lang.String",
       "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
       "description": "minio服务secret-key."
+    },
+    {
+      "name": "stiger.oss.aliyun.active",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "是否启用aliyun服务.",
+      "defaultValue": false
+    },
+    {
+      "name": "stiger.oss.aliyun.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "aliyun服务地址."
+    },
+    {
+      "name": "stiger.oss.aliyun.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "aliyun服务access-key-id."
+    },
+    {
+      "name": "stiger.oss.aliyun.access-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "aliyun服务access-secret."
     }
   ],
   "hints": [
@@ -37,6 +62,19 @@
         {
           "value": false,
           "description": "停用minio服务."
+        }
+      ]
+    },
+    {
+      "name": "stiger.oss.aliyun.active",
+      "values": [
+        {
+          "value": true,
+          "description": "启用aliyun服务."
+        },
+        {
+          "value": false,
+          "description": "停用aliyun服务."
         }
       ]
     }
