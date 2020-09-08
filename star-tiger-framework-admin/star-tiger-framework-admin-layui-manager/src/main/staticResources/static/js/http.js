@@ -4,8 +4,9 @@ window.StigerHttp = function () {
     const csrfToken = $("meta[name='_csrf']").attr("content");
     const csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
-    let headers = {};
-    headers[csrfHeader] = csrfToken;
+    let headers = {
+        [csrfHeader]: csrfToken
+    }
 
     return {
         ajax: function (url, method, data, contentType, dataType, successCallback, errorCallback, completeCallback) {
