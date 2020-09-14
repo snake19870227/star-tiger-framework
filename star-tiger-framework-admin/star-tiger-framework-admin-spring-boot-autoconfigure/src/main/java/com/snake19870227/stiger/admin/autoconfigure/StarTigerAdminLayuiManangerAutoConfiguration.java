@@ -1,8 +1,5 @@
 package com.snake19870227.stiger.admin.autoconfigure;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -32,6 +29,7 @@ import com.snake19870227.stiger.admin.manager.security.ManagerAuthFailureHandler
 import com.snake19870227.stiger.admin.manager.security.ManagerAuthSuccessHandler;
 import com.snake19870227.stiger.admin.manager.security.ManagerSecurityExceptionHandler;
 import com.snake19870227.stiger.admin.security.ImageCaptchaAuthenticationFilter;
+import com.snake19870227.stiger.admin.service.ISysCfgService;
 import com.snake19870227.stiger.admin.service.ISysDictItemService;
 import com.snake19870227.stiger.admin.service.ISysDictService;
 import com.snake19870227.stiger.admin.service.ISysExtService;
@@ -79,8 +77,9 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
     public MainController mainController(StarTigerAdminProperties starTigerAdminProperties,
                                          PasswordEncoder passwordEncoder,
                                          ISysUserService sysUserService,
-                                         ISysExtService sysExtService) {
-        return new MainController(starTigerAdminProperties, passwordEncoder, sysUserService, sysExtService);
+                                         ISysExtService sysExtService,
+                                         ISysCfgService sysCfgService) {
+        return new MainController(starTigerAdminProperties, passwordEncoder, sysUserService, sysExtService, sysCfgService);
     }
 
     @Bean

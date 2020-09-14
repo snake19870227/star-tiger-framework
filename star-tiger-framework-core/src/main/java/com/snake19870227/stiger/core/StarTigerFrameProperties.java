@@ -1,4 +1,6 @@
-package com.snake19870227.stiger.autoconfigure.properties;
+package com.snake19870227.stiger.core;
+
+import java.util.List;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -9,7 +11,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "stiger.frame")
 public class StarTigerFrameProperties {
 
+    private List<String> enumPackages;
+
     private boolean useHttpStatusCode = true;
+
+    public List<String> getEnumPackages() {
+        return enumPackages;
+    }
+
+    public void setEnumPackages(List<String> enumPackages) {
+        this.enumPackages = enumPackages;
+    }
 
     public boolean isUseHttpStatusCode() {
         return useHttpStatusCode;

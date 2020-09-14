@@ -3,9 +3,15 @@
     {
       "name": "stiger.frame.use-http-status-code",
       "type": "java.lang.Boolean",
-      "sourceType": "com.snake19870227.stiger.autoconfigure.properties.StarTigerFrameProperties",
+      "sourceType": "com.snake19870227.stiger.core.StarTigerFrameProperties",
       "description": "决定全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)是否同时设置 Http Status Code.",
       "defaultValue": true
+    },
+    {
+      "name": "stiger.frame.enum-packages",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.snake19870227.stiger.core.StarTigerFrameProperties",
+      "description": "项目枚举包路径."
     }
   ],
   "hints": [

@@ -10,12 +10,12 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.snake19870227.stiger.admin.common.TreeNode;
+import com.snake19870227.stiger.admin.entity.po.SysCfg;
 import com.snake19870227.stiger.admin.manager.common.layui.HomeInfo;
 import com.snake19870227.stiger.admin.manager.common.layui.InitInfo;
 import com.snake19870227.stiger.admin.manager.common.layui.LogoInfo;
@@ -24,6 +24,7 @@ import com.snake19870227.stiger.admin.entity.po.SysMenu;
 import com.snake19870227.stiger.admin.entity.po.SysUser;
 import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties;
 import com.snake19870227.stiger.admin.security.UserSecurityDetail;
+import com.snake19870227.stiger.admin.service.ISysCfgService;
 import com.snake19870227.stiger.admin.service.ISysExtService;
 import com.snake19870227.stiger.admin.service.ISysUserService;
 import com.snake19870227.stiger.admin.web.StarTigerAdminController;
@@ -52,14 +53,17 @@ public class MainController {
 
     private final ISysExtService sysExtService;
 
+    private final ISysCfgService sysCfgService;
+
     public MainController(StarTigerAdminProperties starTigerAdminProperties,
                           PasswordEncoder passwordEncoder,
                           ISysUserService sysUserService,
-                          ISysExtService sysExtService) {
+                          ISysExtService sysExtService, ISysCfgService sysCfgService) {
         this.starTigerAdminProperties = starTigerAdminProperties;
         this.passwordEncoder = passwordEncoder;
         this.sysUserService = sysUserService;
         this.sysExtService = sysExtService;
+        this.sysCfgService = sysCfgService;
     }
 
     @GetMapping(path = UrlPath.MAIN)
@@ -99,7 +103,12 @@ public class MainController {
 
     @GetMapping(path = UrlPath.WORKBENCH)
     public String workbench() {
-        return "default-workbench";
+        SysCfg workbenchPage = sysCfgService.getById("workbench_page");
+        if (workbenchPage != null && StrUtil.isNotBlank(workbenchPage.getCfgValue())) {
+            return workbenchPage.getCfgValue();
+        } else {
+            return "default-workbench";
+        }
     }
 
     @GetMapping(path = UrlPath.USER_PASSWORD)

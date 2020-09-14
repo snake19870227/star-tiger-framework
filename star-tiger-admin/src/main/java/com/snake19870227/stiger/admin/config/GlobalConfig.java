@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.snake19870227.stiger.admin.common.CaptchaCacheStorage;
-import com.snake19870227.stiger.autoconfigure.properties.StarTigerFrameProperties;
+import com.snake19870227.stiger.core.StarTigerFrameProperties;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
