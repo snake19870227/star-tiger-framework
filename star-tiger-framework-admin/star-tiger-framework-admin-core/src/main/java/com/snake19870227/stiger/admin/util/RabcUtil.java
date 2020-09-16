@@ -34,11 +34,11 @@ public class RabcUtil {
         return resource;
     }
 
-    public static UserInfo getRootUser() {
+    public static UserInfo getRootUser(String username, String password) {
         SysUser rootUser = new SysUser();
-        rootUser.setUserFlow(StarTigerAdminConstant.ROOT_USER_FLOW)
-                .setUsername(StarTigerAdminConstant.ROOT_USER_NAME)
-                .setEncodePassword("{noop}123456")
+        rootUser.setUserFlow(IdUtil.fastSimpleUUID())
+                .setUsername(username)
+                .setEncodePassword("{noop}" + password)
                 .setShortName("超级管理员")
                 .setLocked(StarTigerConstant.FLAG_N)
                 .setExpired(StarTigerConstant.FLAG_N)
@@ -46,5 +46,36 @@ public class RabcUtil {
         return new UserInfo(rootUser,
                 Collections.singletonList(getSuperRole()),
                 Collections.singletonList(getSuperResource()));
+    }
+
+    public static SysRole getActuatorRole() {
+        SysRole superRole = new SysRole();
+        superRole.setRoleFlow(IdUtil.fastSimpleUUID());
+        superRole.setRoleCode(StarTigerAdminConstant.ACTUATOR_ROLE_CODE);
+        superRole.setRoleName("监控者");
+        return superRole;
+    }
+
+    public static SysResource getActuatorResource() {
+        SysResource resource = new SysResource();
+        resource.setResFlow(IdUtil.fastSimpleUUID());
+        resource.setResName("监控端点");
+        resource.setResPath(StarTigerAdminConstant.UrlPath.ACTUATOR_PATTERN);
+        resource.setResMethod("");
+        return resource;
+    }
+
+    public static UserInfo getActuatorUser(String username, String password) {
+        SysUser actuatorUser = new SysUser();
+        actuatorUser.setUserFlow(IdUtil.fastSimpleUUID())
+                .setUsername(username)
+                .setEncodePassword("{noop}" + password)
+                .setShortName("监控者")
+                .setLocked(StarTigerConstant.FLAG_N)
+                .setExpired(StarTigerConstant.FLAG_N)
+        ;
+        return new UserInfo(actuatorUser,
+                Collections.singletonList(getActuatorRole()),
+                Collections.singletonList(getActuatorResource()));
     }
 }

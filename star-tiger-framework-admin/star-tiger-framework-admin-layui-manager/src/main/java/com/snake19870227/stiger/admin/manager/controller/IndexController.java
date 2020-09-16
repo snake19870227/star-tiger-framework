@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -20,15 +19,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.WebAttributes;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.snake19870227.stiger.admin.common.CaptchaCacheStorage;
 import com.snake19870227.stiger.admin.common.StarTigerAdminConstant;
-import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties;
 import com.snake19870227.stiger.admin.security.UserSecurityDetail;
 import com.snake19870227.stiger.admin.web.StarTigerAdminController;
+import com.snake19870227.stiger.core.StarTigerFrameProperties;
 import com.snake19870227.stiger.core.context.StarTigerContext;
 
 import static com.snake19870227.stiger.admin.common.StarTigerAdminConstant.UrlParamNames;
@@ -44,13 +42,12 @@ public class IndexController {
 
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-    private final StarTigerAdminProperties starTigerAdminProperties;
+    private final StarTigerFrameProperties starTigerFrameProperties;
 
     private final CaptchaCacheStorage captchaCacheStorage;
 
-    public IndexController(StarTigerAdminProperties starTigerAdminProperties,
-                           CaptchaCacheStorage captchaCacheStorage) {
-        this.starTigerAdminProperties = starTigerAdminProperties;
+    public IndexController(StarTigerFrameProperties starTigerFrameProperties, CaptchaCacheStorage captchaCacheStorage) {
+        this.starTigerFrameProperties = starTigerFrameProperties;
         this.captchaCacheStorage = captchaCacheStorage;
     }
 
@@ -110,10 +107,10 @@ public class IndexController {
 
         LineCaptcha lineCaptcha;
 
-        if (starTigerAdminProperties.isDebugMode()) {
-            lineCaptcha = CaptchaUtil.createLineCaptcha(width, height, 4, 10);
+        if (starTigerFrameProperties.isDebugMode()) {
+            lineCaptcha = CaptchaUtil.createLineCaptcha(width, height, 1, 10);
         } else {
-            lineCaptcha = CaptchaUtil.createLineCaptcha(width, height);
+            lineCaptcha = CaptchaUtil.createLineCaptcha(width, height, 4, 100);
         }
 
         HttpSession session = request.getSession();

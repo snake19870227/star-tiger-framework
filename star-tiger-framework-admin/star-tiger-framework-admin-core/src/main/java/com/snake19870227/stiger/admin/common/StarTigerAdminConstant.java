@@ -6,10 +6,13 @@ package com.snake19870227.stiger.admin.common;
  */
 public class StarTigerAdminConstant {
 
+    public static final String SPRING_SECURITY_ROLE_PREFIX = "ROLE_";
+
     public static final String ROOT_USER_FLOW = "00000000000000000000000000000000";
     public static final String ROOT_USER_NAME = "root";
 
     public static final String SUPER_ROLE_CODE = "super_admin";
+    public static final String ACTUATOR_ROLE_CODE = "actuator_admin";
 
     public static final String MESSAGE_CODE_PREFIX = "code.";
 

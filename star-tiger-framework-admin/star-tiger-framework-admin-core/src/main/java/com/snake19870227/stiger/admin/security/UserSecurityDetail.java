@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.snake19870227.stiger.admin.common.StarTigerAdminConstant;
 import com.snake19870227.stiger.admin.entity.bo.UserInfo;
 import com.snake19870227.stiger.core.StarTigerConstant;
 
@@ -25,7 +26,7 @@ public class UserSecurityDetail extends UserInfo implements UserDetails {
         super(userInfo.getUser(), userInfo.getRoles(), userInfo.getResources());
         if (CollUtil.isNotEmpty(userInfo.getRoles())) {
             this.authorities = userInfo.getRoles().stream()
-                    .map(role -> new SimpleGrantedAuthority(StarTigerConstant.SPRING_SECURITY_ROLE_PREFIX + role.getRoleCode()))
+                    .map(role -> new SimpleGrantedAuthority(StarTigerAdminConstant.SPRING_SECURITY_ROLE_PREFIX + role.getRoleCode()))
                     .collect(Collectors.toList());
         }
     }

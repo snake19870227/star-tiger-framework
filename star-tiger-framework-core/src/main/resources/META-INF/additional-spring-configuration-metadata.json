@@ -1,0 +1,52 @@
+{
+  "properties": [
+    {
+      "name": "stiger.frame.debug-mode",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.snake19870227.stiger.core.StarTigerFrameProperties",
+      "description": "决定调试模式.",
+      "defaultValue": false
+    },
+    {
+      "name": "stiger.frame.use-http-status-code",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.snake19870227.stiger.core.StarTigerFrameProperties",
+      "description": "决定全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)是否同时设置 Http Status Code.",
+      "defaultValue": true
+    },
+    {
+      "name": "stiger.frame.enum-packages",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.snake19870227.stiger.core.StarTigerFrameProperties",
+      "description": "项目枚举包路径."
+    }
+  ],
+  "hints": [
+    {
+      "name": "stiger.frame.use-http-status-code",
+      "values": [
+        {
+          "value": true,
+          "description": "全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)会同时根据异常设置 Http Status Code."
+        },
+        {
+          "value": false,
+          "description": "全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)不会根据异常设置 Http Status Code, 统一返回200."
+        }
+      ]
+    },
+    {
+      "name": "stiger.frame.debug-mode",
+      "values": [
+        {
+          "value": true,
+          "description": "Debug模式开启，开发、测试环境使用."
+        },
+        {
+          "value": false,
+          "description": "Debug模式关闭，生产环境使用."
+        }
+      ]
+    }
+  ]
+}

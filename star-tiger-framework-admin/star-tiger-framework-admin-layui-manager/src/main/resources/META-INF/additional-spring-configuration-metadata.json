@@ -1,64 +1,44 @@
 {
   "groups": [
     {
-      "name": "stiger.admin.init",
-      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties",
-      "type": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties$Init",
+      "name": "stiger.admin.layui.init",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "type": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties$Init",
       "sourceMethod": "getInit()",
       "description": "Admin模块初始化配置."
     },
     {
-      "name": "stiger.admin.init.logo-info",
-      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties$Init",
-      "type": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties$LogoInfo",
+      "name": "stiger.admin.layui.init.logo-info",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties$Init",
+      "type": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties$LogoInfo",
       "sourceMethod": "getLogoInfo()",
       "description": "Admin模块Logo配置."
     }
   ],
   "properties": [
     {
-      "name": "stiger.admin.debug-mode",
+      "name": "stiger.admin.layui.init.multi-module",
       "type": "java.lang.Boolean",
-      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties",
-      "description": "决定Admin模块调试模式.",
-      "defaultValue": false
-    },
-    {
-      "name": "stiger.admin.init.multi-module",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
       "description": "决定Admin模块Layui是否为多模块方式.",
       "defaultValue": false
     },
     {
-      "name": "stiger.admin.init.password",
+      "name": "stiger.admin.layui.init.logo-info.title",
       "type": "java.lang.String",
-      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties",
-      "description": "用户初始密码."
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "description": "项目标题."
     },
     {
-      "name": "stiger.admin.init.logo-info.title",
+      "name": "stiger.admin.layui.init.logo-info.image-url",
       "type": "java.lang.String",
-      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties",
-      "description": "项目标题."
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "description": "项目标题图片."
     }
   ],
   "hints": [
     {
-      "name": "stiger.admin.debug-mode",
-      "values": [
-        {
-          "value": true,
-          "description": "Debug模式开启，开发、测试环境使用."
-        },
-        {
-          "value": false,
-          "description": "Debug模式关闭，生产环境使用."
-        }
-      ]
-    },
-    {
-      "name": "stiger.admin.init.multi-module",
+      "name": "stiger.admin.layui.init.multi-module",
       "values": [
         {
           "value": true,

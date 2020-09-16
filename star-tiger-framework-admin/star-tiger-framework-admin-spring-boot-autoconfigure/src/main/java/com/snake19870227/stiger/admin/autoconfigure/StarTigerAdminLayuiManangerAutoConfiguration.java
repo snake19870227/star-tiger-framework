@@ -24,11 +24,12 @@ import com.snake19870227.stiger.admin.manager.controller.SysMenuController;
 import com.snake19870227.stiger.admin.manager.controller.SysResourceController;
 import com.snake19870227.stiger.admin.manager.controller.SysRoleController;
 import com.snake19870227.stiger.admin.manager.controller.SysUserController;
-import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties;
-import com.snake19870227.stiger.admin.manager.security.ManagerAuthFailureHandler;
-import com.snake19870227.stiger.admin.manager.security.ManagerAuthSuccessHandler;
+import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties;
 import com.snake19870227.stiger.admin.manager.security.ManagerSecurityExceptionHandler;
+import com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties;
 import com.snake19870227.stiger.admin.security.ImageCaptchaAuthenticationFilter;
+import com.snake19870227.stiger.admin.security.ManagerAuthFailureHandler;
+import com.snake19870227.stiger.admin.security.ManagerAuthSuccessHandler;
 import com.snake19870227.stiger.admin.service.ISysCfgService;
 import com.snake19870227.stiger.admin.service.ISysDictItemService;
 import com.snake19870227.stiger.admin.service.ISysDictService;
@@ -40,26 +41,33 @@ import com.snake19870227.stiger.admin.service.ISysRoleService;
 import com.snake19870227.stiger.admin.service.ISysUserRoleService;
 import com.snake19870227.stiger.admin.service.ISysUserService;
 import com.snake19870227.stiger.admin.web.StarTigerAdminControllerHandlerMapping;
+import com.snake19870227.stiger.core.StarTigerFrameProperties;
 
-import static com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey.MULTI_MODULE;
+import static com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey.MANAGER_INIT;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/08/30
  */
 @Configuration
-@EnableConfigurationProperties(StarTigerAdminProperties.class)
+@EnableConfigurationProperties(StarTigerAdminLayuiProperties.class)
 public class StarTigerAdminLayuiManangerAutoConfiguration {
 
-    private final StarTigerAdminProperties starTigerAdminProperties;
+    private final StarTigerAdminRabcProperties starTigerAdminRabcProperties;
 
-    public StarTigerAdminLayuiManangerAutoConfiguration(StarTigerAdminProperties starTigerAdminProperties) {
-        this.starTigerAdminProperties = starTigerAdminProperties;
+    private final StarTigerAdminLayuiProperties starTigerAdminLayuiProperties;
+
+    public StarTigerAdminLayuiManangerAutoConfiguration(StarTigerAdminRabcProperties starTigerAdminRabcProperties,
+                                                        StarTigerAdminLayuiProperties starTigerAdminLayuiProperties) {
+        this.starTigerAdminRabcProperties = starTigerAdminRabcProperties;
+        this.starTigerAdminLayuiProperties = starTigerAdminLayuiProperties;
     }
 
     @Bean
     public ServletContextInitializer servletContextInitializer() {
-        return servletContext -> servletContext.setAttribute(MULTI_MODULE, starTigerAdminProperties.getInit().isMultiModule());
+        return servletContext -> {
+            servletContext.setAttribute(MANAGER_INIT, starTigerAdminLayuiProperties.getInit());
+        };
     }
 
     @Bean
@@ -68,18 +76,18 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
     }
 
     @Bean
-    public IndexController indexController(StarTigerAdminProperties adminProperties,
+    public IndexController indexController(StarTigerFrameProperties starTigerFrameProperties,
                                            CaptchaCacheStorage captchaCacheStorage) {
-        return new IndexController(adminProperties, captchaCacheStorage);
+        return new IndexController(starTigerFrameProperties, captchaCacheStorage);
     }
 
     @Bean
-    public MainController mainController(StarTigerAdminProperties starTigerAdminProperties,
+    public MainController mainController(StarTigerAdminLayuiProperties starTigerAdminLayuiProperties,
                                          PasswordEncoder passwordEncoder,
                                          ISysUserService sysUserService,
                                          ISysExtService sysExtService,
                                          ISysCfgService sysCfgService) {
-        return new MainController(starTigerAdminProperties, passwordEncoder, sysUserService, sysExtService, sysCfgService);
+        return new MainController(starTigerAdminLayuiProperties, passwordEncoder, sysUserService, sysExtService, sysCfgService);
     }
 
     @Bean
@@ -127,12 +135,6 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
         @Value("${management.endpoints.web.base-path:/actuator}")
         private String springActuatorPath;
 
-//        @Value("${stiger.admin.web.security.remember-me-key}")
-//        private String rememberMeKey;
-
-//        @Value("${stiger.admin.oauth2.enable:false}")
-//        private boolean enableOauth2;
-
         private final ManagerAuthSuccessHandler managerAuthSuccessHandler;
 
         private final ManagerAuthFailureHandler managerAuthFailureHandler;
@@ -177,7 +179,7 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
                     .logoutRequestMatcher(new AntPathRequestMatcher(StarTigerAdminConstant.UrlPath.LOGOUT, HttpMethod.GET.name()))
 //                .and()
 //                .rememberMe()
-//                    .key(rememberMeKey)
+//                    .key(rememberMeKey)w
 //                    .rememberMeServices(rememberMeServices)
 //                    .authenticationSuccessHandler(webAuthenticationSuccessHandler)
 //                .and()
@@ -189,10 +191,6 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
                     )
                     .sessionManagement().maximumSessions(1)
             ;
-
-//            if (enableOauth2) {
-//                http.oauth2ResourceServer().jwt();
-//            }
 
             http.exceptionHandling()
                     .authenticationEntryPoint(managerSecurityExceptionHandler)

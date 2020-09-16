@@ -12,7 +12,7 @@
         <div class="layui-form login-form">
             <form class="layui-form" th:action="@{/login}" method="post">
                 <div class="layui-form-item logo-title">
-                    <h1>苗木客管理端</h1>
+                    <h1 th:text="${#servletContext.getAttribute(T(com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey).MANAGER_INIT).logoInfo.title}">苗木客管理端</h1>
                 </div>
                 <input type="hidden" id="message"
                        th:value="${#request.getAttribute(T(com.snake19870227.stiger.admin.common.StarTigerAdminConstant.WebAttrKey).LOGIN_MESSAGE)}"/>

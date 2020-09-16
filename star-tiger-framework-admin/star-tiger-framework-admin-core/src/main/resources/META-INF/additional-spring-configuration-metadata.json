@@ -1,0 +1,48 @@
+{
+  "groups": [
+    {
+      "name": "stiger.admin.rabc.default-users",
+      "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
+      "type": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties$DefaultUsers",
+      "sourceMethod": "getDefaultUsers()",
+      "description": "RABC模型默认用户."
+    }
+  ],
+  "properties": [
+    {
+      "name": "stiger.admin.rabc.initial-password",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
+      "description": "用户初始密码.",
+      "defaultValue": "654321"
+    },
+    {
+      "name": "stiger.admin.rabc.default-users.super-admin-username",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
+      "description": "超级管理员用户名.",
+      "defaultValue": "root"
+    },
+    {
+      "name": "stiger.admin.rabc.default-users.super-admin-password",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
+      "description": "超级管理员密码.",
+      "defaultValue": "root123456"
+    },
+    {
+      "name": "stiger.admin.rabc.default-users.actuator-admin-username",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
+      "description": "监控管理员用户名.",
+      "defaultValue": "actuator"
+    },
+    {
+      "name": "stiger.admin.rabc.default-users.actuator-admin-password",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
+      "description": "监控管理员密码.",
+      "defaultValue": "actuator123456"
+    }
+  ]
+}

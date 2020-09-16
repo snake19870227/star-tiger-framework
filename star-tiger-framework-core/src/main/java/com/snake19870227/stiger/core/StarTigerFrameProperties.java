@@ -15,6 +15,8 @@ public class StarTigerFrameProperties {
 
     private boolean useHttpStatusCode = true;
 
+    private boolean debugMode = false;
+
     public List<String> getEnumPackages() {
         return enumPackages;
     }
@@ -29,5 +31,13 @@ public class StarTigerFrameProperties {
 
     public void setUseHttpStatusCode(boolean useHttpStatusCode) {
         this.useHttpStatusCode = useHttpStatusCode;
+    }
+
+    public boolean isDebugMode() {
+        return debugMode;
+    }
+
+    public void setDebugMode(boolean debugMode) {
+        this.debugMode = debugMode;
     }
 }

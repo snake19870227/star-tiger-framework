@@ -22,7 +22,7 @@ import com.snake19870227.stiger.admin.manager.common.layui.LogoInfo;
 import com.snake19870227.stiger.admin.manager.common.layui.MenuInfo;
 import com.snake19870227.stiger.admin.entity.po.SysMenu;
 import com.snake19870227.stiger.admin.entity.po.SysUser;
-import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminProperties;
+import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties;
 import com.snake19870227.stiger.admin.security.UserSecurityDetail;
 import com.snake19870227.stiger.admin.service.ISysCfgService;
 import com.snake19870227.stiger.admin.service.ISysExtService;
@@ -45,7 +45,7 @@ public class MainController {
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
-    private final StarTigerAdminProperties starTigerAdminProperties;
+    private final StarTigerAdminLayuiProperties starTigerAdminLayuiProperties;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -55,11 +55,11 @@ public class MainController {
 
     private final ISysCfgService sysCfgService;
 
-    public MainController(StarTigerAdminProperties starTigerAdminProperties,
+    public MainController(StarTigerAdminLayuiProperties starTigerAdminLayuiProperties,
                           PasswordEncoder passwordEncoder,
                           ISysUserService sysUserService,
                           ISysExtService sysExtService, ISysCfgService sysCfgService) {
-        this.starTigerAdminProperties = starTigerAdminProperties;
+        this.starTigerAdminLayuiProperties = starTigerAdminLayuiProperties;
         this.passwordEncoder = passwordEncoder;
         this.sysUserService = sysUserService;
         this.sysExtService = sysExtService;
@@ -82,8 +82,8 @@ public class MainController {
         InitInfo initInfo = new InitInfo();
 
         LogoInfo logoInfo = new LogoInfo();
-        logoInfo.setTitle(starTigerAdminProperties.getInit().getLogoInfo().getTitle());
-        logoInfo.setImage(starTigerAdminProperties.getInit().getLogoInfo().getImageUrl());
+        logoInfo.setTitle(starTigerAdminLayuiProperties.getInit().getLogoInfo().getTitle());
+        logoInfo.setImage(starTigerAdminLayuiProperties.getInit().getLogoInfo().getImageUrl());
 
         HomeInfo homeInfo = new HomeInfo();
         homeInfo.setTitle("工作台");
