@@ -21,7 +21,6 @@ import com.snake19870227.stiger.web.utils.WebUtil;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/03/16
  */
-@Component
 public class ManagerAuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(ManagerAuthSuccessHandler.class);

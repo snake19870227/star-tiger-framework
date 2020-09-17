@@ -39,15 +39,15 @@ public class StigerMybatisPlusGenerator {
         pc.setParent("com.snake19870227.stiger.admin");
         pc.setEntity("entity.po");
         pc.setMapper("dao.base");
-        pc.setService("service");
-        pc.setServiceImpl("service.impl");
+//        pc.setService("service");
+//        pc.setServiceImpl("service.impl");
 //        pc.setXml("dao.base");
         mpg.setPackageInfo(pc);
 
         TemplateConfig tc = new TemplateConfig();
         tc
-//                .setService(null)
-//                .setServiceImpl(null)
+                .setService(null)
+                .setServiceImpl(null)
                 .setController(null)
 //                .setMapper(null)
                 .setXml(null)

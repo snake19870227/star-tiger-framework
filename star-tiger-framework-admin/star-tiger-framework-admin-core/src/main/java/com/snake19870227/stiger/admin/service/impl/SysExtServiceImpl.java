@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -41,7 +42,6 @@ import com.snake19870227.stiger.core.StarTigerConstant;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/21
  */
-@Service
 public class SysExtServiceImpl implements ISysExtService {
 
     private static final Logger logger = LoggerFactory.getLogger(SysExtServiceImpl.class);
@@ -49,34 +49,29 @@ public class SysExtServiceImpl implements ISysExtService {
     @Value("${stiger.admin.init.password:123}")
     private String initPassword;
 
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    private final SysUserMapper sysUserMapper;
+    @Autowired
+    private SysUserMapper sysUserMapper;
 
-    private final SysMenuMapper sysMenuMapper;
+    @Autowired
+    private SysMenuMapper sysMenuMapper;
 
-    private final SysRoleMapper sysRoleMapper;
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
 
-    private final SysRoleResourceMapper sysRoleResourceMapper;
+    @Autowired
+    private SysRoleResourceMapper sysRoleResourceMapper;
 
-    private final SysUserRoleMapper sysUserRoleMapper;
+    @Autowired
+    private SysUserRoleMapper sysUserRoleMapper;
 
-    private final SysExtMapper sysExtMapper;
+    @Autowired
+    private SysExtMapper sysExtMapper;
 
-    public SysExtServiceImpl(PasswordEncoder passwordEncoder,
-                             SysUserMapper sysUserMapper,
-                             SysMenuMapper sysMenuMapper,
-                             SysRoleMapper sysRoleMapper,
-                             SysRoleResourceMapper sysRoleResourceMapper,
-                             SysUserRoleMapper sysUserRoleMapper,
-                             SysExtMapper sysExtMapper) {
+    public SysExtServiceImpl(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
-        this.sysUserMapper = sysUserMapper;
-        this.sysMenuMapper = sysMenuMapper;
-        this.sysRoleMapper = sysRoleMapper;
-        this.sysRoleResourceMapper = sysRoleResourceMapper;
-        this.sysUserRoleMapper = sysUserRoleMapper;
-        this.sysExtMapper = sysExtMapper;
     }
 
     @Override

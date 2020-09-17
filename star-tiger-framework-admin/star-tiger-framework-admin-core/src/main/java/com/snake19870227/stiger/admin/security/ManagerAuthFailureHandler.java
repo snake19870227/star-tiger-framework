@@ -14,7 +14,6 @@ import com.snake19870227.stiger.admin.common.StarTigerAdminConstant;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/22
  */
-@Component
 public class ManagerAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     public ManagerAuthFailureHandler() {

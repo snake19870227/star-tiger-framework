@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
  * @author buhuayang
  * @since 2020-08-30
  */
-@Service
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements ISysMenuService {
 
 }

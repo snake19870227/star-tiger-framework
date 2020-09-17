@@ -11,10 +11,5 @@ import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
  * 2020/08/30
  */
 @Configuration
-@AutoConfigureAfter(MybatisPlusAutoConfiguration.class)
-@MapperScan(basePackages = {
-        "com.snake19870227.stiger.admin.dao"
-})
-@EnableTransactionManagement(proxyTargetClass = true)
 public class ProjectConfig {
 }

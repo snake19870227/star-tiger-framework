@@ -1,6 +1,7 @@
 package com.snake19870227.stiger.admin.autoconfigure;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
@@ -135,6 +136,18 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
         mapping.setOrder(0);
         mapping.setContentNegotiationManager(contentNegotiationManager);
         return mapping;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ManagerAuthSuccessHandler managerAuthSuccessHandler(ISysExtService sysExtService) {
+        return new ManagerAuthSuccessHandler(sysExtService);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ManagerAuthFailureHandler managerAuthFailureHandler() {
+        return new ManagerAuthFailureHandler();
     }
 
     @Configuration
