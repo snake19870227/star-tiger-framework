@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: stiger-sample-oss
+stiger:
+  oss:
+    minio:
+      active: true
+      access-key: test
+      secret-key: test123456
+      endpoint: http://127.0.0.1:9000/
+    aliyun:
+      active: true
+      endpoint: oss-cn-shanghai.aliyuncs.com
+      access-key-id: 1111111111111
+      access-secret: 1111111111111

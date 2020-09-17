@@ -150,6 +150,12 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
         return new ManagerAuthFailureHandler();
     }
 
+    @Bean
+    @ConditionalOnMissingBean
+    public ManagerSecurityExceptionHandler managerSecurityExceptionHandler() {
+        return new ManagerSecurityExceptionHandler(starTigerFrameProperties);
+    }
+
     @Configuration
     public static class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 

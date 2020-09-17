@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /stigerAdmin
+  forward-headers-strategy: framework
+spring:
+  application:
+    name: stiger-admin
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/stigeradmin?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 123456
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      logic-delete-field: record_status
+      logic-delete-value: N
+      logic-not-delete-value: Y
+  configuration:
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+stiger:
+  frame:
+    debug-mode: true
+  admin:
+    rabc:
+      default-users:
+        super-admin-username: admin
+        super-admin-password: admin123456
+    layui:
+      init:
+        logo-info:
+          title: STiger Admin
+          image-url: ${server.servlet.context-path}/images/logo.png
+        multi-module: false

@@ -30,7 +30,6 @@ import com.snake19870227.stiger.web.utils.WebUtil;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/07/24
  */
-@Component
 public class ManagerSecurityExceptionHandler implements AuthenticationEntryPoint, AccessDeniedHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(ManagerSecurityExceptionHandler.class);
