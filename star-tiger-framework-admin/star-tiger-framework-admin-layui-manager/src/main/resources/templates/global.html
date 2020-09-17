@@ -39,6 +39,7 @@
 </th:block>
 <th:block th:fragment="script-stiger">
     <input type="hidden" id="context-path" th:value="${#servletContext.contextPath}">
+    <input type="hidden" id="debug-mode" th:value="${#servletContext.getAttribute(T(com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey).DEBUG_MODE)?'Y':'N'}">
     <input type="hidden" id="multi-module"
            th:value="${#servletContext.getAttribute(T(com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey).MANAGER_INIT).multiModule}">
     <script>

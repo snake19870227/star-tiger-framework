@@ -18,21 +18,28 @@
                        th:value="${#request.getAttribute(T(com.snake19870227.stiger.admin.common.StarTigerAdminConstant.WebAttrKey).LOGIN_MESSAGE)}"/>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username" for="username"></label>
-                    <input type="text" id="username" name="username" lay-verify="required" placeholder="用户名"
-                           lay-reqText="用户名不能为空"
-                           autocomplete="off" class="layui-input" value="root">
+                    <input th:if="${#servletContext.getAttribute(T(com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey).DEBUG_MODE)}"
+                           type="text" id="username" name="username" lay-verify="required" placeholder="用户名"
+                           lay-reqText="用户名不能为空" autocomplete="off" class="layui-input"
+                           th:value="${#servletContext.getAttribute(T(com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey).DEFAULT_USER).superAdminUsername}">
+                    <input th:if="${!#servletContext.getAttribute(T(com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey).DEBUG_MODE)}"
+                           type="text" id="username" name="username" lay-verify="required" placeholder="用户名"
+                           lay-reqText="用户名不能为空" autocomplete="off" class="layui-input" value="">
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-password" for="password"></label>
-                    <input type="password" id="password" name="password" lay-verify="required" placeholder="密码"
-                           lay-reqText="密码不能为空"
-                           autocomplete="off" class="layui-input" value="123456">
+                    <input th:if="${#servletContext.getAttribute(T(com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey).DEBUG_MODE)}"
+                           type="password" id="password" name="password" lay-verify="required" placeholder="密码"
+                           lay-reqText="密码不能为空" autocomplete="off" class="layui-input"
+                           th:value="${#servletContext.getAttribute(T(com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey).DEFAULT_USER).superAdminPassword}">
+                    <input th:if="${!#servletContext.getAttribute(T(com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey).DEBUG_MODE)}"
+                           type="password" id="password" name="password" lay-verify="required" placeholder="密码"
+                           lay-reqText="密码不能为空" autocomplete="off" class="layui-input" value="">
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-vercode" for="captcha"></label>
                     <input type="text" id="captcha" name="captcha" lay-verify="required" placeholder="图形验证码"
-                           lay-reqText="验证码不能为空"
-                           autocomplete="off" class="layui-input verification captcha">
+                           lay-reqText="验证码不能为空" autocomplete="off" class="layui-input verification captcha">
                     <div class="captcha-img">
                         <img id="captchaPic" th:src="@{/captcha}" alt="点击刷新">
                     </div>

@@ -6,6 +6,20 @@
       "type": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties$DefaultUsers",
       "sourceMethod": "getDefaultUsers()",
       "description": "RABC模型默认用户."
+    },
+    {
+      "name": "stiger.admin.layui.init",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "type": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties$Init",
+      "sourceMethod": "getInit()",
+      "description": "Admin模块初始化配置."
+    },
+    {
+      "name": "stiger.admin.layui.init.logo-info",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties$Init",
+      "type": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties$LogoInfo",
+      "sourceMethod": "getLogoInfo()",
+      "description": "Admin模块Logo配置."
     }
   ],
   "properties": [
@@ -43,6 +57,40 @@
       "sourceType": "com.snake19870227.stiger.admin.properties.StarTigerAdminRabcProperties",
       "description": "监控管理员密码.",
       "defaultValue": "actuator123456"
+    },
+    {
+      "name": "stiger.admin.layui.init.multi-module",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "description": "决定Admin模块Layui是否为多模块方式.",
+      "defaultValue": false
+    },
+    {
+      "name": "stiger.admin.layui.init.logo-info.title",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "description": "项目标题."
+    },
+    {
+      "name": "stiger.admin.layui.init.logo-info.image-url",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProperties",
+      "description": "项目标题图片."
+    }
+  ],
+  "hints": [
+    {
+      "name": "stiger.admin.layui.init.multi-module",
+      "values": [
+        {
+          "value": true,
+          "description": "开启Layui多模块方式."
+        },
+        {
+          "value": false,
+          "description": "关闭Layui多模块方式."
+        }
+      ]
     }
   ]
 }

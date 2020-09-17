@@ -11,6 +11,11 @@ spring:
 stiger:
   frame:
     debug-mode: true
+  admin:
+    rabc:
+      default-users:
+        super-admin-username: admin
+        super-admin-password: admin123456
   oss:
     minio:
       active: true

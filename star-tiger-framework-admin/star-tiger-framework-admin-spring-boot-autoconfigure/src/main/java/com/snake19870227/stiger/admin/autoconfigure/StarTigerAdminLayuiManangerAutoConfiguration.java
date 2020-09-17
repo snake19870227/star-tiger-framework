@@ -43,7 +43,9 @@ import com.snake19870227.stiger.admin.service.ISysUserService;
 import com.snake19870227.stiger.admin.web.StarTigerAdminControllerHandlerMapping;
 import com.snake19870227.stiger.core.StarTigerFrameProperties;
 
+import static com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey.DEFAULT_USER;
 import static com.snake19870227.stiger.admin.manager.common.StarTigerAdminManagerConstant.WebAttrKey.MANAGER_INIT;
+import static com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey.DEBUG_MODE;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
@@ -53,12 +55,16 @@ import static com.snake19870227.stiger.admin.manager.common.StarTigerAdminManage
 @EnableConfigurationProperties(StarTigerAdminLayuiProperties.class)
 public class StarTigerAdminLayuiManangerAutoConfiguration {
 
+    private final StarTigerFrameProperties starTigerFrameProperties;
+
     private final StarTigerAdminRabcProperties starTigerAdminRabcProperties;
 
     private final StarTigerAdminLayuiProperties starTigerAdminLayuiProperties;
 
-    public StarTigerAdminLayuiManangerAutoConfiguration(StarTigerAdminRabcProperties starTigerAdminRabcProperties,
+    public StarTigerAdminLayuiManangerAutoConfiguration(StarTigerFrameProperties starTigerFrameProperties,
+                                                        StarTigerAdminRabcProperties starTigerAdminRabcProperties,
                                                         StarTigerAdminLayuiProperties starTigerAdminLayuiProperties) {
+        this.starTigerFrameProperties = starTigerFrameProperties;
         this.starTigerAdminRabcProperties = starTigerAdminRabcProperties;
         this.starTigerAdminLayuiProperties = starTigerAdminLayuiProperties;
     }
@@ -66,6 +72,8 @@ public class StarTigerAdminLayuiManangerAutoConfiguration {
     @Bean
     public ServletContextInitializer servletContextInitializer() {
         return servletContext -> {
+            servletContext.setAttribute(DEBUG_MODE, starTigerFrameProperties.isDebugMode());
+            servletContext.setAttribute(DEFAULT_USER, starTigerAdminRabcProperties.getDefaultUsers());
             servletContext.setAttribute(MANAGER_INIT, starTigerAdminLayuiProperties.getInit());
         };
     }

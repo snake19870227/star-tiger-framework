@@ -9,6 +9,7 @@ import com.snake19870227.stiger.admin.manager.properties.StarTigerAdminLayuiProp
 public class StarTigerAdminManagerConstant {
 
     public static class WebAttrKey {
-        public static final String MANAGER_INIT = "manager_init";
+        public static final String DEFAULT_USER = "default-user";
+        public static final String MANAGER_INIT = "manager-init";
     }
 }
