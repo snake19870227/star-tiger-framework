@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-admin</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.6.2</version>
+        <version>0.6.3</version>
     </parent>
 
     <artifactId>star-tiger-framework-admin-core</artifactId>
-    <version>0.6.2</version>
+    <version>0.6.3</version>
     <name>StarTigerFrameworkAdminCore</name>
     <description>Star Tiger 脚手架项目 后台管理 core 模块</description>
 
@@ -42,53 +42,20 @@
 
         <!-- spring -->
 
-        <!-- database -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <!-- mybatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- apache -->
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!-- tools -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
 
         <!-- StarTiger -->
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-web</artifactId>
-            <version>0.6.2</version>
+            <version>0.6.3</version>
+        </dependency>
+
+        <!-- StarTiger Admin -->
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-admin-repository</artifactId>
+            <version>0.6.3</version>
         </dependency>
 
     </dependencies>

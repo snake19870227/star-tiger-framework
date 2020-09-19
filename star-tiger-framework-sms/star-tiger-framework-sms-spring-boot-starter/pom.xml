@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-sms</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.6.2</version>
+        <version>0.6.3</version>
     </parent>
 
     <artifactId>star-tiger-framework-sms-spring-boot-starter</artifactId>
-    <version>0.6.2</version>
+    <version>0.6.3</version>
     <name>StarTigerFrameworkSmsSpringBootStarter</name>
     <description>Star Tiger 脚手架项目 短信服务 spring boot starter 模块</description>
 
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-sms-spring-boot-autoconfigure</artifactId>
-            <version>0.6.2</version>
+            <version>0.6.3</version>
         </dependency>
     </dependencies>
 

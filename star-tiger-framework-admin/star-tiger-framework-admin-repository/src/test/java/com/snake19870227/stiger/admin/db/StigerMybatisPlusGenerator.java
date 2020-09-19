@@ -27,7 +27,7 @@ public class StigerMybatisPlusGenerator {
 
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir("/Users/snake/code/mycode/star-tiger-framework/star-tiger-framework-admin/star-tiger-framework-admin-core/src/main/java");
+        gc.setOutputDir("D:\\mycode\\star-tiger-framework\\star-tiger-framework-admin\\star-tiger-framework-admin-repository\\src\\main\\java");
         gc.setAuthor("buhuayang");
         gc.setOpen(false);
         gc.setFileOverride(true);
