@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.snake19870227.stiger.admin.common.TreeNode;
 import com.snake19870227.stiger.admin.entity.bo.UserInfo;
+import com.snake19870227.stiger.admin.entity.po.SysCfg;
 import com.snake19870227.stiger.admin.entity.po.SysMenu;
 import com.snake19870227.stiger.admin.entity.po.SysRole;
 import com.snake19870227.stiger.admin.entity.po.SysUser;
@@ -14,6 +15,8 @@ import com.snake19870227.stiger.admin.security.UserSecurityDetail;
  * 2020/07/21
  */
 public interface ISysExtService {
+
+    SysCfg findAndCacheSysCfg(String cfgCode);
 
     UserInfo getUserInfo(String username);
 

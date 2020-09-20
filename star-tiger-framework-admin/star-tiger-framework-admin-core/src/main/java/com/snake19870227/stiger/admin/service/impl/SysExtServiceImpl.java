@@ -17,10 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.snake19870227.stiger.admin.cache.SysCfgCache;
 import com.snake19870227.stiger.admin.common.TreeNode;
+import com.snake19870227.stiger.admin.dao.base.SysCfgMapper;
 import com.snake19870227.stiger.admin.dao.base.SysMenuMapper;
 import com.snake19870227.stiger.admin.dao.base.SysRoleMapper;
 import com.snake19870227.stiger.admin.dao.base.SysRoleResourceMapper;
@@ -28,6 +29,7 @@ import com.snake19870227.stiger.admin.dao.base.SysUserMapper;
 import com.snake19870227.stiger.admin.dao.base.SysUserRoleMapper;
 import com.snake19870227.stiger.admin.dao.ext.SysExtMapper;
 import com.snake19870227.stiger.admin.entity.bo.UserInfo;
+import com.snake19870227.stiger.admin.entity.po.SysCfg;
 import com.snake19870227.stiger.admin.entity.po.SysMenu;
 import com.snake19870227.stiger.admin.entity.po.SysResource;
 import com.snake19870227.stiger.admin.entity.po.SysRole;
@@ -47,31 +49,53 @@ public class SysExtServiceImpl implements ISysExtService {
     private static final Logger logger = LoggerFactory.getLogger(SysExtServiceImpl.class);
 
     @Value("${stiger.admin.init.password:123}")
-    private String initPassword;
+    protected String initPassword;
+
+    protected final SysCfgCache sysCfgCache;
+
+    protected final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    protected SysCfgMapper sysCfgMapper;
 
     @Autowired
-    private SysUserMapper sysUserMapper;
+    protected SysUserMapper sysUserMapper;
 
     @Autowired
-    private SysMenuMapper sysMenuMapper;
+    protected SysMenuMapper sysMenuMapper;
 
     @Autowired
-    private SysRoleMapper sysRoleMapper;
+    protected SysRoleMapper sysRoleMapper;
 
     @Autowired
-    private SysRoleResourceMapper sysRoleResourceMapper;
+    protected SysRoleResourceMapper sysRoleResourceMapper;
 
     @Autowired
-    private SysUserRoleMapper sysUserRoleMapper;
+    protected SysUserRoleMapper sysUserRoleMapper;
 
     @Autowired
-    private SysExtMapper sysExtMapper;
+    protected SysExtMapper sysExtMapper;
 
-    public SysExtServiceImpl(PasswordEncoder passwordEncoder) {
+    public SysExtServiceImpl(SysCfgCache sysCfgCache,
+                             PasswordEncoder passwordEncoder) {
+        this.sysCfgCache = sysCfgCache;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public SysCfg findAndCacheSysCfg(String cfgCode) {
+
+        SysCfg sysCfg = sysCfgCache.get(cfgCode);
+
+        if (sysCfg == null) {
+            sysCfg = sysCfgMapper.selectById(cfgCode);
+
+            if (sysCfg != null) {
+                sysCfgCache.put(sysCfg);
+            }
+        }
+
+        return sysCfg;
     }
 
     @Override
