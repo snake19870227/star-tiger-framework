@@ -7,7 +7,7 @@
 
     <groupId>com.github.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.6.3</version><!-- -SNAPSHOT -->
+    <version>0.6.4-SNAPSHOT</version><!-- -SNAPSHOT -->
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>

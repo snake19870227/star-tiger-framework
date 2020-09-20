@@ -1,8 +1,11 @@
 package com.snake19870227.stiger.admin.autoconfigure;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
@@ -53,6 +56,7 @@ import static com.snake19870227.stiger.web.StarTigerWebConstant.WebAttrKey.DEBUG
  * 2020/08/30
  */
 @Configuration
+@ConditionalOnClass(SecurityAutoConfiguration.class)
 @EnableConfigurationProperties(StarTigerAdminLayuiProperties.class)
 public class StarTigerAdminLayuiManangerAutoConfiguration {
 
