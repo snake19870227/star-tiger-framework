@@ -17,6 +17,13 @@
     <description>Star Tiger 脚手架项目 后台管理 spring boot 自动配置模块</description>
 
     <dependencies>
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
         <!-- spring boot starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
