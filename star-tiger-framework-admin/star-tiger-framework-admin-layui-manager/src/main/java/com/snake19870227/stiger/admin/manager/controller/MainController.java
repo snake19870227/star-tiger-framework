@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.snake19870227.stiger.admin.common.StarTigerAdminConstant;
 import com.snake19870227.stiger.admin.common.TreeNode;
 import com.snake19870227.stiger.admin.entity.po.SysCfg;
 import com.snake19870227.stiger.admin.manager.common.layui.HomeInfo;
@@ -103,7 +104,7 @@ public class MainController {
 
     @GetMapping(path = UrlPath.WORKBENCH)
     public String workbench() {
-        SysCfg workbenchPage = sysCfgService.getById("workbench_page");
+        SysCfg workbenchPage = sysExtService.findAndCacheSysCfg(StarTigerAdminConstant.SysCfgKey.WORKBENCH_PAGE);
         if (workbenchPage != null && StrUtil.isNotBlank(workbenchPage.getCfgValue())) {
             return workbenchPage.getCfgValue();
         } else {

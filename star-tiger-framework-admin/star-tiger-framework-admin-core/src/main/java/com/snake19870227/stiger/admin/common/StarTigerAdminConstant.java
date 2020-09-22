@@ -16,6 +16,10 @@ public class StarTigerAdminConstant {
 
     public static final String MESSAGE_CODE_PREFIX = "code.";
 
+    public static class SysCfgKey {
+        public static final String WORKBENCH_PAGE = "workbench-page";
+    }
+
     public static class UrlParamNames {
         public static final String LOGIN_ERROR = "error";
         public static final String LOGOUT_SUCCESS = "logout";
