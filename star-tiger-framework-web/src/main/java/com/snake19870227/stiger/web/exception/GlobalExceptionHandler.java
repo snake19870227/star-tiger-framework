@@ -39,6 +39,8 @@ public class GlobalExceptionHandler {
                                             BaseControllerException ex,
                                             HandlerMethod handlerMethod) {
 
+        logger.error("请求处理失败", ex);
+
         ModelAndView mv = null;
 
         if (MvcUtil.isResponseBody(handlerMethod)
