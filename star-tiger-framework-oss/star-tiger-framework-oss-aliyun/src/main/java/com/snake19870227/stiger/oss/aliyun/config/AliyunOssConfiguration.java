@@ -26,4 +26,11 @@ public class AliyunOssConfiguration {
         OSS ossClient = new OSSClientBuilder().build(aliyun.getEndpoint(), aliyun.getAccessKeyId(), aliyun.getAccessSecret());
         return new AliyunStarTigerOssStorage(ossProperties, ossClient);
     }
+
+    @Bean
+    public StarTigerOssStorage aliyunInternalStorage(StarTigerOssProperties ossProperties) {
+        StarTigerOssProperties.Aliyun aliyun = ossProperties.getAliyun();
+        OSS ossClient = new OSSClientBuilder().build(aliyun.getInternalEndpoint(), aliyun.getAccessKeyId(), aliyun.getAccessSecret());
+        return new AliyunStarTigerOssStorage(ossProperties, ossClient);
+    }
 }

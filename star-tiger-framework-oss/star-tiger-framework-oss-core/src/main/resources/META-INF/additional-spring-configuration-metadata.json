@@ -39,6 +39,12 @@
       "description": "aliyun服务地址."
     },
     {
+      "name": "stiger.oss.aliyun.internal-endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
+      "description": "aliyun服务内网地址."
+    },
+    {
       "name": "stiger.oss.aliyun.access-key-id",
       "type": "java.lang.String",
       "sourceType": "com.snake19870227.stiger.oss.StarTigerOssProperties",
