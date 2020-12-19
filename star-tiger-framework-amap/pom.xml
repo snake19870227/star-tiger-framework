@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.6.4</version>
+        <version>0.6.5</version>
     </parent>
 
     <artifactId>star-tiger-framework-amap</artifactId>
-    <version>0.6.4</version>
+    <version>0.6.5</version>
     <name>StarTigerFrameworkAMap</name>
     <description>Star Tiger 脚手架项目 高德地图服务 模块</description>
 
@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-dependencies</artifactId>
-                <version>0.6.4</version>
+                <version>0.6.5</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-core</artifactId>
-            <version>0.6.4</version>
+            <version>0.6.5</version>
         </dependency>
     </dependencies>
 
