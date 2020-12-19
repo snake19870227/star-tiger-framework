@@ -20,11 +20,11 @@ public class DateTimeUtil {
     public static final long SENCONDS_OF_YEAR = SENCONDS_OF_DAY * 365;
 
     /**
-     * 获取一个日期时间当对于当前时间的时刻<br/>
+     * 获取一个日期时间当对于当前时间的时刻<br>
      * 1.当前时间 2020-10-10 10:10:10，传入时间 2020-10-10 10:11:8，则返回"刚刚"
-     * @param dateTime
-     * @param pattern
-     * @return
+     * @param dateTime 传入时间
+     * @param pattern 传入时间格式
+     * @return 时刻
      */
     public static String getPastMoment(String dateTime, String pattern) {
         return getPastMoment(dateTime, pattern, pattern);
