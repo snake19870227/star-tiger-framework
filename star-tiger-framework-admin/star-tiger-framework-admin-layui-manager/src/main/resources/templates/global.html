@@ -50,5 +50,16 @@
     </script>
     <script th:src="@{/js/http.js}" charset="utf-8"></script>
 </th:block>
+<th:block th:fragment="script-iframe-page">
+    <script>
+        $(function () {
+            let topLocation = top.location;
+            let selfLocation = self.location;
+            if (topLocation === selfLocation) {
+                top.location = selfLocation.protocol + "//" + selfLocation.host + contextPath + "/main#/" + selfLocation.pathname
+            }
+        });
+    </script>
+</th:block>
 </body>
 </html>
