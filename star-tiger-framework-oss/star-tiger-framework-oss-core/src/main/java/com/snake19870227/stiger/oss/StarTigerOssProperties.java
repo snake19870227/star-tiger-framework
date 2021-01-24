@@ -71,6 +71,7 @@ public class StarTigerOssProperties {
     public static class Aliyun {
         private boolean active;
         private String endpoint;
+        private String internalEndpoint;
         private String accessKeyId;
         private String accessSecret;
 
@@ -88,6 +89,14 @@ public class StarTigerOssProperties {
 
         public void setEndpoint(String endpoint) {
             this.endpoint = endpoint;
+        }
+
+        public String getInternalEndpoint() {
+            return internalEndpoint;
+        }
+
+        public void setInternalEndpoint(String internalEndpoint) {
+            this.internalEndpoint = internalEndpoint;
         }
 
         public String getAccessKeyId() {

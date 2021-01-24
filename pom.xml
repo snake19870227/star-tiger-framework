@@ -7,7 +7,7 @@
 
     <groupId>com.github.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.6.4-SNAPSHOT</version><!-- -SNAPSHOT -->
+    <version>0.6.4</version><!-- -SNAPSHOT -->
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -122,7 +122,7 @@
         <flatten-maven-plugin.version>1.2.1</flatten-maven-plugin.version>
 
 
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
