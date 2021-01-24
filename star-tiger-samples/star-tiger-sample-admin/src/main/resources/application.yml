@@ -45,6 +45,6 @@ stiger:
     layui:
       init:
         logo-info:
-          title: 1STiger Admin
+          title: STiger Admin
           image-url: ${server.servlet.context-path}/images/logo.png
         multi-module: false

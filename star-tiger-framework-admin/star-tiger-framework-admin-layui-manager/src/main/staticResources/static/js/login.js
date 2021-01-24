@@ -15,6 +15,23 @@ layui.use(["form", "layer"], function () {
         lineColor: "#7ec7fd"
     });
 
+    let $username = $("#username");
+    let $password = $("#password");
+    let $captcha = $("#captcha");
+    let username = $username.val();
+    let password = $password.val();
+
+    let hasUsername = (username && username.length > 0);
+    let hasPassword = (password && password.length > 0);
+
+    if (hasUsername && !hasPassword) {
+        $password.focus();
+    } else if (hasUsername && hasPassword) {
+        $captcha.focus();
+    } else {
+        $username.focus();
+    }
+
     let refreshCaptcha = function () {
         let $this = $(this);
         let $parent = $this.parent();
