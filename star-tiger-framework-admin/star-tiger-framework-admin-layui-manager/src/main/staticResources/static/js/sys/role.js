@@ -1,4 +1,7 @@
 layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function () {
+
+    let $dataTableCurrent = $("#data-table-current");
+
     let table = layui.table,
         form = layui.form,
         layer = layui.layer,
@@ -64,7 +67,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
 
     let resourceTransfer = undefined;
 
-    let loadDataTable = function () {
+    let loadDataTable = function (keepPage) {
         let mainInnerHeight = $(".layuimini-main").innerHeight();
         let searchOuterHeight = $(".table-search-fieldset").outerHeight();
         let options = {};
@@ -72,6 +75,9 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
         options.height = "full-" + (searchOuterHeight + 60);
         options.where = form.val("search-form");
         if (dataTable) {
+            if (keepPage && $dataTableCurrent && $dataTableCurrent.val()) {
+                options.page.curr = $dataTableCurrent.val();
+            }
             dataTable.reload(options);
         } else {
             dataTable = table.render(options);
@@ -179,7 +185,7 @@ layui.use(["table", "form", "layer", "laypage", "util", "transfer"], function ()
         });
         if (role.roleFlow && role.roleFlow !== "") {
             RoleRestApi.mod(role, resourceFlows, function (data, textStatus, xhr) {
-                loadDataTable();
+                loadDataTable(true);
                 layer.close(infoWinIndex);
             });
         } else {

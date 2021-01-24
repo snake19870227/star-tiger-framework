@@ -1,5 +1,7 @@
 layui.use(["table", "form", "layer", "util"], function () {
 
+    let $dataTableCurrent = $("#data-table-current");
+
     let table = layui.table,
         form = layui.form,
         layer = layui.layer,
@@ -100,7 +102,7 @@ layui.use(["table", "form", "layer", "util"], function () {
 
     let itemTable = undefined;
 
-    let loadDataTable = function () {
+    let loadDataTable = function (keepPage) {
         let mainInnerHeight = $(".layuimini-main").innerHeight();
         let searchOuterHeight = $(".table-search-fieldset").outerHeight();
         let options = {};
@@ -109,6 +111,9 @@ layui.use(["table", "form", "layer", "util"], function () {
         // options.height = "full-50";
         options.where = form.val("search-form");
         if (dataTable) {
+            if (keepPage && $dataTableCurrent && $dataTableCurrent.val()) {
+                options.page.curr = $dataTableCurrent.val();
+            }
             dataTable.reload(options);
         } else {
             dataTable = table.render(options);
@@ -247,7 +252,7 @@ layui.use(["table", "form", "layer", "util"], function () {
         let dict = data.field;
         if (dict.dictFlow && dict.dictFlow !== "") {
             DictRestApi.mod(dict, function (data, textStatus, xhr) {
-                loadDataTable();
+                loadDataTable(true);
                 layer.close(infoWinIndex);
             });
         } else {
