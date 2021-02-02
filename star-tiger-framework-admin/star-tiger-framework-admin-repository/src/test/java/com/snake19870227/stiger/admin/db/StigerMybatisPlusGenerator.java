@@ -60,18 +60,18 @@ public class StigerMybatisPlusGenerator {
         strategy.setLogicDeleteFieldName("record_status");
 
         strategy.setInclude(
-                "sys_cfg",
-                "sys_dept",
-                "sys_dict",
-                "sys_dict_item",
-                "sys_menu",
-                "sys_module",
-                "sys_org",
-                "sys_resource",
-                "sys_role",
-                "sys_role_resource",
-                "sys_user",
-                "sys_user_role"
+                "sys_cfg"
+//                "sys_dept",
+//                "sys_dict",
+//                "sys_dict_item",
+//                "sys_menu",
+//                "sys_module",
+//                "sys_org",
+//                "sys_resource",
+//                "sys_role",
+//                "sys_role_resource",
+//                "sys_user",
+//                "sys_user_role"
         );
 
         mpg.setStrategy(strategy);

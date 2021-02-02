@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author buhuayang
- * @since 2020-08-30
+ * @since 2021-02-02
  */
 @ApiModel(value="SysCfg对象", description="")
 public class SysCfg implements Serializable {
@@ -33,6 +33,9 @@ public class SysCfg implements Serializable {
     @ApiModelProperty(value = "记录状态")
     @TableLogic
     private String recordStatus;
+
+    @ApiModelProperty(value = "最后更新时间")
+    private String lastModifyTime;
 
 
     public String getCfgCode() {
@@ -71,6 +74,15 @@ public class SysCfg implements Serializable {
         return this;
     }
 
+    public String getLastModifyTime() {
+        return lastModifyTime;
+    }
+
+    public SysCfg setLastModifyTime(String lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "SysCfg{" +
@@ -78,6 +90,7 @@ public class SysCfg implements Serializable {
         ", cfgValue=" + cfgValue +
         ", orgFlow=" + orgFlow +
         ", recordStatus=" + recordStatus +
+        ", lastModifyTime=" + lastModifyTime +
         "}";
     }
 }
