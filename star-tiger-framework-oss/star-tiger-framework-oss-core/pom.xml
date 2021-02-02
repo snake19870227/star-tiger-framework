@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-oss</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.6.6</version>
+        <version>0.6.7</version>
     </parent>
 
     <artifactId>star-tiger-framework-oss-core</artifactId>
-    <version>0.6.6</version>
+    <version>0.6.7</version>
     <name>StarTigerFrameworkOssCore</name>
     <description>Star Tiger 脚手架项目 OSS服务 core 模块</description>
 
