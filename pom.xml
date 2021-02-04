@@ -101,6 +101,7 @@
         <module>star-tiger-framework-web</module>
         <module>star-tiger-spring-boot-autoconfigure</module>
         <module>star-tiger-spring-boot-starter</module>
+        <module>star-tiger-framework-aliyun</module>
         <module>star-tiger-framework-admin</module>
         <module>star-tiger-framework-oss</module>
         <module>star-tiger-framework-sms</module>
@@ -143,6 +144,7 @@
         <minio.version>3.0.10</minio.version>
         <aliyun-java-sdk-core.version>4.5.3</aliyun-java-sdk-core.version>
         <aliyun-sdk-oss.version>3.11.0</aliyun-sdk-oss.version>
+        <aliyun-java-sdk-dyplsapi.version>1.3.0</aliyun-java-sdk-dyplsapi.version>
     </properties>
 
     <repositories>

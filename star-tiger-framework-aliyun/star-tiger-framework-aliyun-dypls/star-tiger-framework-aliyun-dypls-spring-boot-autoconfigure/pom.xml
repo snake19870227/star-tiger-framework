@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
+        <groupId>com.github.snake19870227</groupId>
+        <version>0.6.7</version>
+    </parent>
+
+    <artifactId>star-tiger-framework-aliyun-dypls-spring-boot-autoconfigure</artifactId>
+    <version>0.6.7</version>
+    <name>StarTigerFrameworkAliyunDyplsSpringBootAutoconfigure</name>
+    <description>Star Tiger 脚手架项目 阿里云隐私电话SpringBoot自动配置 模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-aliyun-dypls-core</artifactId>
+            <version>0.6.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-aliyun-dypls-repository</artifactId>
+            <version>0.6.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-aliyun-dypls-server</artifactId>
+            <version>0.6.7</version>
+        </dependency>
+    </dependencies>
+
+</project>
