@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.6.7</version>
+        <version>0.7.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>star-tiger-samples</artifactId>
-    <version>0.6.7</version>
+    <version>0.7.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>StarTigerSamples</name>
     <description>Star Tiger 脚手架示例模块</description>
@@ -21,6 +21,7 @@
         <module>star-tiger-sample-oss</module>
         <module>star-tiger-sample-sms</module>
         <module>star-tiger-sample-admin</module>
+        <module>star-tiger-sample-aliyun-dypls-server</module>
     </modules>
 
     <dependencyManagement>
@@ -28,7 +29,7 @@
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-dependencies</artifactId>
-                <version>0.6.7</version>
+                <version>0.7.0-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

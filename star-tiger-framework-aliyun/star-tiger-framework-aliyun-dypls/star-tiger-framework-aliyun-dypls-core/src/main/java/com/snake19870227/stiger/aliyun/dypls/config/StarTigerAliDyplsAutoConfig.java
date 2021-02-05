@@ -1,4 +1,4 @@
-package com.snake19870227.stiger.aliyun.dypls.autoconfigure;
+package com.snake19870227.stiger.aliyun.dypls.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Import;
 import com.aliyuncs.profile.DefaultProfile;
 import com.snake19870227.stiger.aliyun.dypls.AliyunDyplsClient;
 import com.snake19870227.stiger.aliyun.dypls.StarTigerAliyunDyplsProperties;
-import com.snake19870227.stiger.aliyun.dypls.config.StarTigerAliDyplsServerMarkerConfig;
 
 /**
  * @author BuHuaYang
@@ -18,7 +17,6 @@ import com.snake19870227.stiger.aliyun.dypls.config.StarTigerAliDyplsServerMarke
 @Configuration
 @ConditionalOnProperty(prefix = "stiger.aliyun.dypls", name = "accesskey-id", havingValue = "")
 @EnableConfigurationProperties(StarTigerAliyunDyplsProperties.class)
-@Import(StarTigerAliDyplsServerMarkerConfig.class)
 public class StarTigerAliDyplsAutoConfig {
 
     private final StarTigerAliyunDyplsProperties aliyunDyplsProperties;

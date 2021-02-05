@@ -1,4 +1,4 @@
-package com.snake19870227.stiger.aliyun.dypls.autoconfigure;
+package com.snake19870227.stiger.aliyun.dypls.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

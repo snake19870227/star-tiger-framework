@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.snake19870227.stiger.aliyun.dypls.autoconfigure.StarTigerAliDyplsAutoConfig

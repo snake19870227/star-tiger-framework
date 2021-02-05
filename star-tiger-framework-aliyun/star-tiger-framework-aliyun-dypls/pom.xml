@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-aliyun</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.6.7</version>
+        <version>0.7.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
-    <version>0.6.7</version>
+    <version>0.7.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>StarTigerFrameworkAliyunDypls</name>
     <description>Star Tiger 脚手架项目 阿里云隐私电话 模块</description>
@@ -21,7 +21,8 @@
         <module>star-tiger-framework-aliyun-dypls-repository</module>
         <module>star-tiger-framework-aliyun-dypls-core</module>
         <module>star-tiger-framework-aliyun-dypls-server</module>
-        <module>star-tiger-framework-aliyun-dypls-spring-boot-autoconfigure</module>
+        <module>star-tiger-framework-aliyun-dypls-spring-boot-starter</module>
+        <module>star-tiger-framework-aliyun-dypls-server-spring-boot-starter</module>
     </modules>
 
 </project>
