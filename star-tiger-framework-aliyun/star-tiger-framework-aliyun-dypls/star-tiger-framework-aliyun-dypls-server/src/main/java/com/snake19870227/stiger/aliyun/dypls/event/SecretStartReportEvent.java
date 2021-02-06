@@ -7,7 +7,7 @@ import com.snake19870227.stiger.aliyun.dypls.entity.dto.SecretStartReport;
  * @author BuHuaYang
  * 2021/2/5
  */
-public class SecretStartReportEvent extends ApplicationEvent {
+public class SecretStartReportEvent extends ApplicationEvent implements SecretEvent {
 
     /**
      * Create a new {@code ApplicationEvent}.

@@ -3,6 +3,8 @@ server:
     context-path: /sampleDypls
   forward-headers-strategy: framework
 spring:
+  profiles:
+    active: dev
   application:
     name: mmk-server
   datasource:
@@ -24,8 +26,3 @@ mybatis-plus:
 stiger:
   frame:
     use-http-status-code: false
-  aliyun:
-    dypls:
-      accesskey-id: 111111111111111
-      accesskey-secret: 111111111111111
-      pool-key: 111111111111111

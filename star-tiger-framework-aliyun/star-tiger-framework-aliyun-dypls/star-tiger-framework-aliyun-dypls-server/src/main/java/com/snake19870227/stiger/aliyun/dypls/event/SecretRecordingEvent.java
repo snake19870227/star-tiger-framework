@@ -7,7 +7,7 @@ import com.snake19870227.stiger.aliyun.dypls.entity.po.AliDyplsCall;
  * @author BuHuaYang
  * 2021/2/5
  */
-public class SecretRecordingEvent extends ApplicationEvent {
+public class SecretRecordingEvent extends ApplicationEvent implements SecretEvent {
     /**
      * Create a new {@code ApplicationEvent}.
      *

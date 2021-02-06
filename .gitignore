@@ -1,5 +1,6 @@
 # 自定义
 logs/*
+application-demo.yml
 
 # Eclipse
 .project
