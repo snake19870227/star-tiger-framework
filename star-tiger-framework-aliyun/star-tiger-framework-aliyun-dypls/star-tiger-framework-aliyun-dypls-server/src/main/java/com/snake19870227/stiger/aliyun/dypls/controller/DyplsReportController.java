@@ -27,8 +27,12 @@ import com.snake19870227.stiger.aliyun.dypls.entity.dto.SecretReport;
 import com.snake19870227.stiger.aliyun.dypls.entity.dto.SecretStartReport;
 import com.snake19870227.stiger.aliyun.dypls.entity.po.AliDyplsBind;
 import com.snake19870227.stiger.aliyun.dypls.entity.po.AliDyplsCall;
+import com.snake19870227.stiger.aliyun.dypls.event.SecretRecordingEvent;
+import com.snake19870227.stiger.aliyun.dypls.event.SecretReportEvent;
+import com.snake19870227.stiger.aliyun.dypls.event.SecretStartReportEvent;
 import com.snake19870227.stiger.aliyun.dypls.service.IAliDyplsBindService;
 import com.snake19870227.stiger.aliyun.dypls.service.IAliDyplsCallService;
+import com.snake19870227.stiger.core.context.StarTigerContext;
 
 /**
  * @author BuHuaYang
@@ -61,6 +65,7 @@ public class DyplsReportController {
         if (CollUtil.isNotEmpty(reports)) {
             for (SecretStartReport report : reports) {
                 logger.info("开始呼叫:[{}]", JSONUtil.toJsonStr(report));
+                StarTigerContext.publishEvent(new SecretStartReportEvent(report));
             }
         }
 
@@ -76,7 +81,6 @@ public class DyplsReportController {
                 try {
                     String reportStr = JSONUtil.toJsonStr(report);
                     logger.info("通话结束:[{}]", reportStr);
-                    AliDyplsBind bind = getAxbBindBySubId(report.getSubId());
                     AliDyplsCall dyplsCall = new AliDyplsCall();
                     dyplsCall.setSubId(report.getSubId());
                     dyplsCall.setCallId(report.getCallId());
@@ -84,20 +88,6 @@ public class DyplsReportController {
                     dyplsCall.setPhoneb(report.getPeerNo());
                     dyplsCall.setPhonex(report.getSecretNo());
                     dyplsCall.setPoolKey(report.getPoolKey());
-                    if (bind != null) {
-                        dyplsCall.setSubType(bind.getSubType());
-                        dyplsCall.setIsRecording(bind.getIsRecording());
-                        dyplsCall.setCallDisplayType(bind.getCallDisplayType());
-
-                        aliyunDyplsClient.unbind(report.getSecretNo(), report.getSubId(), report.getPoolKey());
-
-                        bind.setStatus(2);
-
-                        aliDyplsBindService.updateById(bind);
-
-                    } else {
-                        logger.warn("未找到本地绑定记录");
-                    }
                     dyplsCall.setCallType(report.getCallType());
                     dyplsCall.setCallTime(report.getCallTime());
                     dyplsCall.setStartTime(report.getStartTime());
@@ -111,6 +101,7 @@ public class DyplsReportController {
                     dyplsCall.setOutId(report.getOutId());
                     dyplsCall.setInfo(reportStr);
                     aliDyplsCallService.save(dyplsCall);
+                    StarTigerContext.publishEvent(new SecretReportEvent(dyplsCall));
                 } catch (Exception e) {
                     logger.error("记录通话报告失败", e);
                 }
@@ -130,19 +121,18 @@ public class DyplsReportController {
                     logger.info("录制结束:[{}]", JSONUtil.toJsonStr(report));
                     LocalDateTime time = LocalDateTimeUtil.of(report.getCallTime());
                     String callTime = LocalDateTimeUtil.format(time, "yyyy-MM-dd HH:mm:ss");
-                    AliDyplsCall call = getAxbCallByCallId(report.getCallId());
-                    String fileUrl = null;
+                    AliDyplsCall call = getCallByCallId(report.getCallId());
                     QueryRecordFileDownloadUrlResponse urlResponse = aliyunDyplsClient.queryRecordFileDownloadUrl(report.getCallId(), callTime, report.getPoolKey());
                     if (urlResponse != null && StrUtil.isNotBlank(urlResponse.getDownloadUrl())) {
                         logger.info("录制文件下载地址:{}", urlResponse.getDownloadUrl());
-
+                        if (call != null) {
+                            call.setRecordTime(callTime);
+                            call.setRecordFileUrl(urlResponse.getDownloadUrl());
+                            aliDyplsCallService.updateById(call);
+                            StarTigerContext.publishEvent(new SecretRecordingEvent(new SecretRecordingEvent.SecretRecordInfo(call, urlResponse.getDownloadUrl())));
+                        }
                     } else {
                         logger.warn("未得到录制下载地址,响应:[\n{}\n]", JSONUtil.toJsonStr(urlResponse));
-                    }
-                    if (call != null) {
-                        call.setRecordTime(callTime);
-                        call.setRecordFileUrl(fileUrl);
-                        aliDyplsCallService.updateById(call);
                     }
                 } catch (Exception e) {
                     logger.error("记录录音报告失败", e);
@@ -153,7 +143,7 @@ public class DyplsReportController {
         return MapUtil.of("code", 0);
     }
 
-    private AliDyplsBind getAxbBindBySubId(String subId) {
+    private AliDyplsBind getBindBySubId(String subId) {
         QueryWrapper<AliDyplsBind> bindWrapper = new QueryWrapper<>();
         bindWrapper.eq("sub_id", subId);
         List<AliDyplsBind> list = aliDyplsBindService.list(bindWrapper);
@@ -163,7 +153,7 @@ public class DyplsReportController {
         return null;
     }
 
-    private AliDyplsCall getAxbCallByCallId(String callId) {
+    private AliDyplsCall getCallByCallId(String callId) {
         QueryWrapper<AliDyplsCall> bindWrapper = new QueryWrapper<>();
         bindWrapper.eq("call_id", callId);
         List<AliDyplsCall> list = aliDyplsCallService.list(bindWrapper);
