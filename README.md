@@ -22,6 +22,9 @@
                   `'"'    `. `.            `--'     `._;
                             `'"'
 ```
+
+**特别感谢 [Jetbrains](https://www.jetbrains.com/?from=StarTiger) 提供的License**  
+
 由 https://github.com/snake19870227/StarTiger/tree/master/StarTiger-dependencies 迁移至此  
 
 **已推送到Maven中央仓库** [查看](https://search.maven.org/search?q=com.github.snake19870227)

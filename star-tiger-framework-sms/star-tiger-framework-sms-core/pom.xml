@@ -6,36 +6,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
+        <artifactId>star-tiger-framework-sms</artifactId>
         <groupId>com.github.snake19870227</groupId>
         <version>0.7.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-aliyun-dypls-server</artifactId>
+    <artifactId>star-tiger-framework-sms-core</artifactId>
     <version>0.7.0-SNAPSHOT</version>
-    <name>StarTigerFrameworkAliyunDyplsServer</name>
-    <description>Star Tiger 脚手架项目 阿里云隐私电话中心服务 模块</description>
+    <name>StarTigerFrameworkSmsCore</name>
+    <description>Star Tiger 脚手架项目 短信核心 模块</description>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-spring-boot-starter</artifactId>
+            <artifactId>star-tiger-framework-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-aliyun-dypls-core</artifactId>
-            <version>0.7.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-aliyun-dypls-repository</artifactId>
+            <artifactId>star-tiger-framework-sms-repository</artifactId>
             <version>0.7.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

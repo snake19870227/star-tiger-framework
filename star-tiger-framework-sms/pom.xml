@@ -18,9 +18,9 @@
     <description>Star Tiger 脚手架项目 短信服务 模块</description>
 
     <modules>
-        <module>star-tiger-framework-sms-aliyun</module>
-        <module>star-tiger-framework-sms-spring-boot-autoconfigure</module>
-        <module>star-tiger-framework-sms-spring-boot-starter</module>
+        <module>star-tiger-framework-sms-core</module>
+        <module>star-tiger-framework-sms-repository</module>
+        <module>star-tiger-framework-sms-server</module>
     </modules>
 
     <dependencyManagement>

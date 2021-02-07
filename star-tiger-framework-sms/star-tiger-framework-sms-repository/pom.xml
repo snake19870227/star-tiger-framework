@@ -6,15 +6,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
+        <artifactId>star-tiger-framework-sms</artifactId>
         <groupId>com.github.snake19870227</groupId>
         <version>0.7.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-aliyun-dypls-repository</artifactId>
+    <artifactId>star-tiger-framework-sms-repository</artifactId>
     <version>0.7.0-SNAPSHOT</version>
-    <name>StarTigerFrameworkAliyunDyplsRepository</name>
-    <description>Star Tiger 脚手架项目 阿里云隐私电话持久化 模块</description>
+    <name>StarTigerFrameworkSmsRepository</name>
+    <description>Star Tiger 脚手架项目 短信持久化 模块</description>
 
     <dependencies>
 
@@ -56,7 +56,6 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>
