@@ -4,9 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <modules>
-        <module>star-tiger-framework-aliyun-sms-core</module>
-    </modules>
 
     <parent>
         <artifactId>star-tiger-framework-aliyun</artifactId>
@@ -19,5 +16,10 @@
     <packaging>pom</packaging>
     <name>StarTigerFrameworkAliyunSms</name>
     <description>Star Tiger 脚手架项目 阿里云短信 模块</description>
+
+    <modules>
+        <module>star-tiger-framework-aliyun-sms-core</module>
+        <module>star-tiger-framework-aliyun-sms-spring-boot-starter</module>
+    </modules>
 
 </project>

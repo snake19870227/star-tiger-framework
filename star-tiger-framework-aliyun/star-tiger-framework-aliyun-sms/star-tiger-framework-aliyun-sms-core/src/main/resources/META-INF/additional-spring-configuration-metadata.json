@@ -1,0 +1,16 @@
+{
+  "properties": [
+    {
+      "name": "stiger.aliyun.sms.accesskey-id",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsProperties",
+      "description": "阿里云操作key."
+    },
+    {
+      "name": "stiger.aliyun.sms.accesskey-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsProperties",
+      "description": "阿里云操作key对应密钥."
+    }
+  ]
+}

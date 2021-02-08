@@ -2,7 +2,7 @@ spring:
   application:
     name: stiger-sample-sms
 stiger:
-  sms:
-    aliyun:
-      access-key-id: 1111111111111
-      access-secret: 1111111111111
+  aliyun:
+    sms:
+      accesskey-id:
+      accesskey-secret:

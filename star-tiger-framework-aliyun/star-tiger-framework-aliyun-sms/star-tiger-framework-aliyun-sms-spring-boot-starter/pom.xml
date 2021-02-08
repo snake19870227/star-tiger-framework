@@ -6,26 +6,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>star-tiger-samples</artifactId>
+        <artifactId>star-tiger-framework-aliyun-sms</artifactId>
         <groupId>com.github.snake19870227</groupId>
         <version>0.7.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-sample-sms</artifactId>
+    <artifactId>star-tiger-framework-aliyun-sms-spring-boot-starter</artifactId>
+    <version>0.7.1-SNAPSHOT</version>
+    <name>StarTigerFrameworkAliyunSmsSpringBootStarter</name>
+    <description>Star Tiger 脚手架项目 阿里云短信SpringBoot自动配置 模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-aliyun-sms-spring-boot-starter</artifactId>
+            <artifactId>star-tiger-framework-aliyun-sms-core</artifactId>
+            <version>0.7.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

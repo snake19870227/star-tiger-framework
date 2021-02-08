@@ -145,6 +145,7 @@
         <aliyun-java-sdk-core.version>4.5.3</aliyun-java-sdk-core.version>
         <aliyun-sdk-oss.version>3.11.0</aliyun-sdk-oss.version>
         <aliyun-java-sdk-dyplsapi.version>1.3.0</aliyun-java-sdk-dyplsapi.version>
+        <aliyun-java-sdk-dysmsapi.version>2.1.0</aliyun-java-sdk-dysmsapi.version>
     </properties>
 
     <repositories>

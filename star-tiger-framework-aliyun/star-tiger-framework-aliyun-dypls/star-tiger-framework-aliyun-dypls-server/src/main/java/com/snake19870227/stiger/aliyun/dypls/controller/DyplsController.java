@@ -26,7 +26,6 @@ import com.snake19870227.stiger.aliyun.dypls.AliyunDyplsClient;
 import com.snake19870227.stiger.aliyun.dypls.entity.po.AliDyplsBind;
 import com.snake19870227.stiger.aliyun.dypls.enums.DyplsTypeEnum;
 import com.snake19870227.stiger.aliyun.dypls.service.IAliDyplsBindService;
-import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.utils.FormatUtil;
 import com.snake19870227.stiger.web.exception.MvcException;
 import com.snake19870227.stiger.web.restful.RestResp;
@@ -100,7 +99,7 @@ public class DyplsController {
                 dyplsBind.setOutId(outId);
                 aliDyplsBindService.save(dyplsBind);
 
-                return RestResp.ok(dyplsBind);
+                return RestResp.okByData(dyplsBind);
             } else {
                 throw new MvcException("绑定失败");
             }
@@ -157,7 +156,7 @@ public class DyplsController {
                 dyplsBind.setOutId(outId);
                 aliDyplsBindService.save(dyplsBind);
 
-                return RestResp.ok(dyplsBind);
+                return RestResp.okByData(dyplsBind);
             } else {
                 throw new MvcException("绑定失败");
             }

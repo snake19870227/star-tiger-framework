@@ -21,6 +21,7 @@
         <module>star-tiger-framework-sms-core</module>
         <module>star-tiger-framework-sms-repository</module>
         <module>star-tiger-framework-sms-server</module>
+        <module>star-tiger-framework-sms-server-spring-boot-starter</module>
     </modules>
 
     <dependencyManagement>

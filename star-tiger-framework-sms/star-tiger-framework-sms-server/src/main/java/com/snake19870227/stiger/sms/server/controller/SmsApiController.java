@@ -37,7 +37,7 @@ public class SmsApiController {
 
     private static final Logger logger = LoggerFactory.getLogger(SmsApiController.class);
 
-    @Autowired(required = false)
+    @Autowired
     private SmsClient smsClient;
 
     private final ISmsLogService smsLogService;
@@ -61,7 +61,7 @@ public class SmsApiController {
             if (template == null) {
                 template = smsClient.queryTemplate(req.getTemplateCode());
                 if (template == null) {
-                    return RestResp.buildResp("20001");
+                    return RestResp.ok("20001");
                 }
                 smsTemplateService.save(template);
             }

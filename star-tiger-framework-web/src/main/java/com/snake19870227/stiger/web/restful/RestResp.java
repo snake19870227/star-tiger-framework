@@ -30,9 +30,14 @@ public class RestResp<T> {
         return createResp(StarTigerWebConstant.StatusCode.CODE_0000, message, null);
     }
 
-    public static <T> RestResp<T> ok(T data) {
+    public static <T> RestResp<T> okByData(T data) {
         String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_0000);
         return createResp(StarTigerWebConstant.StatusCode.CODE_0000, msg, data);
+    }
+
+    public static <T> RestResp<T> okByCode(String code) {
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code);
+        return createResp(code, msg, null);
     }
 
     public static RestResp<?> failure() {
