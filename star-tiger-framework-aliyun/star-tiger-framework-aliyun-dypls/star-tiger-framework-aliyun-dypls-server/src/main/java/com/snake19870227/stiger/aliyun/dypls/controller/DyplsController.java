@@ -100,7 +100,7 @@ public class DyplsController {
                 dyplsBind.setOutId(outId);
                 aliDyplsBindService.save(dyplsBind);
 
-                return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000, dyplsBind);
+                return RestResp.ok(dyplsBind);
             } else {
                 throw new MvcException("绑定失败");
             }
@@ -157,7 +157,7 @@ public class DyplsController {
                 dyplsBind.setOutId(outId);
                 aliDyplsBindService.save(dyplsBind);
 
-                return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000, dyplsBind);
+                return RestResp.ok(dyplsBind);
             } else {
                 throw new MvcException("绑定失败");
             }
@@ -195,10 +195,10 @@ public class DyplsController {
             UnbindSubscriptionResponse response = aliyunDyplsClient.unbind(phonex, subId, poolKey);
 
             if (StrUtil.equalsIgnoreCase("OK", response.getCode())) {
-                return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000);
+                return RestResp.ok();
             }
 
-            return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_9999, null, response.getCode() + " - " + response.getMessage());
+            return RestResp.failure(response.getCode() + " - " + response.getMessage());
         } catch (Exception e) {
             throw new MvcException(e);
         }

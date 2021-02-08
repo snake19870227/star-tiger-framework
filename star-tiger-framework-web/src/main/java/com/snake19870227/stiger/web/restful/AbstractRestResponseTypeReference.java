@@ -5,5 +5,5 @@ import org.springframework.core.ParameterizedTypeReference;
 /**
  * @author Bu HuaYang
  */
-public abstract class AbstractRestResponseTypeReference<T> extends ParameterizedTypeReference<RestResponse<T>> {
+public abstract class AbstractRestResponseTypeReference<T> extends ParameterizedTypeReference<RestResp<T>> {
 }

@@ -1,10 +1,10 @@
 package com.snake19870227.stiger.web.restful;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.context.StarTigerContext;
+import com.snake19870227.stiger.web.StarTigerWebConstant;
+import com.snake19870227.stiger.web.exception.BaseControllerException;
 
 /**
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
@@ -21,32 +21,74 @@ public class RestResp<T> {
     @ApiModelProperty(value = "结果业务对象")
     private T data;
 
+    public static RestResp<?> ok() {
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_0000);
+        return createResp(StarTigerWebConstant.StatusCode.CODE_0000, msg, null);
+    }
+
+    public static RestResp<?> ok(String message) {
+        return createResp(StarTigerWebConstant.StatusCode.CODE_0000, message, null);
+    }
+
+    public static <T> RestResp<T> ok(T data) {
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_0000);
+        return createResp(StarTigerWebConstant.StatusCode.CODE_0000, msg, data);
+    }
+
+    public static RestResp<?> failure() {
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_9999);
+        return createResp(StarTigerWebConstant.StatusCode.CODE_9999, msg, null);
+    }
+
+    public static RestResp<?> failure(String message) {
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_9998, message);
+        return createResp(StarTigerWebConstant.StatusCode.CODE_9998, msg, null);
+    }
+
+    public static RestResp<?> failure(BaseControllerException e) {
+        return createResp(e.getErrorCode(), e.getMessage(), null);
+    }
+
+    public static RestResp<?> failure(Exception e) {
+        if (e instanceof BaseControllerException) {
+            return failure(((BaseControllerException) e));
+        } else {
+            String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_9998, e.getMessage());
+            return createResp(StarTigerWebConstant.StatusCode.STATUS_CODE_9998, msg, null);
+        }
+    }
+
+    @Deprecated
     public static <T> RestResp<T> buildResp(String code, T data) {
-        String msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + code);
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code);
         return createResp(code, msg, data);
     }
 
+    @Deprecated
     public static <T> RestResp<T> buildResp(String code, T data, Object... placeholders) {
-        String msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + code, placeholders);
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code, placeholders);
         return createResp(code, msg, data);
     }
 
+    @Deprecated
     public static <T> RestResp<T> buildResp(String code, Exception ex) {
         String msg;
         if (ex != null) {
-            msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + code, ex.getMessage());
+            msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code, ex.getMessage());
         } else {
-            msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + code);
+            msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code);
         }
         return createResp(code, msg, null);
     }
 
+    @Deprecated
     public static <T> RestResp<T> buildResp(String code, String msg) {
         return createResp(code, msg, null);
     }
 
+    @Deprecated
     public static <T> RestResp<T> buildResp(String code) {
-        String msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + code);
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code);
         return createResp(code, msg, null);
     }
 

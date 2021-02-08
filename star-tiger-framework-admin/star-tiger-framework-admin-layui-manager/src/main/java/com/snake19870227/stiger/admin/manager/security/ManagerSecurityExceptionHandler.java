@@ -23,6 +23,7 @@ import com.snake19870227.stiger.admin.common.StarTigerAdminConstant;
 import com.snake19870227.stiger.core.StarTigerFrameProperties;
 import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.context.StarTigerContext;
+import com.snake19870227.stiger.web.StarTigerWebConstant;
 import com.snake19870227.stiger.web.restful.RestResp;
 import com.snake19870227.stiger.web.utils.WebUtil;
 
@@ -50,7 +51,7 @@ public class ManagerSecurityExceptionHandler implements AuthenticationEntryPoint
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
 
-        String msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + AUTH_EXCEPTION_STATUS_CODE);
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + AUTH_EXCEPTION_STATUS_CODE);
 
         logger.error(msg, authException);
 
@@ -80,7 +81,7 @@ public class ManagerSecurityExceptionHandler implements AuthenticationEntryPoint
     public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException, ServletException {
 
-        String msg = StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + ACCESS_DENIED_STATUS_CODE);
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + ACCESS_DENIED_STATUS_CODE);
 
         logger.error(msg, accessDeniedException);
 

@@ -22,25 +22,25 @@ public abstract class BaseControllerException extends RuntimeException {
     protected String errorCode;
 
     public BaseControllerException(String errorCode, Object... args) {
-        super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args));
+        super(StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + errorCode, args));
         this.errorCode = errorCode;
         this.useHttpStatusCode = true;
     }
 
     public BaseControllerException(String errorCode, Throwable cause, Object... args) {
-        super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args), cause);
+        super(StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + errorCode, args), cause);
         this.errorCode = errorCode;
         this.useHttpStatusCode = true;
     }
 
     public BaseControllerException(String errorCode, boolean useHttpStatusCode, Object... args) {
-        super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args));
+        super(StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + errorCode, args));
         this.errorCode = errorCode;
         this.useHttpStatusCode = useHttpStatusCode;
     }
 
     public BaseControllerException(String errorCode, boolean useHttpStatusCode, Throwable cause, Object... args) {
-        super(StarTigerContext.getMessage(StarTigerConstant.StatusCode.PREFIX_CODE + errorCode, args), cause);
+        super(StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + errorCode, args), cause);
         this.errorCode = errorCode;
         this.useHttpStatusCode = useHttpStatusCode;
     }
@@ -48,9 +48,9 @@ public abstract class BaseControllerException extends RuntimeException {
     public BaseControllerException(Throwable cause) {
         super(cause);
         if (BusinessException.class.isAssignableFrom(cause.getClass())) {
-            this.errorCode = StarTigerConstant.StatusCode.CODE_9998;
+            this.errorCode = StarTigerWebConstant.StatusCode.CODE_9998;
         } else {
-            this.errorCode = StarTigerConstant.StatusCode.CODE_9999;
+            this.errorCode = StarTigerWebConstant.StatusCode.CODE_9999;
         }
     }
 
@@ -85,9 +85,10 @@ public abstract class BaseControllerException extends RuntimeException {
 
     private void loadBusinessCauseMessages(List<String> causeMessages, Throwable t) {
         if (t instanceof BusinessException) {
-            causeMessages.add(t.getMessage());
             if (t.getCause() != null) {
                 loadBusinessCauseMessages(causeMessages, t.getCause());
+            } else {
+                causeMessages.add(t.getMessage());
             }
         }
     }

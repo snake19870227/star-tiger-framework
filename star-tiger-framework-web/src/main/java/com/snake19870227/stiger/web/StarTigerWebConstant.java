@@ -5,6 +5,21 @@ package com.snake19870227.stiger.web;
  */
 public class StarTigerWebConstant {
 
+    public static class StatusCode {
+
+        public static final String PREFIX_CODE = "code.";
+
+        public static final String CODE_0000 = "0000";
+
+        public static final String STATUS_CODE_0000 = PREFIX_CODE + CODE_0000;
+        public static final String CODE_9999 = "9999";
+
+        public static final String STATUS_CODE_9999 = PREFIX_CODE + CODE_9999;
+        public static final String CODE_9998 = "9998";
+
+        public static final String STATUS_CODE_9998 = PREFIX_CODE + CODE_9998;
+    }
+
     public static class ViewName {
         public static final String ERROR_500 = "error/500";
         public static final String ERROR_404 = "error/404";

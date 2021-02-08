@@ -22,6 +22,7 @@ import com.snake19870227.stiger.sms.entity.po.SmsLog;
 import com.snake19870227.stiger.sms.entity.po.SmsTemplate;
 import com.snake19870227.stiger.sms.service.ISmsLogService;
 import com.snake19870227.stiger.sms.service.ISmsTemplateService;
+import com.snake19870227.stiger.web.StarTigerWebConstant;
 import com.snake19870227.stiger.web.exception.MvcException;
 import com.snake19870227.stiger.web.restful.RestResp;
 
@@ -76,7 +77,7 @@ public class SmsApiController {
             smsLog.setCreateDatetime(LocalDateTimeUtil.format(LocalDateTime.now(), "yyyyMMddHHmmss"));
             smsLogService.save(smsLog);
 
-            return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000);
+            return RestResp.ok();
         } catch (Exception e) {
             throw new MvcException(e);
         }

@@ -11,7 +11,7 @@
       "name": "stiger.frame.use-http-status-code",
       "type": "java.lang.Boolean",
       "sourceType": "com.snake19870227.stiger.core.StarTigerFrameProperties",
-      "description": "决定全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)是否同时设置 Http Status Code.",
+      "description": "决定全局异常处理后, 针对业务异常(BaseControllerException、BaseBusinessException)是否同时设置 Http Status Code, 只针对ajax请求.",
       "defaultValue": true
     },
     {
