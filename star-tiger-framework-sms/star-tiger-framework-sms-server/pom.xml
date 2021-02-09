@@ -19,6 +19,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-web</artifactId>
         </dependency>

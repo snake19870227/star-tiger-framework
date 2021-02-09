@@ -11,15 +11,22 @@
         <version>0.7.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-aliyun-sms-spring-boot-starter</artifactId>
+    <artifactId>star-tiger-framework-aliyun-sms-server</artifactId>
     <version>0.7.1-SNAPSHOT</version>
-    <name>StarTigerFrameworkAliyunSmsSpringBootStarter</name>
-    <description>Star Tiger 脚手架项目 阿里云短信SpringBoot自动配置 模块</description>
+    <name>StarTigerFrameworkAliyunSmsServer</name>
+    <description>Star Tiger 脚手架项目 阿里云短信简单服务中心 模块</description>
 
     <dependencies>
+
         <dependency>
             <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-aliyun-sms-server</artifactId>
+            <artifactId>star-tiger-framework-sms-server</artifactId>
+            <version>0.7.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-aliyun-sms-core</artifactId>
             <version>0.7.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

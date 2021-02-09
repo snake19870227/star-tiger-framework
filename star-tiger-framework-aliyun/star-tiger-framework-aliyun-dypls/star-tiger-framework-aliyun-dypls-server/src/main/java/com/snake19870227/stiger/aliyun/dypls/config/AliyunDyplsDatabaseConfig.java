@@ -16,7 +16,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParser
 @Configuration
 @AutoConfigureAfter(MybatisPlusAutoConfiguration.class)
 @MapperScan(basePackages = "com.snake19870227.stiger.aliyun.dypls.dao")
-public class StarTigerAliyunDyplsDatabaseConfig {
+public class AliyunDyplsDatabaseConfig {
 
     @Bean
     @ConditionalOnMissingBean

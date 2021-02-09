@@ -14,8 +14,8 @@ import com.snake19870227.stiger.aliyun.dypls.service.impl.AliDyplsCallServiceImp
  * 2021/2/4
  */
 @Configuration
-@AutoConfigureAfter(StarTigerAliyunDyplsDatabaseConfig.class)
-public class StarTigerAliyunDyplsServiceConfig {
+@AutoConfigureAfter(AliyunDyplsDatabaseConfig.class)
+public class AliyunDyplsServiceConfig {
 
     @Bean
     @ConditionalOnMissingBean

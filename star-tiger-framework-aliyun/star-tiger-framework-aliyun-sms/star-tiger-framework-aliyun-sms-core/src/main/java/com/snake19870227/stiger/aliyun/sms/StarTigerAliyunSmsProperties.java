@@ -11,6 +11,7 @@ public class StarTigerAliyunSmsProperties {
 
     private String accesskeyId;
     private String accesskeySecret;
+    private String signName;
 
     public String getAccesskeyId() {
         return accesskeyId;
@@ -26,5 +27,13 @@ public class StarTigerAliyunSmsProperties {
 
     public void setAccesskeySecret(String accesskeySecret) {
         this.accesskeySecret = accesskeySecret;
+    }
+
+    public String getSignName() {
+        return signName;
+    }
+
+    public void setSignName(String signName) {
+        this.signName = signName;
     }
 }

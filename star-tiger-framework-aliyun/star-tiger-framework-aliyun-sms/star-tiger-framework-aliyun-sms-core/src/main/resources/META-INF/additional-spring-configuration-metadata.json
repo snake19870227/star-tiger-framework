@@ -11,6 +11,12 @@
       "type": "java.lang.String",
       "sourceType": "com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsProperties",
       "description": "阿里云操作key对应密钥."
+    },
+    {
+      "name": "stiger.aliyun.sms.sign-name",
+      "type": "java.lang.String",
+      "sourceType": "com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsProperties",
+      "description": "阿里云短信签名."
     }
   ]
 }

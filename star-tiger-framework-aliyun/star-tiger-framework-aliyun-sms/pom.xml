@@ -19,6 +19,7 @@
 
     <modules>
         <module>star-tiger-framework-aliyun-sms-core</module>
+        <module>star-tiger-framework-aliyun-sms-server</module>
         <module>star-tiger-framework-aliyun-sms-spring-boot-starter</module>
     </modules>
 

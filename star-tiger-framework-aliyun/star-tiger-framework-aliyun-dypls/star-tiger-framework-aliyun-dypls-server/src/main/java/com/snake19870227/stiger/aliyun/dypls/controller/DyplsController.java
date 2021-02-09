@@ -99,7 +99,7 @@ public class DyplsController {
                 dyplsBind.setOutId(outId);
                 aliDyplsBindService.save(dyplsBind);
 
-                return RestResp.okByData(dyplsBind);
+                return RestResp.okWithData(dyplsBind);
             } else {
                 throw new MvcException("绑定失败");
             }
@@ -156,7 +156,7 @@ public class DyplsController {
                 dyplsBind.setOutId(outId);
                 aliDyplsBindService.save(dyplsBind);
 
-                return RestResp.okByData(dyplsBind);
+                return RestResp.okWithData(dyplsBind);
             } else {
                 throw new MvcException("绑定失败");
             }

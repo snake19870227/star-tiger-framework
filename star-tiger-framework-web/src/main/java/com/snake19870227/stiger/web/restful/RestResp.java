@@ -26,18 +26,23 @@ public class RestResp<T> {
         return createResp(StarTigerWebConstant.StatusCode.CODE_0000, msg, null);
     }
 
-    public static RestResp<?> ok(String message) {
+    public static <T> RestResp<T> ok(String message) {
         return createResp(StarTigerWebConstant.StatusCode.CODE_0000, message, null);
     }
 
-    public static <T> RestResp<T> okByData(T data) {
+    public static <T> RestResp<T> okWithData(T data) {
         String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.STATUS_CODE_0000);
         return createResp(StarTigerWebConstant.StatusCode.CODE_0000, msg, data);
     }
 
-    public static <T> RestResp<T> okByCode(String code) {
-        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + code);
-        return createResp(code, msg, null);
+    public static <T> RestResp<T> okByCode(String codeNo) {
+        String msg = StarTigerContext.getMessage(StarTigerWebConstant.StatusCode.PREFIX_CODE + codeNo);
+        return createResp(codeNo, msg, null);
+    }
+
+    public static <T> RestResp<T> okByCode(String prefix, String codeNo) {
+        String msg = StarTigerContext.getMessage(prefix + codeNo);
+        return createResp(codeNo, msg, null);
     }
 
     public static RestResp<?> failure() {

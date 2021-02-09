@@ -1,4 +1,4 @@
-package com.snake19870227.stiger.aliyun.dypls.config;
+package com.snake19870227.stiger.sms.server.config;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -15,6 +15,6 @@ import org.springframework.context.annotation.Import;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(AliyunDyplsServerMarkerConfig.class)
-public @interface EnableAliyunDyplsServer {
+@Import(StarTigerSmsServerMarkerConfig.class)
+public @interface EnableSmsServer {
 }

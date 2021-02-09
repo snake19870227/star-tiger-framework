@@ -1,4 +1,4 @@
-package com.snake19870227.stiger.sms.server.controller;
+package com.snake19870227.stiger.aliyun.sms.server.controller;
 
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.core.map.MapUtil;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsClient;
 import com.snake19870227.stiger.sms.entity.po.SmsLog;
 import com.snake19870227.stiger.sms.service.ISmsLogService;
 
@@ -26,7 +27,7 @@ import com.snake19870227.stiger.sms.service.ISmsLogService;
  * 2021/1/5
  */
 @RestController
-@RequestMapping(path = "/aliyun/sms")
+@RequestMapping(path = "/sms")
 public class SmsAliyunReportController {
 
     private static final Logger logger = LoggerFactory.getLogger(SmsAliyunReportController.class);
@@ -37,10 +38,9 @@ public class SmsAliyunReportController {
         this.smsLogService = smsLogService;
     }
 
-    @PostMapping(path = "/{channel}/report")
+    @PostMapping(path = "/aliyun/report")
     @ResponseBody
-    public Map<String, Object> report(@PathVariable(name = "channel") String channel,
-                                      @RequestBody String reqStr) {
+    public Map<String, Object> report(@RequestBody String reqStr) {
         logger.info("收到阿里云短信发送状态回执[{}]", reqStr);
         if (JSONUtil.isJsonArray(reqStr)) {
             JSONArray objects = JSONUtil.parseArray(reqStr);
@@ -56,7 +56,7 @@ public class SmsAliyunReportController {
                 String outId = o.getStr("out_id");
                 QueryWrapper<SmsLog> wrapper = new QueryWrapper<>();
                 wrapper.eq("send_id", bizId)
-                    .eq("channel", "channel");
+                    .eq("channel", StarTigerAliyunSmsClient.CHANNEL);
                 SmsLog smsLog = smsLogService.getOne(wrapper);
                 if (smsLog == null) {
                     logger.warn("未找到本地发送记录[{}|{}|{}]", phoneNumber, bizId, errMsg);

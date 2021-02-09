@@ -10,13 +10,12 @@ public class StarTigerWebConstant {
         public static final String PREFIX_CODE = "code.";
 
         public static final String CODE_0000 = "0000";
-
         public static final String STATUS_CODE_0000 = PREFIX_CODE + CODE_0000;
+
         public static final String CODE_9999 = "9999";
-
         public static final String STATUS_CODE_9999 = PREFIX_CODE + CODE_9999;
-        public static final String CODE_9998 = "9998";
 
+        public static final String CODE_9998 = "9998";
         public static final String STATUS_CODE_9998 = PREFIX_CODE + CODE_9998;
     }
 

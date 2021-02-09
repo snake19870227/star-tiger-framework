@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * 2021/2/4
  */
 @Configuration(proxyBeanMethods = false)
-public class StarTigerAliDyplsServerMarkerConfig {
+public class AliyunDyplsServerMarkerConfig {
 
     @Bean
     public Marker aliyunDyplsServerMarker() {

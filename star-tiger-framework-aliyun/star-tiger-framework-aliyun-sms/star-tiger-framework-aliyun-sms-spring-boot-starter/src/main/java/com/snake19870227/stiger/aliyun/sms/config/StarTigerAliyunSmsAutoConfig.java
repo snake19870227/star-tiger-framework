@@ -1,5 +1,6 @@
 package com.snake19870227.stiger.aliyun.sms.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -8,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import com.aliyuncs.profile.DefaultProfile;
 import com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsClient;
 import com.snake19870227.stiger.aliyun.sms.StarTigerAliyunSmsProperties;
+import com.snake19870227.stiger.aliyun.sms.server.controller.SmsAliyunReportController;
+import com.snake19870227.stiger.sms.server.config.StarTigerSmsServerMarkerConfig;
+import com.snake19870227.stiger.sms.service.ISmsLogService;
 
 /**
  * @author BuHuaYang
@@ -29,5 +33,11 @@ public class StarTigerAliyunSmsAutoConfig {
     public StarTigerAliyunSmsClient aliyunSmsClient() {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", aliyunSmsProperties.getAccesskeyId(), aliyunSmsProperties.getAccesskeySecret());
         return new StarTigerAliyunSmsClient(profile);
+    }
+
+    @ConditionalOnBean(StarTigerSmsServerMarkerConfig.Marker.class)
+    @Bean
+    public SmsAliyunReportController smsAliyunReportController(ISmsLogService smsLogService) {
+        return new SmsAliyunReportController(smsLogService);
     }
 }

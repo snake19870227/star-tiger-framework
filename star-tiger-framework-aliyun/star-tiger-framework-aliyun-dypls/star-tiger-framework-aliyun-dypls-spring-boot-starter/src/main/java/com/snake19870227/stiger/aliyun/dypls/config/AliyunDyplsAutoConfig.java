@@ -17,11 +17,11 @@ import com.snake19870227.stiger.aliyun.dypls.StarTigerAliyunDyplsProperties;
 @Configuration
 @ConditionalOnProperty(prefix = "stiger.aliyun.dypls", name = "accesskey-id", havingValue = "")
 @EnableConfigurationProperties(StarTigerAliyunDyplsProperties.class)
-public class StarTigerAliDyplsAutoConfig {
+public class AliyunDyplsAutoConfig {
 
     private final StarTigerAliyunDyplsProperties aliyunDyplsProperties;
 
-    public StarTigerAliDyplsAutoConfig(StarTigerAliyunDyplsProperties aliyunDyplsProperties) {
+    public AliyunDyplsAutoConfig(StarTigerAliyunDyplsProperties aliyunDyplsProperties) {
         this.aliyunDyplsProperties = aliyunDyplsProperties;
     }
 
