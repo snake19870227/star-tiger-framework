@@ -5,7 +5,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import com.snake19870227.stiger.sms.server.controller.SmsApiController;
+import com.snake19870227.stiger.sms.server.task.SmsSendTrigger;
+import com.snake19870227.stiger.sms.server.task.SmsSender;
 import com.snake19870227.stiger.sms.service.ISmsLogService;
 import com.snake19870227.stiger.sms.service.ISmsTemplateService;
 
@@ -19,6 +22,7 @@ import com.snake19870227.stiger.sms.service.ISmsTemplateService;
         StarTigerSmsDatabaseConfig.class,
         StarTigerSmsServiceConfig.class
 })
+@EnableScheduling
 public class StarTigerSmsServerAutoConfig {
 
     @Bean
@@ -26,5 +30,17 @@ public class StarTigerSmsServerAutoConfig {
     public SmsApiController smsApiController(ISmsLogService smsLogService,
                                              ISmsTemplateService smsTemplateService) {
         return new SmsApiController(smsLogService, smsTemplateService);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SmsSender smsSender() {
+        return new SmsSender();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SmsSendTrigger smsSendTrigger() {
+        return new SmsSendTrigger();
     }
 }
