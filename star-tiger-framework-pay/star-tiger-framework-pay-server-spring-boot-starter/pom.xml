@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>star-tiger-framework-pay</artifactId>
+        <groupId>com.github.snake19870227</groupId>
+        <version>0.7.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>star-tiger-framework-pay-server-spring-boot-starter</artifactId>
+    <version>0.7.1-SNAPSHOT</version>
+    <name>StarTigerFrameworkPayServerSpringBootStarter</name>
+    <description>Star Tiger 脚手架项目 支付中心自动配置 模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-pay-spring-boot-starter</artifactId>
+            <version>0.7.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-pay-server</artifactId>
+            <version>0.7.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

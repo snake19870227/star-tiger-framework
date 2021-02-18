@@ -11,10 +11,19 @@
         <version>0.7.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>star-tiger-framework-amap</artifactId>
+    <artifactId>star-tiger-framework-pay</artifactId>
     <version>0.7.1-SNAPSHOT</version>
-    <name>StarTigerFrameworkAMAP</name>
-    <description>Star Tiger 脚手架项目 高德地图服务 模块</description>
+    <packaging>pom</packaging>
+    <name>StarTigerFrameworkPay</name>
+    <description>Star Tiger 脚手架项目 支付 模块</description>
+
+    <modules>
+        <module>star-tiger-framework-pay-repository</module>
+        <module>star-tiger-framework-pay-core</module>
+        <module>star-tiger-framework-pay-server</module>
+        <module>star-tiger-framework-pay-spring-boot-starter</module>
+        <module>star-tiger-framework-pay-server-spring-boot-starter</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -106,17 +115,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-
-        <!-- spring boot starter -->
-
-        <!-- Star Tiger -->
-        <dependency>
-            <groupId>com.github.snake19870227</groupId>
-            <artifactId>star-tiger-framework-core</artifactId>
-            <version>0.7.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>

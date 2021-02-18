@@ -155,6 +155,16 @@
                 <version>${minio.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-pay</artifactId>
+                <version>${wxjava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-easysdk</artifactId>
+                <version>${alipay-easysdk.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-core</artifactId>
                 <version>${aliyun-java-sdk-core.version}</version>
@@ -247,22 +257,17 @@
             </dependency>
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
-                <artifactId>star-tiger-framework-aliyun-sms</artifactId>
-                <version>0.7.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-aliyun-sms-core</artifactId>
                 <version>0.7.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
-                <artifactId>star-tiger-framework-aliyun-sms-spring-boot-starter</artifactId>
+                <artifactId>star-tiger-framework-aliyun-sms-server</artifactId>
                 <version>0.7.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
-                <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
+                <artifactId>star-tiger-framework-aliyun-sms-spring-boot-starter</artifactId>
                 <version>0.7.1-SNAPSHOT</version>
             </dependency>
             <dependency>
@@ -292,11 +297,6 @@
             </dependency>
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
-                <artifactId>star-tiger-framework-sms</artifactId>
-                <version>0.7.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-sms-core</artifactId>
                 <version>0.7.1-SNAPSHOT</version>
             </dependency>
@@ -313,6 +313,11 @@
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-sms-server-spring-boot-starter</artifactId>
+                <version>0.7.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-amap</artifactId>
                 <version>0.7.1-SNAPSHOT</version>
             </dependency>
         </dependencies>

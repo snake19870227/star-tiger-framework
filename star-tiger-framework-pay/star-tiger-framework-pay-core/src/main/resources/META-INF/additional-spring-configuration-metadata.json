@@ -1,0 +1,25 @@
+{
+  "groups": [
+    {
+      "name": "stiger.pay.alipay-merchants",
+      "sourceType": "com.snake19870227.stiger.pay.properties.StarTigerPayProperties",
+      "type": "java.util.Map",
+      "sourceMethod": "getAlipayMerchants()",
+      "description": "支付宝商户."
+    },
+    {
+      "name": "stiger.pay.wxpay-merchants",
+      "sourceType": "com.snake19870227.stiger.pay.properties.StarTigerPayProperties",
+      "type": "java.util.Map",
+      "sourceMethod": "getWxpayMerchants()",
+      "description": "微信商户."
+    },
+    {
+      "name": "stiger.pay.biz-merchants",
+      "sourceType": "com.snake19870227.stiger.pay.properties.StarTigerPayProperties",
+      "type": "java.util.Map",
+      "sourceMethod": "getBizMerchants()",
+      "description": "业务类型与商户对照."
+    }
+  ]
+}
