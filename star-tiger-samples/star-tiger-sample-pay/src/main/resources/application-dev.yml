@@ -1,0 +1,12 @@
+stiger:
+  pay:
+    alipay-merchants:
+      mmkAlipay:
+        app-id: 111111
+        merchant-private-key: 111111
+        alipay-public-key: 1111111
+        notify-url: http://demo.org${server.servlet.context-path}/alipayNotify
+    biz-merchants:
+      Demo1Alipay: mmkAlipay
+    biz-infos:
+      Demo1: 测试支付业务1

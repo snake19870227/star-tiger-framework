@@ -55,7 +55,7 @@ import static com.snake19870227.stiger.pay.PayConstant.Wxpay.SUB_CODE_ORDERNOTEX
  * @author BuHuaYang
  * 2020/9/23
  */
-public class WxpayChannelHandler extends BasePayChannelHandler {
+public class WxpayChannelHandler extends BasePayChannelHandler<String> {
 
     protected WxpayChannelHandler(StarTigerPayProperties starTigerPayProperties,
                                   IPayStorage payStorage) {

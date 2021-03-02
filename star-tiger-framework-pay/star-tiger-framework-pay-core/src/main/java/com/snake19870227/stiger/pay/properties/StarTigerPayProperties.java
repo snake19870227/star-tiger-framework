@@ -1,5 +1,6 @@
 package com.snake19870227.stiger.pay.properties;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,6 +19,13 @@ public class StarTigerPayProperties {
     private Map<String, String> bizMerchants;
 
     private Map<String, String> bizInfos;
+
+    public StarTigerPayProperties() {
+        this.alipayMerchants = new HashMap<>();
+        this.wxpayMerchants = new HashMap<>();
+        this.bizMerchants = new HashMap<>();
+        this.bizInfos = new HashMap<>();
+    }
 
     public Map<String, WxpayProperties> getWxpayMerchants() {
         return wxpayMerchants;

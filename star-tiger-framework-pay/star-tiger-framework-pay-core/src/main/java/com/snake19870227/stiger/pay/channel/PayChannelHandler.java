@@ -43,7 +43,7 @@ public interface PayChannelHandler<T> {
      * @param payWay 支付途径
      * @param notifyData 通知请求体
      */
-    void doNotify(String payWay, String notifyData);
+    void doNotify(String payWay, T notifyData);
 
     /**
      * 退款

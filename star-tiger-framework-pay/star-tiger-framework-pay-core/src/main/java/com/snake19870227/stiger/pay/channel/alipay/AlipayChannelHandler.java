@@ -4,6 +4,7 @@ import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
+import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 
@@ -28,8 +29,10 @@ import com.snake19870227.stiger.pay.PayConstant;
 import com.snake19870227.stiger.pay.channel.BasePayChannelHandler;
 import com.snake19870227.stiger.pay.channel.ChannelClientParam;
 import com.snake19870227.stiger.pay.channel.IPayStorage;
+import com.snake19870227.stiger.pay.config.AlipayConfig;
 import com.snake19870227.stiger.pay.entity.dto.RefundInfo;
 import com.snake19870227.stiger.pay.entity.dto.TradeInfo;
+import com.snake19870227.stiger.pay.entity.po.PayNotify;
 import com.snake19870227.stiger.pay.entity.po.PayRefund;
 import com.snake19870227.stiger.pay.entity.po.PayTrade;
 import com.snake19870227.stiger.pay.enums.PayChannelEnum;
@@ -50,7 +53,7 @@ import static com.snake19870227.stiger.pay.PayConstant.Alipay.SUB_CODE_ACQ_TRADE
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/08/27
  */
-public class AlipayChannelHandler extends BasePayChannelHandler {
+public class AlipayChannelHandler extends BasePayChannelHandler<Map<String, String>> {
 
     private static final Logger logger = LoggerFactory.getLogger(AlipayChannelHandler.class);
 
@@ -194,8 +197,110 @@ public class AlipayChannelHandler extends BasePayChannelHandler {
     }
 
     @Override
-    public void doNotify(String payWay, String notifyData) {
+    public void doNotify(String payWay, Map<String, String> notifyData) {
+        String notifyId = notifyData.get(PayConstant.Alipay.PARAM_NAME_NOTIFY_ID);
+        String appId = notifyData.get(PayConstant.Alipay.PARAM_NAME_APP_ID);
+        String tradeStatus = notifyData.get(PayConstant.Alipay.PARAM_NAME_TRADE_STATUS);
+        String outTradeNo = notifyData.get(PayConstant.Alipay.PARAM_NAME_OUT_TRADE_NO);
+        String passbackParams = notifyData.get(PayConstant.Alipay.PARAM_NAME_PASSBACK_PARAMS);
+        String tradeNo = notifyData.get(PayConstant.Alipay.PARAM_NAME_TRADE_NO);
+        String notifyTime = notifyData.get(PayConstant.Alipay.PARAM_NAME_NOTIFY_TIME);
+        String buyerId = notifyData.get(PayConstant.Alipay.PARAM_NAME_BUYER_ID);
+        String buyerLogonId = notifyData.get(PayConstant.Alipay.PARAM_NAME_BUYER_LOGON_ID);
 
+        PayNotify payNotify = new PayNotify();
+
+        if (StrUtil.isBlank(passbackParams)) {
+            logger.warn("支付宝通知请求不包含passbackParams信息.");
+        } else {
+            String passbackStr = URLUtil.decode(passbackParams, StandardCharsets.UTF_8);
+            JSONObject jsonObject = JSONUtil.parseObj(passbackStr);
+            String bizType = jsonObject.getStr("bizType");
+            String bizFlow = jsonObject.getStr("bizFlow");
+            payNotify.setPayWay(getPayWayByBizType(bizType, PayChannelEnum.Alipay));
+        }
+        payNotify.setNotifyTime(LocalDateTimeUtil.format(LocalDateTime.now(), "yyyyMMddHHmmss"));
+        payNotify.setPayChannelId(PayChannelEnum.Alipay.getId());
+        payNotify.setPayChannelName(PayChannelEnum.Alipay.getName());
+        payNotify.setNotifyId(notifyId);
+        payNotify.setOutTradeNo(outTradeNo);
+        payNotify.setTradeNo(tradeNo);
+        payNotify.setNotifyContent(JSONUtil.toJsonPrettyStr(notifyData));
+        payStorage.saveNotify(payNotify);
+
+        if (StrUtil.isBlank(appId)) {
+            throw new BusinessException("支付宝通知请求不包含AppId信息.");
+        }
+
+        if (StrUtil.isBlank(tradeStatus)) {
+            throw new BusinessException("支付宝通知请求不包含tradeStatus信息.");
+        }
+
+        if (StrUtil.isBlank(outTradeNo)) {
+            throw new BusinessException("支付宝通知请求不包含outTradeNo信息.");
+        }
+
+        if (StrUtil.isBlank(tradeNo)) {
+            throw new BusinessException("支付宝通知请求不包含tradeNo信息.");
+        }
+
+        if (StrUtil.isBlank(notifyTime)) {
+            throw new BusinessException("支付宝通知请求不包含notifyTime信息.");
+        }
+
+        if (StrUtil.isBlank(buyerId)) {
+            logger.warn("支付宝通知请求不包含buyerId信息.");
+        }
+
+        if (StrUtil.isBlank(buyerLogonId)) {
+            logger.warn("支付宝通知请求不包含buyerLogonId信息.");
+        }
+
+        com.alipay.easysdk.payment.common.Client client;
+        try {
+            client = StarTigerContext.getBean(
+                    AlipayConfig.COMMON_PREFIX + appId,
+                    com.alipay.easysdk.payment.common.Client.class
+            );
+        } catch (BeansException e) {
+            throw new PaySdkBeanNotFoundException(AlipayConfig.COMMON_PREFIX + appId, e);
+        }
+
+        try {
+
+            boolean flag = client.verifyNotify(notifyData);
+
+            if (!flag) {
+                throw new BusinessException("支付宝通知请求验证失败.[" + HttpUtil.toParams(notifyData) + "]");
+            }
+
+            PayTrade payTrade = payStorage.getTradeByOutTradeNo(outTradeNo);
+
+            payTrade.setTradeStatus(tradeStatus);
+            payTrade.setTradeNo(tradeNo);
+
+            if (StrUtil.equals(PayConstant.Alipay.TRADE_SUCCESS, tradeStatus)) {
+                payTrade.setStatusId(TradeStatusEnum.Success.getId());
+                payTrade.setStatusName(TradeStatusEnum.Success.getName());
+                payTrade.setTradeBuyerAccount(buyerLogonId);
+                payTrade.setTradeBuyerId(buyerId);
+                payTrade.setTradeSuccessTime(LocalDateTimeUtil.format(LocalDateTimeUtil.parse(notifyTime, "yyyy-MM-dd HH:mm:ss"), "yyyyMMddHHmmss"));
+
+                payStorage.updateTrade(payTrade);
+
+                StarTigerContext.publishEvent(new PaySuccessEvent(new PaySuccessEvent.PaySuccessEventSource(payTrade)));
+            }
+
+            if (StrUtil.equals(PayConstant.Alipay.TRADE_CLOSED, tradeStatus)) {
+                payTrade.setStatusId(TradeStatusEnum.Closed.getId());
+                payTrade.setStatusName(TradeStatusEnum.Closed.getName());
+
+                payStorage.updateTrade(payTrade);
+            }
+
+        } catch (Exception e) {
+            throw new BusinessException("支付宝通知请求验证失败.", e);
+        }
     }
 
     @Override

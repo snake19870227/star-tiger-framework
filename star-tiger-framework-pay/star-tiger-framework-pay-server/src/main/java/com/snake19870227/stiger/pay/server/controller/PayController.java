@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -19,10 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.snake19870227.stiger.core.StarTigerConstant;
 import com.snake19870227.stiger.core.exception.BusinessException;
 import com.snake19870227.stiger.core.utils.EnumUtil;
+import com.snake19870227.stiger.pay.channel.IPayStorage;
 import com.snake19870227.stiger.pay.channel.PayChannelFactory;
 import com.snake19870227.stiger.pay.channel.PayChannelHandler;
 import com.snake19870227.stiger.pay.entity.dto.CreateTradeReq;
@@ -34,8 +32,6 @@ import com.snake19870227.stiger.pay.enums.PayChannelEnum;
 import com.snake19870227.stiger.pay.enums.PaymentMethodEnum;
 import com.snake19870227.stiger.pay.enums.TradeStatusEnum;
 import com.snake19870227.stiger.pay.exception.PayChannelRemoteTradeNotExistException;
-import com.snake19870227.stiger.pay.service.IPayService;
-import com.snake19870227.stiger.pay.service.IPayTradeService;
 import com.snake19870227.stiger.pay.util.PayDtoUtil;
 import com.snake19870227.stiger.web.exception.MvcException;
 import com.snake19870227.stiger.web.restful.RestResp;
@@ -51,13 +47,10 @@ public class PayController {
 
     private static final Logger logger = LoggerFactory.getLogger(PayController.class);
 
-    private final IPayTradeService payTradeService;
+    private final IPayStorage payStorage;
 
-    private final IPayService payService;
-
-    public PayController(IPayTradeService payTradeService, IPayService payService) {
-        this.payTradeService = payTradeService;
-        this.payService = payService;
+    public PayController(IPayStorage payStorage) {
+        this.payStorage = payStorage;
     }
 
     @ApiOperation("创建订单")
@@ -85,9 +78,9 @@ public class PayController {
                 throw new BusinessException("无效的支付方式");
             }
 
-            PayChannelHandler payChannelHandler = PayChannelFactory.createPayChannelHandler(payChannelEnum);
+            PayChannelHandler<?> payChannelHandler = PayChannelFactory.createPayChannelHandler(payChannelEnum);
 
-            PayTrade existsTrade = loadExistsTrade(bizFlow);
+            PayTrade existsTrade = payStorage.loadExistsTrade(bizFlow);
 
             if (existsTrade != null) {
 
@@ -120,13 +113,13 @@ public class PayController {
                     logger.warn("已存在的本地订单未在渠道方创建远程订单,关闭本地订单并继续业务", e);
                     existsTrade.setStatusId(TradeStatusEnum.Closed.getId());
                     existsTrade.setStatusName(TradeStatusEnum.Closed.getName());
-                    payTradeService.updateById(existsTrade);
+                    payStorage.updateTrade(existsTrade);
                 }
             }
 
             TradeInfo<?> tradeInfo = payChannelHandler.create(bizType, bizFlow, paymentMethodEnum, tradePrice, metadataMap);
 
-            return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000, tradeInfo);
+            return RestResp.okWithData(tradeInfo);
 
         } catch (Exception e) {
             throw new MvcException(e);
@@ -139,7 +132,7 @@ public class PayController {
 
         try {
 
-            PayTrade payTrade = payService.getTradeByOutTradeNo(outTradeNo);
+            PayTrade payTrade = payStorage.getTradeByOutTradeNo(outTradeNo);
 
             if (payTrade == null) {
                 throw new BusinessException("未找到商户订单号对应的订单记录.[" + outTradeNo + "]");
@@ -155,7 +148,7 @@ public class PayController {
                     throw new BusinessException("无效的支付渠道标识");
                 }
 
-                PayChannelHandler payChannelHandler = PayChannelFactory.createPayChannelHandler(payChannelEnum);
+                PayChannelHandler<?> payChannelHandler = PayChannelFactory.createPayChannelHandler(payChannelEnum);
 
                 try {
                     payChannelHandler.query(payTrade);
@@ -166,12 +159,12 @@ public class PayController {
                     if (LocalDateTime.now().isAfter(expireDateTime)) {
                         payTrade.setStatusId(TradeStatusEnum.Closed.getId());
                         payTrade.setStatusName(TradeStatusEnum.Closed.getName());
-                        payTradeService.updateById(payTrade);
+                        payStorage.updateTrade(payTrade);
                     }
                 }
             }
 
-            return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000, PayDtoUtil.createTradeInfo(payTrade));
+            return RestResp.okWithData(PayDtoUtil.createTradeInfo(payTrade));
         } catch (Exception e) {
             throw new MvcException(e);
         }
@@ -183,7 +176,7 @@ public class PayController {
 
         try {
 
-            PayTrade payTrade = payService.getTradeByOutTradeNo(refundTradeReq.getOutTradeNo());
+            PayTrade payTrade = payStorage.getTradeByOutTradeNo(refundTradeReq.getOutTradeNo());
 
             if (payTrade == null) {
                 throw new BusinessException("未找到支付订单");
@@ -195,23 +188,14 @@ public class PayController {
                 throw new BusinessException("无效的支付渠道标识");
             }
 
-            PayChannelHandler payChannelHandler = PayChannelFactory.createPayChannelHandler(payChannelEnum);
+            PayChannelHandler<?> payChannelHandler = PayChannelFactory.createPayChannelHandler(payChannelEnum);
 
             RefundInfo refundInfo = payChannelHandler.refund(payTrade, refundTradeReq.getRefundPrice());
 
-            return RestResp.buildResp(StarTigerConstant.StatusCode.CODE_0000, refundInfo);
+            return RestResp.okWithData(refundInfo);
 
         } catch (Exception e) {
             throw new MvcException(e);
         }
-    }
-
-    private PayTrade loadExistsTrade(String bizFlow) {
-        QueryWrapper<PayTrade> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("biz_flow", bizFlow)
-                .ne("status_id", TradeStatusEnum.Closed.getId())
-        ;
-        List<PayTrade> payTrades = payTradeService.list(queryWrapper);
-        return payTrades.isEmpty() ? null : payTrades.get(0);
     }
 }

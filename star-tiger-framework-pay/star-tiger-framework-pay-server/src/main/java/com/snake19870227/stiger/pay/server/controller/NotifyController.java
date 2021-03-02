@@ -1,6 +1,10 @@
 package com.snake19870227.stiger.pay.server.controller;
 
+import cn.hutool.extra.servlet.ServletUtil;
+
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +18,7 @@ import com.snake19870227.stiger.core.exception.BusinessException;
 import com.snake19870227.stiger.pay.channel.PayChannelFactory;
 import com.snake19870227.stiger.pay.channel.PayChannelHandler;
 import com.snake19870227.stiger.pay.enums.PayChannelEnum;
+import com.snake19870227.stiger.pay.properties.AlipayProperties;
 import com.snake19870227.stiger.pay.properties.StarTigerPayProperties;
 import com.snake19870227.stiger.pay.properties.WxpayProperties;
 
@@ -32,15 +37,18 @@ public class NotifyController {
         this.starTigerPayProperties = starTigerPayProperties;
     }
 
-    @PostMapping(path = "/alipayNotify")
+    @PostMapping(path = "/alipayNotify/{payWay}")
     @ResponseBody
-    public String alipayNotify(HttpServletRequest request) {
+    public String alipayNotify(@PathVariable(name = "payWay") String payWay,
+                               HttpServletRequest request) {
 
         try {
 
-            PayChannelHandler payChannelHandler = PayChannelFactory.createPayChannelHandler(PayChannelEnum.Alipay);
+            AlipayProperties alipayProperties = starTigerPayProperties.getAlipayMerchants().get(payWay);
 
-            payChannelHandler.doNotify(request);
+            PayChannelHandler<Map<String, String>> payChannelHandler = PayChannelFactory.createPayChannelHandler(PayChannelEnum.Alipay);
+
+            payChannelHandler.doNotify(payWay, ServletUtil.getParamMap(request));
 
             return "success";
         } catch (Exception e) {
@@ -65,9 +73,9 @@ public class NotifyController {
                 throw new BusinessException("收到未知商户的退款通知.[" + payWay + "]");
             }
 
-            PayChannelHandler payChannelHandler = PayChannelFactory.createPayChannelHandler(PayChannelEnum.Wxpay);
+            PayChannelHandler<String> payChannelHandler = PayChannelFactory.createPayChannelHandler(PayChannelEnum.Wxpay);
 
-            payChannelHandler.doRefundNotify(payWay, notifyData);
+            payChannelHandler.doNotify(payWay, notifyData);
 
             return WxPayNotifyResponse.success("成功");
         } catch (Exception e) {
@@ -92,9 +100,9 @@ public class NotifyController {
                 throw new BusinessException("收到未知商户的支付通知.[" + payWay + "]");
             }
 
-            PayChannelHandler payChannelHandler = PayChannelFactory.createPayChannelHandler(PayChannelEnum.Wxpay);
+            PayChannelHandler<String> payChannelHandler = PayChannelFactory.createPayChannelHandler(PayChannelEnum.Wxpay);
 
-            payChannelHandler.doNotify(payWay, notifyData);
+            payChannelHandler.doRefundNotify(payWay, notifyData);
 
             return WxPayNotifyResponse.success("成功");
         } catch (Exception e) {

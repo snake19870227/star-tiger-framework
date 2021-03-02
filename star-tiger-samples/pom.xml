@@ -22,6 +22,7 @@
         <module>star-tiger-sample-sms</module>
         <module>star-tiger-sample-admin</module>
         <module>star-tiger-sample-aliyun-dypls-server</module>
+        <module>star-tiger-sample-pay</module>
     </modules>
 
     <dependencyManagement>

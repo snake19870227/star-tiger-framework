@@ -14,7 +14,7 @@ import com.snake19870227.stiger.pay.properties.WxpayProperties;
  * @author Bu HuaYang (buhuayang1987@foxmail.com)
  * 2020/08/28
  */
-public abstract class BasePayChannelHandler implements PayChannelHandler {
+public abstract class BasePayChannelHandler<T> implements PayChannelHandler<T> {
 
     protected final Object TRADE_NO_LOCK;
 

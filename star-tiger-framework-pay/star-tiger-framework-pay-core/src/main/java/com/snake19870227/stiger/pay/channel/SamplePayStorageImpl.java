@@ -3,6 +3,7 @@ package com.snake19870227.stiger.pay.channel;
 import cn.hutool.core.date.LocalDateTimeUtil;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.snake19870227.stiger.pay.entity.po.PayNotify;
@@ -50,5 +51,10 @@ public class SamplePayStorageImpl implements IPayStorage {
     @Override
     public void saveNotify(PayNotify notify) {
 
+    }
+
+    @Override
+    public PayTrade loadExistsTrade(String bizFlow) {
+        return null;
     }
 }

@@ -1,5 +1,7 @@
 package com.snake19870227.stiger.pay.channel;
 
+import java.util.List;
+
 import com.snake19870227.stiger.pay.entity.po.PayNotify;
 import com.snake19870227.stiger.pay.entity.po.PayRefund;
 import com.snake19870227.stiger.pay.entity.po.PayTrade;
@@ -27,4 +29,6 @@ public interface IPayStorage {
     void saveRefund(PayRefund refund);
 
     void saveNotify(PayNotify notify);
+
+    PayTrade loadExistsTrade(String bizFlow);
 }

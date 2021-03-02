@@ -232,6 +232,31 @@
             </dependency>
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-pay-repository</artifactId>
+                <version>0.7.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-pay-core</artifactId>
+                <version>0.7.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-pay-server</artifactId>
+                <version>0.7.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-pay-spring-boot-starter</artifactId>
+                <version>0.7.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-pay-server-spring-boot-starter</artifactId>
+                <version>0.7.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-oss-core</artifactId>
                 <version>0.7.1-SNAPSHOT</version>
             </dependency>

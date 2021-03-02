@@ -25,7 +25,7 @@ public class PayChannelFactory {
         PAY_CHANNEL_HANDLER_MAP.put(PayChannelEnum.Wxpay.getId(), WxpayChannelHandler.class);
     }
 
-    public static PayChannelHandler createPayChannelHandler(PayChannelEnum payChannelEnum) {
+    public static <T> PayChannelHandler<T> createPayChannelHandler(PayChannelEnum payChannelEnum) {
         Class<? extends PayChannelHandler> handlerClass = PAY_CHANNEL_HANDLER_MAP.get(payChannelEnum.getId());
         if (handlerClass == null) {
             throw new PayChannelNotFoundException(payChannelEnum);
