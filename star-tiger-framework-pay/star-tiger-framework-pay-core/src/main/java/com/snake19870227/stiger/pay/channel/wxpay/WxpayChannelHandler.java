@@ -87,14 +87,17 @@ public class WxpayChannelHandler extends BasePayChannelHandler<String> {
             String createDateTime = LocalDateTimeUtil.format(now, "yyyyMMddHHmmss");
             String expireDateTime = LocalDateTimeUtil.format(now.plusMinutes(15), "yyyyMMddHHmmss");
 
-            WxPayUnifiedOrderRequest request = WxPayUnifiedOrderRequest.newBuilder().body(bizType)
+            WxPayUnifiedOrderRequest.WxPayUnifiedOrderRequestBuilder requestBuilder = WxPayUnifiedOrderRequest.newBuilder().body(bizType)
                     .outTradeNo(outTradeNo)
                     .openid(openid)
                     .totalFee(BaseWxPayRequest.yuanToFen(tradePrice.toString()))
                     .tradeType(paymentMethodEnum.getId())
                     .timeStart(createDateTime).timeExpire(expireDateTime)
-                    .spbillCreateIp(wxpayProperties.getSpbillCreateIp())
-                    .build();
+                    .spbillCreateIp(wxpayProperties.getSpbillCreateIp());
+            if (StrUtil.isNotBlank(openid)) {
+                requestBuilder.openid(openid);
+            }
+            WxPayUnifiedOrderRequest request = requestBuilder.build();
             ChannelClientParam clientParam = handleResponse(wxPayService, request);
 
             PayTrade payTrade = new PayTrade();
