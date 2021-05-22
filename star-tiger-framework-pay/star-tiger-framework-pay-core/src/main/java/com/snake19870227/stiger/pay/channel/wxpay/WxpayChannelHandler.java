@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.springframework.beans.BeansException;
 import com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult;
+import com.github.binarywang.wxpay.bean.order.WxPayAppOrderResult;
 import com.github.binarywang.wxpay.bean.order.WxPayMpOrderResult;
 import com.github.binarywang.wxpay.bean.request.BaseWxPayRequest;
 import com.github.binarywang.wxpay.bean.request.WxPayRefundRequest;
@@ -310,6 +311,12 @@ public class WxpayChannelHandler extends BasePayChannelHandler<String> {
             case WxPayConstants.TradeType.JSAPI: {
                 WxpayJsapiClientParam clientParam = new WxpayJsapiClientParam();
                 WxPayMpOrderResult result = wxpayService.createOrder(request);
+                BeanUtil.copyProperties(result, clientParam);
+                return clientParam;
+            }
+            case WxPayConstants.TradeType.APP: {
+                WxpayAppClientParam clientParam = new WxpayAppClientParam();
+                WxPayAppOrderResult result = wxpayService.createOrder(request);
                 BeanUtil.copyProperties(result, clientParam);
                 return clientParam;
             }

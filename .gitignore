@@ -1,6 +1,7 @@
 # 自定义
 logs/*
 application-demo.yml
+*.p12
 
 # Eclipse
 .project

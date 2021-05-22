@@ -3,6 +3,7 @@ package com.snake19870227.stiger.pay.entity.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -24,6 +25,10 @@ public class CreateTradeReq {
 
     @ApiModelProperty("扩展信息map")
     private Map<String, Object> metadataMap;
+
+    public CreateTradeReq() {
+        this.metadataMap = new HashMap<>();
+    }
 
     public String getBizType() {
         return bizType;

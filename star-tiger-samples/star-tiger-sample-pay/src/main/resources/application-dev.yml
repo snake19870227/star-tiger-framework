@@ -1,12 +1,23 @@
 stiger:
   pay:
     alipay-merchants:
-      mmkAlipay:
+      testAlipay:
         app-id: 111111
         merchant-private-key: 111111
         alipay-public-key: 1111111
         notify-url: http://demo.org${server.servlet.context-path}/alipayNotify
+    wxpay-merchants:
+      testWxpay:
+        app-id: 111111
+        secret: 111111
+        mch-id: 111111
+        mch-key: 111111
+        key-path: 'classpath*:apiclient_cert.p12'
+        spbill-create-ip: 127.0.0.1
+        notify-url: http://demo.org${server.servlet.context-path}/wxpayNotify/testWxpay
+        refund-notify-url: http://demo.org${server.servlet.context-path}/wxpayNotify/refund/testWxpay
     biz-merchants:
-      Demo1Alipay: mmkAlipay
+      Demo1Alipay: testAlipay
+      Demo1Wxpay: testWxpay
     biz-infos:
       Demo1: 测试支付业务1
