@@ -57,7 +57,7 @@ public class AlipayChannelHandler extends BasePayChannelHandler<Map<String, Stri
 
     private static final Logger logger = LoggerFactory.getLogger(AlipayChannelHandler.class);
 
-    protected AlipayChannelHandler(StarTigerPayProperties starTigerPayProperties,
+    public AlipayChannelHandler(StarTigerPayProperties starTigerPayProperties,
                                    IPayStorage payStorage) {
         super(starTigerPayProperties, payStorage);
     }

@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import com.snake19870227.stiger.admin.dao.base.SysCfgMapper;
 import com.snake19870227.stiger.pay.channel.IPayStorage;
+import com.snake19870227.stiger.pay.channel.PayChannelHandler;
+import com.snake19870227.stiger.pay.channel.alipay.AlipayChannelHandler;
 import com.snake19870227.stiger.pay.config.StarTigerPaySampleConfig;
 import com.snake19870227.stiger.pay.dao.base.PayNotifyMapper;
 import com.snake19870227.stiger.pay.dao.base.PayRefundMapper;
@@ -37,6 +39,12 @@ public class StarTigerPayServerAutoConfig {
                                   PayRefundMapper payRefundMapper,
                                   PayNotifyMapper payNotifyMapper) {
         return new DatabasePayStorageImpl(sysCfgMapper, payTradeMapper, payRefundMapper, payNotifyMapper);
+    }
+
+    @Bean
+    public AlipayChannelHandler alipayChannelHandler(IPayStorage payStorage,
+                                                     StarTigerPayProperties starTigerPayProperties) {
+        return new AlipayChannelHandler(starTigerPayProperties, payStorage);
     }
 
     @Bean
