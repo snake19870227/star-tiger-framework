@@ -28,6 +28,7 @@ public class WxpayConfig implements ApplicationContextAware {
     private final StarTigerPayProperties starTigerPayProperties;
 
     public WxpayConfig(StarTigerPayProperties starTigerPayProperties) {
+        logger.info("实例化配置类：" + this.getClass().getName());
         this.starTigerPayProperties = starTigerPayProperties;
     }
 

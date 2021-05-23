@@ -39,6 +39,7 @@ public class AlipayConfig implements ApplicationContextAware {
     private final StarTigerPayProperties starTigerPayProperties;
 
     public AlipayConfig(StarTigerPayProperties starTigerPayProperties) {
+        logger.info("实例化配置类：" + this.getClass().getName());
         this.starTigerPayProperties = starTigerPayProperties;
     }
 

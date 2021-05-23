@@ -1,6 +1,8 @@
 package com.snake19870227.stiger.pay.server.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +15,17 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParser
  * 2021/2/14
  */
 @Configuration
-@AutoConfigureAfter(MybatisPlusAutoConfiguration.class)
-@MapperScan(basePackages = "com.snake19870227.stiger.pay.dao")
+@MapperScan(basePackages = {
+        "com.snake19870227.stiger.admin.dao",
+        "com.snake19870227.stiger.pay.dao"
+})
 public class StarTigerPayDatabaseConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(StarTigerPayDatabaseConfig.class);
+
+    public StarTigerPayDatabaseConfig() {
+        logger.info("实例化配置类：" + this.getClass().getName());
+    }
 
     @Bean
     public PaginationInterceptor paginationInterceptor() {

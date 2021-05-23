@@ -16,10 +16,10 @@ spring:
 mybatis-plus:
   global-config:
     banner: false
-#    db-config:
-#      logic-delete-field: record_status
-#      logic-delete-value: N
-#      logic-not-delete-value: Y
+    db-config:
+      logic-delete-field: record_status
+      logic-delete-value: N
+      logic-not-delete-value: Y
   configuration:
     lazy-loading-enabled: false
     aggressive-lazy-loading: false
