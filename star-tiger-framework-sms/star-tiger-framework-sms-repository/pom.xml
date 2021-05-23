@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-sms</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.7.0</version>
+        <version>0.8.0</version>
     </parent>
 
     <artifactId>star-tiger-framework-sms-repository</artifactId>
-    <version>0.7.0</version>
+    <version>0.8.0</version>
     <name>StarTigerFrameworkSmsRepository</name>
     <description>Star Tiger 脚手架项目 短信持久化 模块</description>
 

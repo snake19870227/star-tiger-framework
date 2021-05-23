@@ -8,7 +8,7 @@
     <parent>
         <artifactId>star-tiger-samples</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.7.0</version>
+        <version>0.8.0</version>
     </parent>
 
     <artifactId>star-tiger-sample-pay</artifactId>

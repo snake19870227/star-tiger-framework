@@ -5,12 +5,12 @@
     <parent>
         <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.7.0</version>
+        <version>0.8.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>star-tiger-framework-aliyun-dypls-server-spring-boot-starter</artifactId>
-    <version>0.7.0</version>
+    <version>0.8.0</version>
     <name>StarTigerFrameworkAliyunDyplsServerSpringBootStarter</name>
     <description>Star Tiger 脚手架项目 阿里云隐私电话简单中心服务SpringBoot自动配置 模块</description>
 
@@ -18,12 +18,12 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-aliyun-dypls-server</artifactId>
-            <version>0.7.0</version>
+            <version>0.8.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-aliyun-dypls-spring-boot-starter</artifactId>
-            <version>0.7.0</version>
+            <version>0.8.0</version>
         </dependency>
     </dependencies>
 

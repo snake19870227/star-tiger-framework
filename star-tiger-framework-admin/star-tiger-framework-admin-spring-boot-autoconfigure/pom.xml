@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-admin</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.7.0</version>
+        <version>0.8.0</version>
     </parent>
 
     <artifactId>star-tiger-framework-admin-spring-boot-autoconfigure</artifactId>
-    <version>0.7.0</version>
+    <version>0.8.0</version>
     <name>StarTigerFrameworkAdminSpringBootAutoconfigure</name>
     <description>Star Tiger 脚手架项目 后台管理 spring boot 自动配置模块</description>
 
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-admin-layui-manager</artifactId>
-            <version>0.7.0</version>
+            <version>0.8.0</version>
         </dependency>
     </dependencies>
 
