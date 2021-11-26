@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-pay</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.8.0</version>
+        <version>0.9.0</version>
     </parent>
 
     <artifactId>star-tiger-framework-pay-repository</artifactId>
-    <version>0.8.0</version>
+    <version>0.9.0</version>
     <name>StarTigerFrameworkPayRepository</name>
     <description>Star Tiger 脚手架项目 支付持久化 模块</description>
 
@@ -76,13 +76,13 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-core</artifactId>
-            <version>0.8.0</version>
+            <version>0.9.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-admin-repository</artifactId>
-            <version>0.8.0</version>
+            <version>0.9.0</version>
         </dependency>
 
     </dependencies>
