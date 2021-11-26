@@ -11,20 +11,10 @@
         <version>0.8.0</version>
     </parent>
 
-    <artifactId>star-tiger-samples</artifactId>
+    <artifactId>star-tiger-framework-tplus</artifactId>
     <version>0.8.0</version>
-    <packaging>pom</packaging>
-    <name>StarTigerSamples</name>
-    <description>Star Tiger 脚手架示例模块</description>
-
-    <modules>
-        <module>star-tiger-sample-oss</module>
-        <module>star-tiger-sample-sms</module>
-        <module>star-tiger-sample-admin</module>
-        <module>star-tiger-sample-aliyun-dypls-server</module>
-        <module>star-tiger-sample-pay</module>
-        <module>star-tiger-sample-tplus</module>
-    </modules>
+    <name>StarTigerFrameworkTplus</name>
+    <description>Star Tiger 脚手架项目 畅捷通T+ 模块</description>
 
     <dependencyManagement>
         <dependencies>
@@ -39,6 +29,19 @@
     </dependencyManagement>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -116,5 +119,53 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.chanjet</groupId>
+            <artifactId>chanjet-openapi-java-sdk</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.snake19870227</groupId>
+            <artifactId>star-tiger-framework-core</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -145,6 +145,11 @@
                 <version>${sharding-jdbc.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-ooxml.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash-logback-encoder.version}</version>
@@ -183,6 +188,11 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
                 <version>${aliyun-java-sdk-dysmsapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chanjet</groupId>
+                <artifactId>chanjet-openapi-java-sdk</artifactId>
+                <version>${chanjet-openapi-java-sdk.version}</version>
             </dependency>
 
             <dependency>
@@ -343,6 +353,11 @@
             <dependency>
                 <groupId>com.github.snake19870227</groupId>
                 <artifactId>star-tiger-framework-amap</artifactId>
+                <version>0.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.snake19870227</groupId>
+                <artifactId>star-tiger-framework-tplus</artifactId>
                 <version>0.8.0</version>
             </dependency>
         </dependencies>

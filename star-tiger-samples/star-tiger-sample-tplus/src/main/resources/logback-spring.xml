@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+    <include resource="com/snake19870227/stiger/core/log/StarTigerLogBase.xml"/>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="LOG_FILE_APPENDER"/>
+    </root>
+
+    <logger name="com.hepingdairy.tplus" level="debug"/>
+    <logger name="com.hepingdairy.tplus.dao" level="error"/>
+    <logger name="com.snake19870227.stiger" level="info"/>
+
+</configuration>

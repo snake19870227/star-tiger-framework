@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hepingdairy.tplus.dao.ext.ExtMapper">
+
+    <select id="allMenusWithUser" resultType="com.hepingdairy.tplus.entity.po.ViewUserMenu">
+        select t1.FLOW as menu_flow,
+               t1.MENU_NAME,
+               t1.MENU_PATH,
+               t2.USER_ID
+        from SYS_MENU t1
+        left join SYS_USER_MENU t2
+            on t1.FLOW = t2.MENU_FLOW
+                   and t2.USER_ID=#{userId}
+    </select>
+</mapper>

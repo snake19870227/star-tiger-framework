@@ -1,0 +1,25 @@
+server:
+  port: 39933
+info:
+  tags:
+    environment: dev
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.0.202:1521:orcl
+    username: tplus
+    password: hpry1234
+  thymeleaf:
+    cache: false
+logging:
+  file:
+    name: ./logs/${spring.application.name}.log
+hpry:
+  tools:
+    tmpdir: D:\temp
+  tplus:
+    org-id: 90015919344
+    redirect-uri: http://60.170.60.79:49933/hpryTplusServer/openapi/oauth
+    app-key: ef350vln
+    app-secret: F0900F2357EDE986542AD66A21923DA7
+    iface-secret: ecc2215e3ac70fe9

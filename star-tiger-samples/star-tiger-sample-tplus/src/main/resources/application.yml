@@ -1,0 +1,39 @@
+server:
+  servlet:
+    context-path: /hpryTplusServer
+  forward-headers-strategy: framework
+spring:
+  profiles:
+    active: dev
+  application:
+    name: hpry-tplus-server
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 100MB
+mybatis-plus:
+  global-config:
+    banner: false
+#    db-config:
+#      logic-delete-field: record_status
+#      logic-delete-value: N
+#      logic-not-delete-value: Y
+  configuration:
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+stiger:
+  frame:
+    use-http-status-code: false
+#    enum-packages:
+#      - "com.hepingdairy.jdy.enums"
