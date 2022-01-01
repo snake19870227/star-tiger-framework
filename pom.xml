@@ -7,7 +7,7 @@
 
     <groupId>com.github.snake19870227</groupId>
     <artifactId>star-tiger-framework</artifactId>
-    <version>0.9.0</version><!-- -SNAPSHOT -->
+    <version>0.9.1</version><!-- -SNAPSHOT -->
     <packaging>pom</packaging>
     <name>StarTigerFramework</name>
     <description>Star Tiger 脚手架项目</description>
@@ -158,7 +158,7 @@
         <repository>
             <id>aliyun-nexus</id>
             <name>Aliyun Nexus Proxy</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/repository/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -167,9 +167,20 @@
             </snapshots>
         </repository>
         <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <url>http://repo1.maven.org/maven2/</url>
+            <id>google</id>
+            <name>Aliyun Google Proxy</name>
+            <url>https://maven.aliyun.com/repository/google/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring</id>
+            <name>Aliyun Spring Proxy</name>
+            <url>https://maven.aliyun.com/repository/spring/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -183,7 +194,7 @@
         <pluginRepository>
             <id>aliyun-nexus</id>
             <name>Aliyun Nexus Proxy</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/repository/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -192,9 +203,20 @@
             </snapshots>
         </pluginRepository>
         <pluginRepository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <url>http://repo1.maven.org/maven2/</url>
+            <id>google</id>
+            <name>Aliyun Google Proxy</name>
+            <url>https://maven.aliyun.com/repository/google/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring</id>
+            <name>Aliyun Spring Proxy</name>
+            <url>https://maven.aliyun.com/repository/spring/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

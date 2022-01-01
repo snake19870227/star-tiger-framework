@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-aliyun</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.9.0</version>
+        <version>0.9.1</version>
     </parent>
 
     <artifactId>star-tiger-framework-aliyun-dypls</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <packaging>pom</packaging>
     <name>StarTigerFrameworkAliyunDypls</name>
     <description>Star Tiger 脚手架项目 阿里云隐私电话 模块</description>

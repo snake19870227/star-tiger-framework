@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-admin</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.9.0</version>
+        <version>0.9.1</version>
     </parent>
 
     <artifactId>star-tiger-framework-admin-repository</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <name>StarTigerFrameworkAdminRepository</name>
     <description>Star Tiger 脚手架项目 后台管理 repository 模块</description>
 

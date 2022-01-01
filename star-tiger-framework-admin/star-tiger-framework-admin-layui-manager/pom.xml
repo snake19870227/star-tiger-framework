@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-admin</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.9.0</version>
+        <version>0.9.1</version>
     </parent>
 
     <artifactId>star-tiger-framework-admin-layui-manager</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <name>StarTigerFrameworkAdminLayuiManager</name>
     <description>Star Tiger 脚手架项目 后台管理Layui实现的manager模块</description>
 
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-admin-core</artifactId>
-            <version>0.9.0</version>
+            <version>0.9.1</version>
         </dependency>
     </dependencies>
 

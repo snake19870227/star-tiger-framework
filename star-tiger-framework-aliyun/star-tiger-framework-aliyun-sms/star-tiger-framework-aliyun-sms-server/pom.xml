@@ -8,11 +8,11 @@
     <parent>
         <artifactId>star-tiger-framework-aliyun-sms</artifactId>
         <groupId>com.github.snake19870227</groupId>
-        <version>0.9.0</version>
+        <version>0.9.1</version>
     </parent>
 
     <artifactId>star-tiger-framework-aliyun-sms-server</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <name>StarTigerFrameworkAliyunSmsServer</name>
     <description>Star Tiger 脚手架项目 阿里云短信简单服务中心 模块</description>
 
@@ -21,13 +21,13 @@
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-sms-server</artifactId>
-            <version>0.9.0</version>
+            <version>0.9.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.snake19870227</groupId>
             <artifactId>star-tiger-framework-aliyun-sms-core</artifactId>
-            <version>0.9.0</version>
+            <version>0.9.1</version>
         </dependency>
     </dependencies>
 
